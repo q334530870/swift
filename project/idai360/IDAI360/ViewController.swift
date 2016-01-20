@@ -12,7 +12,30 @@ class ViewController: UITableViewController,UISearchBarDelegate {
         super.viewDidLoad()
         getData()
         //下拉刷新
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        //self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        //        let header = MJRefreshGifHeader(refreshingTarget: self, refreshingAction: "refresh")
+        //        // 设置普通状态的动画图片
+        //        var idleImages = [UIImage]()
+        //        for index in 1...4{
+        //            idleImages.append(UIImage(named: "d\(index).gif")!)
+        //        }
+        //        header.setImages(idleImages, forState: .Idle)
+        //        // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
+        //        var pullingImages = [UIImage]()
+        //        for index in 8...11{
+        //            pullingImages.append(UIImage(named: "d\(index).gif")!)
+        //        }
+        //        header.setImages(pullingImages, forState: .Pulling)
+        //        // 设置正在刷新状态的动画图片
+        //        var refreshingImages = [UIImage]()
+        //        for index in 15...23{
+        //            refreshingImages.append(UIImage(named: "d\(index).gif")!)
+        //        }
+        //        header.setImages(refreshingImages, forState: .Refreshing)
+        header.lastUpdatedTimeLabel?.hidden = true
+        //        header.stateLabel?.hidden = true
+        self.tableView.mj_header = header
         //上拉加载
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
     }

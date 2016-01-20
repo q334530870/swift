@@ -25,7 +25,9 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
         super.viewDidLoad()
         getData()
         //下拉刷新
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        header.lastUpdatedTimeLabel?.hidden = true
+        self.tableView.mj_header = header
         //上拉加载
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
         //初始化UISearchController

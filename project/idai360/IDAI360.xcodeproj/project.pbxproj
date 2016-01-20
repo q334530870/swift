@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A410350A1C15927800DAFFD9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41035091C15927800DAFFD9 /* LoginViewController.swift */; };
 		A410350C1C15B1A400DAFFD9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A410350B1C15B1A400DAFFD9 /* RegisterViewController.swift */; };
+		A423E0071C4F73A000564101 /* SXHalfWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */; };
+		A423E0081C4F73A000564101 /* SXWaveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A423DFFF1C4F73A000564101 /* SXWaveCell.m */; };
+		A423E0091C4F73A000564101 /* SXWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423E0011C4F73A000564101 /* SXWaveView.m */; };
+		A423E00A1C4F73A000564101 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A423E0031C4F73A000564101 /* UIViewAdditions.m */; };
 		A42E799E1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */; };
 		A44F1D271C194200008E3E3F /* ZWIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1D131C194200008E3E3F /* ZWIntroductionViewController.m */; };
 		A44F1E441C1950CC008E3E3F /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1E1A1C1950CC008E3E3F /* MJRefreshAutoFooter.m */; };
@@ -131,6 +135,14 @@
 /* Begin PBXFileReference section */
 		A41035091C15927800DAFFD9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A410350B1C15B1A400DAFFD9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A423DFFC1C4F73A000564101 /* SXHalfWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXHalfWaveView.h; sourceTree = "<group>"; };
+		A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXHalfWaveView.m; sourceTree = "<group>"; };
+		A423DFFE1C4F73A000564101 /* SXWaveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXWaveCell.h; sourceTree = "<group>"; };
+		A423DFFF1C4F73A000564101 /* SXWaveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXWaveCell.m; sourceTree = "<group>"; };
+		A423E0001C4F73A000564101 /* SXWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXWaveView.h; sourceTree = "<group>"; };
+		A423E0011C4F73A000564101 /* SXWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXWaveView.m; sourceTree = "<group>"; };
+		A423E0021C4F73A000564101 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		A423E0031C4F73A000564101 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallmentMonthlyViewController.swift; sourceTree = "<group>"; };
 		A44F1CE41C194200008E3E3F /* IDAI360-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDAI360-Bridging-Header.h"; sourceTree = "<group>"; };
 		A44F1D121C194200008E3E3F /* ZWIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWIntroductionViewController.h; sourceTree = "<group>"; };
@@ -351,9 +363,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A423DFF71C4F73A000564101 /* SXWaveAnimate */ = {
+			isa = PBXGroup;
+			children = (
+				A423DFFC1C4F73A000564101 /* SXHalfWaveView.h */,
+				A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */,
+				A423DFFE1C4F73A000564101 /* SXWaveCell.h */,
+				A423DFFF1C4F73A000564101 /* SXWaveCell.m */,
+				A423E0001C4F73A000564101 /* SXWaveView.h */,
+				A423E0011C4F73A000564101 /* SXWaveView.m */,
+				A423E0021C4F73A000564101 /* UIViewAdditions.h */,
+				A423E0031C4F73A000564101 /* UIViewAdditions.m */,
+			);
+			path = SXWaveAnimate;
+			sourceTree = "<group>";
+		};
 		A44F1D941C194ABC008E3E3F /* library */ = {
 			isa = PBXGroup;
 			children = (
+				A423DFF71C4F73A000564101 /* SXWaveAnimate */,
 				A4E059AD1C433CCD00E17B47 /* FloatLabelFields */,
 				A4F3C3CA1C3F6211006862E6 /* pop */,
 				A4CF6A721C3CE58B00955579 /* MWPhotoBrowser */,
@@ -879,6 +907,7 @@
 				A4F3C40A1C3F6211006862E6 /* POPAnimationRuntime.mm in Sources */,
 				A4CF6A901C3CE59900955579 /* UIImage+MWPhotoBrowser.m in Sources */,
 				A410350A1C15927800DAFFD9 /* LoginViewController.swift in Sources */,
+				A423E0071C4F73A000564101 /* SXHalfWaveView.m in Sources */,
 				A4F3C40E1C3F6211006862E6 /* POPCGUtils.mm in Sources */,
 				A4951E7E1C30D182003DD474 /* Download.swift in Sources */,
 				A4951E861C30D182003DD474 /* Result.swift in Sources */,
@@ -905,6 +934,7 @@
 				A44F1E491C1950CC008E3E3F /* MJRefreshAutoGifFooter.m in Sources */,
 				A4951E801C30D182003DD474 /* Manager.swift in Sources */,
 				A4CF6AFC1C3CEAA400955579 /* DALabeledCircularProgressView.m in Sources */,
+				A423E00A1C4F73A000564101 /* UIViewAdditions.m in Sources */,
 				A4951E841C30D182003DD474 /* Response.swift in Sources */,
 				A4CFE5D31C191AB700D66E1C /* TabBarController.swift in Sources */,
 				A4951E831C30D182003DD474 /* Request.swift in Sources */,
@@ -922,6 +952,7 @@
 				A4F3C4101C3F6211006862E6 /* POPDecayAnimation.mm in Sources */,
 				A4F3C4141C3F6211006862E6 /* POPPropertyAnimation.mm in Sources */,
 				A44F1E461C1950CC008E3E3F /* MJRefreshComponent.m in Sources */,
+				A423E0091C4F73A000564101 /* SXWaveView.m in Sources */,
 				A45BE5631C229A5200BC3399 /* TradeDetailViewController.swift in Sources */,
 				A4E059B01C433CCD00E17B47 /* FloatLabelTextField.swift in Sources */,
 				A4F3C40C1C3F6211006862E6 /* POPAnimator.mm in Sources */,
@@ -932,6 +963,7 @@
 				A4CF6AFB1C3CEAA400955579 /* DACircularProgressView.m in Sources */,
 				A4BD71EB1C154B6C00D425DB /* ViewController.swift in Sources */,
 				A4CF6AE51C3CEA4800955579 /* SDWebImageDownloaderOperation.m in Sources */,
+				A423E0081C4F73A000564101 /* SXWaveCell.m in Sources */,
 				A44F1E511C1950CC008E3E3F /* MJRefreshStateHeader.m in Sources */,
 				A44F1E4E1C1950CC008E3E3F /* MJRefreshBackStateFooter.m in Sources */,
 				A4F3C4071C3F6211006862E6 /* POPAnimation.mm in Sources */,
@@ -1085,7 +1117,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "IDai360/IDAI360-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1103,7 +1135,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "IDai360/IDAI360-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

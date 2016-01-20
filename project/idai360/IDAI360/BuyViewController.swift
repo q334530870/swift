@@ -19,14 +19,14 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
     var seniority:Seniority?
     var model:JSON?
     
+    var animateView:SXWaveView?
+    
     @IBOutlet weak var tk: UILabel!
     @IBOutlet weak var redView: UIView!
-    @IBOutlet weak var smallRedView: UIView!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var count: UITextField!
     @IBOutlet weak var ok: UIImageView!
     
-    @IBOutlet weak var lv: UILabel!
     @IBOutlet weak var bj: UILabel!
     @IBOutlet weak var sl: UILabel!
     
@@ -36,7 +36,6 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
         getData()
         //设置圆角
         redView.layer.cornerRadius = redView.frame.width / 2
-        smallRedView.layer.cornerRadius = smallRedView.frame.width / 2
         self.navigationItem.title = navTitle
         //添加键盘显示通知，获得键盘高度
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldShow:", name: UIKeyboardDidShowNotification, object: nil)
@@ -53,19 +52,19 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
                 self.model = json["data"][0]
                 self.bindData()
                 //红球动画
-                let scale = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
-                scale.fromValue = NSValue(CGPoint:CGPointMake(0.7, 0.7))
-                scale.springBounciness = 20
-                scale.springSpeed = 1
-                self.redView.pop_addAnimation(scale, forKey: "popRedView")
-                
+                self.animateView = SXWaveView(frame: CGRectMake(0,0,self.redView.frame.width,self.redView.frame.height))
+                self.animateView?.layer.cornerRadius = (self.animateView?.frame.width)! / 2
+                self.redView.addSubview(self.animateView!)
+                var irr = self.model!["Irr"].stringValue
+                irr.removeAtIndex(irr.endIndex.predecessor())
+                self.animateView?.setPrecent(Int32(irr)! , description: "报价利率", textColor: UIColor.whiteColor(), bgColor: UIColor(red: 255/255, green: 102/255, blue: 102/255, alpha: 1), alpha: 1, clips: false)
+                self.animateView?.addAnimateWithType(0)
             }
         }
     }
     
     //绑定数据
     func bindData(){
-        lv.text = model!["Irr"].string
         bj.text = model!["Quotation"].string
         sl.text = model!["Quantity"].string
         productId = model!["ProductId"].intValue

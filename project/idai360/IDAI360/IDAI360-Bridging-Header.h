@@ -4,3 +4,4 @@
 #import "MWPhotoBrowser.h"
 #import "MBProgressHUD.h"
 #import "pop.h"
+#import "SXWaveView.h"

@@ -34,7 +34,9 @@ class CommentTableViewController: UIViewController,UITableViewDelegate,UITableVi
         //获取数据
         getData()
         //下拉刷新
-        self.tv.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        header.lastUpdatedTimeLabel?.hidden = true
+        self.tv.mj_header = header
         //上拉加载
         self.tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
         //设置自适应行高
