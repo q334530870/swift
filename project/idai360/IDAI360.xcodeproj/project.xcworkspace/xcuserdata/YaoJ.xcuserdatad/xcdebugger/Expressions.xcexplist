@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.getData(Int) -&gt; ():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static Common.(doRepuest(Common.Type) -&gt; (UIViewController, url : String, method : Method, param : [String : AnyObject]?, complete : (Response&lt;AnyObject, NSError&gt;, JSON) -&gt; ()) -&gt; ()).(closure #1):Common.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(__NSCFString *)cell.[1].value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

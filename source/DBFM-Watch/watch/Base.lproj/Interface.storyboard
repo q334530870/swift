@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9527.1" systemVersion="15C47a" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9513.1"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watch" customModuleProvider="target">
+                    <items>
+                        <group width="100" height="100" alignment="center" radius="10" id="WTf-GX-w31">
+                            <items>
+                                <imageView width="100" height="100" alignment="left" id="O8c-iu-iXA"/>
+                            </items>
+                        </group>
+                        <label width="1" alignment="center" text="歌曲信息" textAlignment="center" id="T7X-d2-HYr">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                        <group width="1" alignment="left" spacing="10" id="aB6-rJ-a1W">
+                            <items>
+                                <button width="20" height="20" alignment="center" verticalAlignment="center" backgroundImage="btnPre" id="17O-yM-Fq4"/>
+                                <button width="20" height="20" alignment="center" verticalAlignment="center" backgroundImage="btnPause" id="V4d-N3-OhD"/>
+                                <button width="20" height="20" alignment="center" verticalAlignment="center" backgroundImage="btnNext" id="8iX-sx-APV"/>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="Ydd-Fa-7dL">
+                        <items>
+                            <menuItem title="歌曲" icon="info" id="SGr-pV-wmR"/>
+                            <menuItem title="频道" icon="more" id="bXT-ME-PlT"/>
+                            <menuItem title="取消" icon="block" id="k4O-kx-XH0"/>
+                        </items>
+                    </menu>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>

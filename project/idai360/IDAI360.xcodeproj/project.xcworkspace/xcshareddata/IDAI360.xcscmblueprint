@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "83AB485C762805952CF8BC683A16B69671B49B2A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "83AB485C762805952CF8BC683A16B69671B49B2A" : 0,
+    "DB36FE004563F7AED6D03665CD54DA55BA70E435" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5D51D5CE-D77E-4B78-9CC8-AD23759A67AD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "83AB485C762805952CF8BC683A16B69671B49B2A" : "IDAI360\/",
+    "DB36FE004563F7AED6D03665CD54DA55BA70E435" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "IDAI360",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "IDAI360.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/q334530870\/IDAI360.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "83AB485C762805952CF8BC683A16B69671B49B2A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/q334530870\/swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB36FE004563F7AED6D03665CD54DA55BA70E435"
+    }
+  ]
+}

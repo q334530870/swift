@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CE5491E57F32AA0B0DA83E45B06E281B2631F267",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DB36FE004563F7AED6D03665CD54DA55BA70E435" : 0,
+    "CE5491E57F32AA0B0DA83E45B06E281B2631F267" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "72C7DBAD-1224-48DF-8A64-2CCD6CB76F05",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DB36FE004563F7AED6D03665CD54DA55BA70E435" : "",
+    "CE5491E57F32AA0B0DA83E45B06E281B2631F267" : "swift%E9%A1%B9%E7%9B%AE\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CloudIMTest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CloudIMTest\/CloudIMTest.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/q334530870\/swift-.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CE5491E57F32AA0B0DA83E45B06E281B2631F267"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/q334530870\/swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB36FE004563F7AED6D03665CD54DA55BA70E435"
+    }
+  ]
+}

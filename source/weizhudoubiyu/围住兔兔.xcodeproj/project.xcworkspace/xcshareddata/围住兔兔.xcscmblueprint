@@ -1,0 +1,39 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CE5491E57F32AA0B0DA83E45B06E281B2631F267",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "49718897-df72-964f-87e1-017486297a11" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "49718897-df72-964f-87e1-017486297a11" : 0,
+    "DB36FE004563F7AED6D03665CD54DA55BA70E435" : 0,
+    "CE5491E57F32AA0B0DA83E45B06E281B2631F267" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A014F2E8-068C-4A9A-AF08-A1A45C96CE36",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "49718897-df72-964f-87e1-017486297a11" : "swift\/weizhudoubiyu\/ios\/",
+    "DB36FE004563F7AED6D03665CD54DA55BA70E435" : "swift\/",
+    "CE5491E57F32AA0B0DA83E45B06E281B2631F267" : "swift%E9%A1%B9%E7%9B%AE\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "围住兔兔",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "weizhudoubiyu\/围住兔兔.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/ez99papaya.vicp.cc\/svn\/ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "49718897-df72-964f-87e1-017486297a11"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/q334530870\/swift-.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CE5491E57F32AA0B0DA83E45B06E281B2631F267"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/q334530870\/swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB36FE004563F7AED6D03665CD54DA55BA70E435"
+    }
+  ]
+}
