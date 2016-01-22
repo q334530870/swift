@@ -42,6 +42,7 @@
 		A4691FD31C1E859000CECB5E /* SecondHandTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4691FD21C1E859000CECB5E /* SecondHandTableViewController.swift */; };
 		A4691FD51C1E898B00CECB5E /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4691FD41C1E898B00CECB5E /* FirstTableViewController.swift */; };
 		A4691FD91C1EA45000CECB5E /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4691FD81C1EA45000CECB5E /* BuyViewController.swift */; };
+		A4716AAE1C51B69000FD4E7F /* DrawLineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4716AAD1C51B69000FD4E7F /* DrawLineTest.swift */; };
 		A47181091C33761900C95818 /* RegisterRealNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47181081C33761900C95818 /* RegisterRealNameViewController.swift */; };
 		A471810C1C33B0F600C95818 /* PrintObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A471810B1C33B0F600C95818 /* PrintObject.m */; };
 		A4951E7D1C30D182003DD474 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E6F1C30D182003DD474 /* Alamofire.swift */; };
@@ -193,6 +194,7 @@
 		A4691FD21C1E859000CECB5E /* SecondHandTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandTableViewController.swift; sourceTree = "<group>"; };
 		A4691FD41C1E898B00CECB5E /* FirstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
 		A4691FD81C1EA45000CECB5E /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		A4716AAD1C51B69000FD4E7F /* DrawLineTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLineTest.swift; sourceTree = "<group>"; };
 		A47181081C33761900C95818 /* RegisterRealNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRealNameViewController.swift; sourceTree = "<group>"; };
 		A471810A1C33B0D700C95818 /* PrintObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintObject.h; sourceTree = "<group>"; };
 		A471810B1C33B0F600C95818 /* PrintObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintObject.m; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				A4566C911C16E9C20047DE86 /* Common.swift */,
 				A4D00FDD1C3A4FD90034CDC8 /* Config.swift */,
 				A4F3C4181C3F6349006862E6 /* PopButton.swift */,
+				A4716AAD1C51B69000FD4E7F /* DrawLineTest.swift */,
 			);
 			name = helper;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				A4DCBC801C213B070094B7CA /* MyTradeViewController.swift in Sources */,
 				A4CF6AE41C3CEA4800955579 /* SDWebImageDownloader.m in Sources */,
 				A4D00FDE1C3A4FD90034CDC8 /* Config.swift in Sources */,
+				A4716AAE1C51B69000FD4E7F /* DrawLineTest.swift in Sources */,
 				A44F1E471C1950CC008E3E3F /* MJRefreshFooter.m in Sources */,
 				A4CF6AEB1C3CEA4800955579 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A4CF6AE81C3CEA4800955579 /* UIButton+WebCache.m in Sources */,

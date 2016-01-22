@@ -136,7 +136,6 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
         for view in cell.subviews{
             if view.subviews.count > 0 || (view as? UILabel) != nil{
                 view.removeFromSuperview()
@@ -299,7 +298,8 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             
             //右半部分试图
             let rightView = UIView(frame: CGRect(x: leftView.frame.width+3, y: 3, width: cell.frame.width - leftView.frame.width-5, height: cell.frame.height))
-            let button = UIButton(frame: CGRect(x: 20, y: 3, width: rightView.frame.width-30, height: rightView.frame.height-12))
+            let button = PopButton(type: .System)
+            button.frame = CGRect(x: 20, y: 3, width: rightView.frame.width-30, height: rightView.frame.height-12)
             button.backgroundColor = MAIN_COLOR
             button.setTitle("我要买", forState: UIControlState.Normal)
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
