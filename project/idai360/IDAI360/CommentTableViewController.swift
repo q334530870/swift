@@ -166,8 +166,6 @@ class CommentTableViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.textLabel!.font = UIFont.systemFontOfSize(12)
             cell.textLabel!.text = rowData["Content"].stringValue
             cell.textLabel?.textColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-            //根据内容判断高度
-            //            let newSize = rowData.comment.stringHeightWithFontSize(12, width: width)
         }
             //融资人或管理员回复
         else if indexPath.row == 2{
