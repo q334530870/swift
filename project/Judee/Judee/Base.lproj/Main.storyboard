@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--作业-->
+        <!--最新作业-->
         <scene sceneID="aYy-es-FPY">
             <objects>
                 <viewController id="3La-dH-Eax" customClass="BookViewController" customModule="Judee" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,29 +21,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xhT-U1-Kl5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" textLabel="X53-6S-ybL" detailTextLabel="bW3-U7-png" style="IBUITableViewCellStyleSubtitle" id="tCW-eq-2j1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" id="tCW-eq-2j1">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCW-eq-2j1" id="5hg-dz-V9R">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X53-6S-ybL">
-                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bW3-U7-png">
-                                                    <rect key="frame" x="15" y="25.5" width="30.5" height="13.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -61,9 +46,21 @@
                             <constraint firstItem="Fuc-d6-ovK" firstAttribute="top" secondItem="xhT-U1-Kl5" secondAttribute="bottom" id="vBJ-9w-5vb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="作业" id="FXz-qg-aqO"/>
+                    <navigationItem key="navigationItem" title="最新作业" id="FXz-qg-aqO">
+                        <barButtonItem key="leftBarButtonItem" title="全部班级" style="done" id="cfa-iw-cqO">
+                            <connections>
+                                <action selector="selectClass:" destination="3La-dH-Eax" id="Ivo-8o-l6a"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2sZ-Jb-ZjZ">
+                            <connections>
+                                <segue destination="FMn-L0-zzT" kind="show" id="uWS-fT-Q80"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="classBarButtonItem" destination="cfa-iw-cqO" id="k54-mF-gKs"/>
                         <outlet property="tv" destination="xhT-U1-Kl5" id="9tT-Pi-6C4"/>
                         <segue destination="7S4-z4-ztg" kind="show" identifier="bookDetail" id="UjK-88-Yl2"/>
                     </connections>
@@ -71,6 +68,248 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9R-pq-cKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860.5" y="-977.5"/>
+        </scene>
+        <!--新增作业-->
+        <scene sceneID="E6c-vd-TK9">
+            <objects>
+                <viewController id="FMn-L0-zzT" customClass="AddBookViewController" customModule="Judee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yoH-5H-Bny"/>
+                        <viewControllerLayoutGuide type="bottom" id="nqJ-LO-iAN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3M1-iV-9R9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Deq-Ds-R4r" customClass="HomeworkView" customModule="Judee" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="所属班级" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grE-bs-rDk" customClass="FloatLabelTextField" customModule="Judee" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="41" width="365" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="fdY-pl-7HM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleActiveTextColour">
+                                                <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleTextColour">
+                                                <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="作业名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T03-Zm-GRM" customClass="FloatLabelTextField" customModule="Judee" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="3" width="365" height="35"/>
+                                        <color key="tintColor" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="1Wu-1C-Dxb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleTextColour">
+                                                <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="T03-Zm-GRM" secondAttribute="trailing" constant="5" id="0Cx-3e-7X5"/>
+                                    <constraint firstItem="T03-Zm-GRM" firstAttribute="top" secondItem="Deq-Ds-R4r" secondAttribute="top" constant="3" id="Ctj-Wg-jtH"/>
+                                    <constraint firstItem="grE-bs-rDk" firstAttribute="top" secondItem="T03-Zm-GRM" secondAttribute="bottom" constant="3" id="DbY-hF-cWu"/>
+                                    <constraint firstAttribute="height" constant="80" id="RS8-kF-eM7"/>
+                                    <constraint firstItem="T03-Zm-GRM" firstAttribute="leading" secondItem="Deq-Ds-R4r" secondAttribute="leading" constant="5" id="XUU-Pf-dUY"/>
+                                    <constraint firstAttribute="trailing" secondItem="grE-bs-rDk" secondAttribute="trailing" constant="5" id="hMW-eP-T2g"/>
+                                    <constraint firstItem="grE-bs-rDk" firstAttribute="leading" secondItem="Deq-Ds-R4r" secondAttribute="leading" constant="5" id="xfq-B8-RHA"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dbo-6e-gev">
+                                <rect key="frame" x="0.0" y="152" width="375" height="466"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" textLabel="4fB-Lx-6v8" detailTextLabel="wvF-Ja-8NS" style="IBUITableViewCellStyleSubtitle" id="9p8-l8-uah">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9p8-l8-uah" id="3Gi-YE-aCK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4fB-Lx-6v8">
+                                                    <rect key="frame" x="15" y="6" width="28.5" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvF-Ja-8NS">
+                                                    <rect key="frame" x="15" y="23" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dbo-6e-gev" secondAttribute="trailing" id="DLj-Wl-5Ar"/>
+                            <constraint firstItem="Deq-Ds-R4r" firstAttribute="leading" secondItem="3M1-iV-9R9" secondAttribute="leading" id="WE5-6H-RjI"/>
+                            <constraint firstItem="Dbo-6e-gev" firstAttribute="top" secondItem="Deq-Ds-R4r" secondAttribute="bottom" constant="8" id="Waq-4B-aSd"/>
+                            <constraint firstAttribute="trailing" secondItem="Deq-Ds-R4r" secondAttribute="trailing" id="fVe-LR-jzX"/>
+                            <constraint firstItem="Dbo-6e-gev" firstAttribute="leading" secondItem="3M1-iV-9R9" secondAttribute="leading" id="rhA-ge-FKd"/>
+                            <constraint firstItem="nqJ-LO-iAN" firstAttribute="top" secondItem="Dbo-6e-gev" secondAttribute="bottom" id="unA-kb-mc6"/>
+                            <constraint firstItem="Deq-Ds-R4r" firstAttribute="top" secondItem="yoH-5H-Bny" secondAttribute="bottom" id="zjB-Gt-shD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="新增作业" id="1UZ-8d-ynO">
+                        <barButtonItem key="rightBarButtonItem" title="提交" id="lql-Ed-V20">
+                            <connections>
+                                <action selector="submit:" destination="FMn-L0-zzT" id="uX5-mp-dKX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="cls" destination="grE-bs-rDk" id="L3g-4w-Hc1"/>
+                        <outlet property="name" destination="T03-Zm-GRM" id="CCS-ND-9EI"/>
+                        <outlet property="tv" destination="Dbo-6e-gev" id="Qgm-HI-ct7"/>
+                        <segue destination="hJd-yG-WF9" kind="show" identifier="AddBook" id="aGO-XC-q5g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBm-Ac-ESi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860.5" y="-1805.5"/>
+        </scene>
+        <!--作业明细-->
+        <scene sceneID="2Bh-wY-WJO">
+            <objects>
+                <viewController id="hJd-yG-WF9" customClass="AddBookDetailViewController" customModule="Judee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FoT-6R-ubQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="YUT-m0-arL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zZd-93-ftu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmu-n0-mCa">
+                                <rect key="frame" x="0.0" y="222" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="gdw-ub-vpQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zS-Hn-5ec">
+                                <rect key="frame" x="0.0" y="267" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ayX-vf-Or2"/>
+                                </constraints>
+                            </view>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaP-Jb-0FH">
+                                <rect key="frame" x="0.0" y="418" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="QfR-Wu-HNP"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="475603200.14670599">
+                                    <!--2016-01-27 16:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="zh"/>
+                                <connections>
+                                    <action selector="changeDate:" destination="hJd-yG-WF9" eventType="valueChanged" id="75o-6M-ReC"/>
+                                </connections>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="完成所需时间（分钟）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CGv-FW-iIM" customClass="FloatLabelTextField" customModule="Judee" customModuleProvider="target">
+                                <rect key="frame" x="3" y="227" width="369" height="35"/>
+                                <color key="tintColor" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="59m-Cf-Rxg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleTextColour">
+                                        <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S99-nM-Jjd" customClass="FloatLabelTextView" customModule="Judee" customModuleProvider="target">
+                                <rect key="frame" x="3" y="67" width="369" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Opv-vk-ORF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hint" value="作业内容"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hintYPadding">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleYPadding">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleTextColour">
+                                        <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YUT-m0-arL" firstAttribute="top" secondItem="TaP-Jb-0FH" secondAttribute="bottom" id="08t-f1-G1u"/>
+                            <constraint firstItem="S99-nM-Jjd" firstAttribute="leading" secondItem="zZd-93-ftu" secondAttribute="leading" constant="3" id="2uZ-Pp-E5U"/>
+                            <constraint firstItem="Rmu-n0-mCa" firstAttribute="leading" secondItem="zZd-93-ftu" secondAttribute="leadingMargin" id="3ia-iy-kuF"/>
+                            <constraint firstItem="3zS-Hn-5ec" firstAttribute="leading" secondItem="zZd-93-ftu" secondAttribute="leading" id="67h-ku-IAr"/>
+                            <constraint firstItem="TaP-Jb-0FH" firstAttribute="leading" secondItem="zZd-93-ftu" secondAttribute="leading" id="99W-If-daL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rmu-n0-mCa" secondAttribute="trailing" id="PDN-kq-n7Y"/>
+                            <constraint firstItem="S99-nM-Jjd" firstAttribute="top" secondItem="FoT-6R-ubQ" secondAttribute="bottom" constant="3" id="TCE-OT-kXW"/>
+                            <constraint firstAttribute="trailing" secondItem="3zS-Hn-5ec" secondAttribute="trailing" id="TVM-ZI-Ge7"/>
+                            <constraint firstAttribute="trailing" secondItem="CGv-FW-iIM" secondAttribute="trailing" constant="3" id="Xwc-85-aCI"/>
+                            <constraint firstAttribute="trailing" secondItem="S99-nM-Jjd" secondAttribute="trailing" constant="3" id="ZDO-OE-EBx"/>
+                            <constraint firstAttribute="trailing" secondItem="TaP-Jb-0FH" secondAttribute="trailing" id="f4E-5m-74l"/>
+                            <constraint firstItem="Rmu-n0-mCa" firstAttribute="leading" secondItem="zZd-93-ftu" secondAttribute="leading" id="fGZ-KP-izJ"/>
+                            <constraint firstItem="CGv-FW-iIM" firstAttribute="top" secondItem="S99-nM-Jjd" secondAttribute="bottom" constant="10" id="fiw-iv-1Oe"/>
+                            <constraint firstItem="CGv-FW-iIM" firstAttribute="leading" secondItem="zZd-93-ftu" secondAttribute="leading" constant="3" id="iMe-QD-zwF"/>
+                            <constraint firstItem="3zS-Hn-5ec" firstAttribute="top" secondItem="CGv-FW-iIM" secondAttribute="bottom" constant="5" id="kLu-Kp-7AJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Rmu-n0-mCa" secondAttribute="trailing" id="vXQ-ub-Yej"/>
+                            <constraint firstItem="Rmu-n0-mCa" firstAttribute="top" secondItem="S99-nM-Jjd" secondAttribute="bottom" constant="5" id="wEy-wX-3pd"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3ia-iy-kuF"/>
+                                <exclude reference="PDN-kq-n7Y"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="作业明细" id="iL1-64-O66">
+                        <barButtonItem key="rightBarButtonItem" title="确定" id="sqT-eu-6qN">
+                            <connections>
+                                <action selector="submit:" destination="hJd-yG-WF9" id="KAi-6R-SiE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="datePicker" destination="TaP-Jb-0FH" id="vN6-1d-ban"/>
+                        <outlet property="needTime" destination="CGv-FW-iIM" id="pHT-R5-2vN"/>
+                        <outlet property="textView" destination="S99-nM-Jjd" id="aQi-qF-4Ri"/>
+                        <segue destination="Nl7-9w-JW1" kind="unwind" identifier="BookDetailUnwind" unwindAction="bookDetailUnwind:" id="eRt-M1-93q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fer-GA-hqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Nl7-9w-JW1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1387.5" y="-1805.5"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="c6K-i8-Oxo">
@@ -87,6 +326,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bXa-io-nz9">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ScrollCell" id="Hdu-Qb-aEx">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
@@ -291,6 +531,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qjA-eA-g94">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" textLabel="FAv-Hy-IyG" style="IBUITableViewCellStyleDefault" id="Gvy-CP-rxZ">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
@@ -373,6 +614,11 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleTextColour">
+                                                <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="checkLogin:" destination="Vpf-ZA-dIL" eventType="editingChanged" id="wBr-wA-wIu"/>
                                         </connections>
@@ -385,6 +631,11 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleTextColour">
+                                                <color key="value" red="0.015686274510000001" green="0.74509803919999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="checkLogin:" destination="Vpf-ZA-dIL" eventType="editingChanged" id="WlD-ns-LER"/>
                                         </connections>

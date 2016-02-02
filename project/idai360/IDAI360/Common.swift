@@ -1,6 +1,6 @@
 import UIKit
 
- class Common{
+class Common{
     //遮罩层
     static let grayView:UIView = UIView()
     //加载菊花
@@ -108,11 +108,11 @@ import UIKit
     
     static func makeMask(currentView:UIView){
         //去除nav的高度
-//        var otherHeight:CGFloat = 0
-//        if(currentView!.navigationController != nil){
-//            otherHeight += 60
-//        }
-//        let y:CGFloat = 0 - otherHeight
+        //        var otherHeight:CGFloat = 0
+        //        if(currentView!.navigationController != nil){
+        //            otherHeight += 60
+        //        }
+        //        let y:CGFloat = 0 - otherHeight
         //创建遮罩层
         grayView.frame = CGRectMake(0, 0,currentView.bounds.width, currentView.bounds.height)
         grayView.backgroundColor = UIColor.grayColor()
@@ -175,7 +175,7 @@ import UIKit
         taskView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         taskView.hidden = true
         //总视图
-        let pv = UIView(frame: CGRectMake(frame.origin.x,frame.origin.y,frame.width,frame.height - 60))
+        let pv = UIView(frame: CGRectMake(frame.origin.x,frame.origin.y,frame.width,frame.height - 50))
         //选择视图
         let pickView = UIPickerView(frame: CGRectMake(0,30,pv.frame.width,pv.frame.height - 30))
         pickView.backgroundColor = UIColor.whiteColor()
@@ -285,9 +285,9 @@ import UIKit
         }
         let mobile = "^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$"
         /**
-          * 中国移动：China Mobile
-          * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
-        */
+         * 中国移动：China Mobile
+         * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
+         */
         let cm = "^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$"
         /**
          * 中国联通：China Unicom
@@ -300,11 +300,11 @@ import UIKit
          */
         let ct = "^1((33|53|8[09])[0-9]|349)\\d{7}$"
         /**
-        25         * 大陆地区固话及小灵通
-        26         * 区号：010,020,021,022,023,024,025,027,028,029
-        27         * 号码：七位或八位
-        28         */
-        // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+         25         * 大陆地区固话及小灵通
+         26         * 区号：010,020,021,022,023,024,025,027,028,029
+         27         * 号码：七位或八位
+         28         */
+         // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
         
         let regextestmobile = NSPredicate(format: "SELF MATCHES %@", mobile)
         let regextestcm = NSPredicate(format: "SELF MATCHES %@", cm)

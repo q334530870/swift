@@ -1,15 +1,14 @@
 //
-//  FirstTableViewController.swift
+//  WantSellTableTableViewController.swift
 //  IDAI360
 //
-//  Created by YaoJ on 15/12/14.
-//  Copyright © 2015年 YaoJ. All rights reserved.
+//  Created by YaoJ on 16/2/1.
+//  Copyright © 2016年 YaoJ. All rights reserved.
 //
 
 import UIKit
 
-class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISearchResultsUpdating {
-    
+class WantSellTableTableViewController: UITableViewController,UISearchBarDelegate,UISearchResultsUpdating {
     //接口获得的数据
     var result = [JSON]()
     //用于筛选的结果集
@@ -53,7 +52,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
     func getData(type:Int = RefreshType.下拉刷新.rawValue,let keyword:String? = nil){
         let url = API_URL + "/api/products"
         let token = Common.getToken()
-        let param = ["token":token,"pageIndex":pageIndex,"pageSize":pageSize,"keyword":keyword ?? "","type":ProductType.首发区.rawValue]
+        let param = ["token":token,"pageIndex":pageIndex,"pageSize":pageSize,"keyword":keyword ?? "","type":ProductType.我要卖.rawValue]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()
@@ -254,7 +253,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             countLabel.textAlignment = NSTextAlignment.Center
             bottomView.addSubview(countLabel)
             let countDesLabel = UILabel(frame: CGRect(x: cell.frame.width/3*2+1, y:cell.frame.height/4-4, width: cell.frame.width/3-1, height: cell.frame.height/4))
-            countDesLabel.text = "在售数量"
+            countDesLabel.text = "求购数量"
             countDesLabel.textColor = UIColor.grayColor()
             countDesLabel.font = UIFont.systemFontOfSize(12)
             countDesLabel.textAlignment = NSTextAlignment.Center
@@ -301,7 +300,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             let button = PopButton(type: .System)
             button.frame = CGRect(x: 20, y: 3, width: rightView.frame.width-30, height: rightView.frame.height-12)
             button.backgroundColor = MAIN_COLOR
-            button.setTitle("我要买", forState: UIControlState.Normal)
+            button.setTitle("我要卖", forState: UIControlState.Normal)
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             button.titleLabel?.font = UIFont.systemFontOfSize(14)
             button.layer.cornerRadius = 3
@@ -329,13 +328,13 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             self.tabBarController!.performSegueWithIdentifier("login", sender: nil)
         }
         else{
-            self.performSegueWithIdentifier("first", sender: btn.tag)
+            self.performSegueWithIdentifier("sell", sender: btn.tag)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         for view in segue.destinationViewController.childViewControllers{
-            if let buy = view as? BuyViewController{
+            if let buy = view as? SellViewController{
                 let index = (sender as? Int)!
                 buy.navTitle = self.result[index]["Title"].stringValue
                 buy.detailId = result[index]["DetailId"].intValue
@@ -344,6 +343,5 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             }
         }
     }
-    
     
 }

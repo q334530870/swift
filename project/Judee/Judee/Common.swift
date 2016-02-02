@@ -28,7 +28,7 @@ class Common{
     }
     
     //获取timeInterval
-    func DateInterval(date:String)->NSTimeInterval{
+    static func DateInterval(date:String)->NSTimeInterval{
         let formatter = NSDateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
         formatter.timeZone = NSTimeZone.systemTimeZone()
@@ -37,6 +37,13 @@ class Common{
         let setDate = formatter.dateFromString(date)
         let interval = setDate!.timeIntervalSinceDate(currentDate!)
         return interval
+    }
+    
+    static func dateFromString(date:String,fmt:String = "yyyy-MM-dd HH:mm:ss")->NSDate{
+        //日期格式化
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = fmt
+        return formatter.dateFromString(date)!
     }
     
     //显示提示框
@@ -203,7 +210,7 @@ class Common{
         return result!
     }
     
-    static func dateFormateUTCDate(utcDate:String,fmt:String="yyyy-MM-dd hh:mm:ss") -> String{
+    static func dateFormateUTCDate(utcDate:String,fmt:String="yyyy-MM-dd HH:mm:ss") -> String{
         let dateFmt = NSDateFormatter()
         let timeZone = NSTimeZone.localTimeZone()
         dateFmt.timeZone = timeZone
@@ -261,13 +268,18 @@ class Common{
             if response.result.error != nil{
                 print(response.response?.statusCode)
                 if response.response?.statusCode == 401{
-                    Common.showAlert(controller, title: "", message: "授权失败")
+                    Common.showAlert(controller, title: "", message: "授权失败",ok: { (action) -> Void in
+                        if failed != nil{
+                            failed!()
+                        }
+                    })
                 }
                 else{
-                    Common.showAlert(controller, title: "", message: "连接错误，请稍后再试")
-                }
-                if failed != nil{
-                    failed!()
+                    Common.showAlert(controller, title: "", message: "连接错误，请稍后再试",ok: { (action) -> Void in
+                        if failed != nil{
+                            failed!()
+                        }
+                    })
                 }
             }
             else{
@@ -291,10 +303,11 @@ class Common{
                     else if let mes = json["Message"].string{
                         message = mes
                     }
-                    Common.showAlert(controller, title: "", message: message)
-                    if failed != nil{
-                        failed!()
-                    }
+                    Common.showAlert(controller, title: "", message: message,ok: { (action) -> Void in
+                        if failed != nil{
+                            failed!()
+                        }
+                    })
                 }
             }
         }

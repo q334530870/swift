@@ -9,84 +9,127 @@
 import UIKit
 
 class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
-    var data = [(title:String,date:String)]()
-    @IBOutlet weak var tv: UITableView!
+    //接口获得的数据
+    var result = [JSON]()
+    //当前页数
+    var pageIndex = 1
+    //每页显示条数
+    var pageSize = 10
+    var tempValue:[(text:String,detailText:String)]!
     var selectCell = Payment.我的投资
+    var dataType = Payment.待确认
+    @IBOutlet weak var tv: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var tvTop: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //模拟数据
-        switch selectCell{
-        case Payment.我的投资:
-            data.append(("CXD(A)-小弟借钱（待确认）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（待确认）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（待确认）","14:14:14"))
-        case Payment.我的持仓量:
-            data.append(("CXD(A)-小弟借钱（我的持仓量）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（我的持仓量）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（我的持仓量）","14:14:14"))
-        case Payment.我的买入成交单:
-            data.append(("CXD(A)-小弟借钱（我的买入成交单）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（我的买入成交单）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（我的买入成交单）","14:14:14"))
-        case Payment.我的卖出成交单:
-            data.append(("CXD(A)-小弟借钱（我的卖出成交单）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（我的卖出成交单）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（我的卖出成交单）","14:14:14"))
-        case Payment.本息支付:
-            data.append(("CXD(A)-小弟借钱（本息支付）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（本息支付）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（本息支付）","14:14:14"))
-        case Payment.到期本息支付汇总:
-            data.append(("CXD(A)-小弟借钱（到期本息支付汇总）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（到期本息支付汇总）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（到期本息支付汇总）","14:14:14"))
-        default:
-            break
+        if selectCell == Payment.我的投资{
+            dataType = Payment.待确认
         }
-        if selectCell != Payment.我的投资{
+        else{
+            dataType = selectCell
             segmented.hidden = true
             tvTop.constant = 0
         }
+        //获取数据
+        getData()
         //下拉刷新
-        tv.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "getData")
+        tv.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
         //上拉加载
-        tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "getData")
+        tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
+    }
+    
+    func setTitle(){
+        tempValue = [(text:String,detailText:String)]()
+        switch dataType{
+        case Payment.待确认:
+            tempValue.append(("产品名称","到期时间"))
+            break
+        case Payment.还款中:
+            tempValue.append(("产品名称","年化收益率"))
+            break
+        case Payment.还款结束:
+            tempValue.append(("产品名称","完成时间"))
+            break
+        case Payment.我的持仓量:
+            tempValue.append(("产品","条件持有量"))
+            break
+        case Payment.我的买入成交单:
+            tempValue.append(("产品","成交时间"))
+            break
+        case Payment.我的卖出成交单:
+            tempValue.append(("产品","成交时间"))
+            break
+        case Payment.现金收付明细表:
+            tempValue.append(("摘要","日期"))
+            break
+        case Payment.到期本息支付汇总:
+            tempValue.append(("产品","日期"))
+            break
+        default:
+            break
+        }
     }
     
     //绑定数据
-    func getData(){
+    func getData(type:Int = RefreshType.下拉刷新.rawValue,let keyword:String? = nil){
+        setTitle()
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
-        tv.mj_header.endRefreshing()
-        tv.mj_footer.endRefreshing()
-        tv.reloadData()
-        //tv.mj_footer.endRefreshingWithNoMoreData()
-        self.view.hideToastActivity()
+        let url = API_URL + "/api/report"
+        let token = Common.getToken()
+        let param = ["token":token,"type":dataType.rawValue]
+        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+        Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
+            self.tv.mj_header.endRefreshing()
+            self.tv.mj_footer.endRefreshing()
+            }) { (response, json) -> Void in
+                print(self.tempValue)
+                print(json)
+                if type == RefreshType.下拉刷新.rawValue{
+                    self.result = json["data"].array!
+                    self.tv.mj_header.endRefreshing()
+                    self.tv.reloadData()
+                    //暂时没有分页功能
+                    self.tv.mj_footer.endRefreshingWithNoMoreData()
+                }
+                else if type == RefreshType.上拉加载.rawValue{
+                    self.tv.mj_footer.endRefreshing()
+                    if json["data"].count == 0{
+                        self.tv.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                    else{
+                        self.pageIndex++
+                        self.tv.reloadData()
+                    }
+                }
+        }
+        
+    }
+    
+    //刷新数据
+    func refresh(){
+        pageIndex = 1
+        getData(RefreshType.下拉刷新.rawValue)
+    }
+    
+    //加载数据
+    func loadData(){
+        pageIndex++
+        getData(RefreshType.上拉加载.rawValue)
     }
     
     @IBAction func changeType(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == Payment.待确认.rawValue{
-            data.removeAll()
-            data.append(("CXD(A)-小弟借钱（待确认）","12:12:12"))
-            data.append(("CXD(B)-小弟借钱（待确认）","13:13:13"))
-            data.append(("CXD(C)-小弟借钱（待确认）","14:14:14"))
+            dataType = Payment.待确认
         }
         else if sender.selectedSegmentIndex == Payment.还款中.rawValue{
-            data.removeAll()
-            data.append(("CXD(A)-小弟借钱（还款中）",""))
-            data.append(("CXD(B)-小弟借钱（还款中）",""))
-            data.append(("CXD(C)-小弟借钱（还款中）",""))
+            dataType = Payment.还款中
         }
         else if sender.selectedSegmentIndex == Payment.还款结束.rawValue{
-            data.removeAll()
-            data.append(("CXD(A)-小弟借钱（还款结束）",""))
-            data.append(("CXD(B)-小弟借钱（还款结束）",""))
-            data.append(("CXD(C)-小弟借钱（还款结束）",""))
+            dataType = Payment.还款结束
         }
-        tv.reloadData()
+        getData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,19 +141,20 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return result.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let rowData = result[indexPath.row]
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
-        cell.textLabel?.text = data[indexPath.row].title
-        cell.detailTextLabel?.text = data[indexPath.row].date
+        cell.textLabel?.text = rowData[tempValue[0].text].stringValue
+        cell.detailTextLabel?.text = rowData[tempValue[0].detailText].stringValue
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectData = data[indexPath.row]
-        self.performSegueWithIdentifier("TradeDetail", sender: selectData.title)
+        self.performSegueWithIdentifier("TradeDetail", sender: indexPath.row)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -123,6 +167,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
             else{
                 trade.detailType = selectCell
             }
+            trade.dataDetail = result[sender as! Int]
         }
     }
     

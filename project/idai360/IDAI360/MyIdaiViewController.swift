@@ -9,10 +9,11 @@
 import UIKit
 
 class MyIdaiViewController: UIViewController {
-
+    
     @IBOutlet weak var label: UILabel!
     var navBarHairlineImageView:UIImageView!
     var jump = ""
+    var jumpFilter = ""
     
     @IBOutlet weak var bnjqyqsyl: UILabel!
     @IBOutlet weak var bnly: UILabel!
@@ -36,7 +37,16 @@ class MyIdaiViewController: UIViewController {
         navBarHairlineImageView.hidden = true
         //购买后跳转我的投资列表
         if jump != ""{
-            self.navigationController?.pushViewController((self.storyboard?.instantiateViewControllerWithIdentifier(jump))!, animated: true)
+            if jumpFilter == "Sell"{
+                let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(jump))! as! MyTradeViewController
+                controller.selectCell = Payment.我的卖出成交单
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            else{
+                let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(jump))!
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            
             jump = ""
         }
         //刷新数据
@@ -71,7 +81,5 @@ class MyIdaiViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
     
 }

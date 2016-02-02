@@ -339,7 +339,7 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
                 buy.navTitle = self.result[index]["Title"].stringValue
                 buy.detailId = result[index]["DetailId"].intValue
                 buy.type = result[index]["Type"].intValue
-                buy.seniority = Seniority(rawValue: result[index]["seniority"].intValue)
+                buy.seniority = Seniority(rawValue: result[index]["Seniority"].intValue)
             }
         }
     }

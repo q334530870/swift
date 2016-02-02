@@ -9,6 +9,7 @@ class ViewController: UITableViewController,UISearchBarDelegate {
     var pageSize = 3
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         getData()
         //下拉刷新

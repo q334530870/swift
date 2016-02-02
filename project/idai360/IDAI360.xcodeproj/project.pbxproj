@@ -65,6 +65,8 @@
 		A4AB93951C2BD0EC006C9CF7 /* TradeLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB93941C2BD0EC006C9CF7 /* TradeLogTableViewController.swift */; };
 		A4AB93971C2BDD1B006C9CF7 /* TradeLogDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB93961C2BDD1B006C9CF7 /* TradeLogDetailTableViewController.swift */; };
 		A4B12EEE1C239CBE000E945B /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B12EED1C239CBE000E945B /* Enum.swift */; };
+		A4B38D3D1C5F39B100A8D790 /* WantSellTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B38D3C1C5F39B100A8D790 /* WantSellTableTableViewController.swift */; };
+		A4B38D3F1C5F3D8000A8D790 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B38D3E1C5F3D8000A8D790 /* SellViewController.swift */; };
 		A4B730251C1A646E00F054AC /* RegisterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B730241C1A646E00F054AC /* RegisterPasswordViewController.swift */; };
 		A4B730271C1A700700F054AC /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B730261C1A700700F054AC /* HRToast+UIView.swift */; };
 		A4B730291C1A914C00F054AC /* RegisterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B730281C1A914C00F054AC /* RegisterInfoViewController.swift */; };
@@ -220,6 +222,8 @@
 		A4AB93941C2BD0EC006C9CF7 /* TradeLogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeLogTableViewController.swift; sourceTree = "<group>"; };
 		A4AB93961C2BDD1B006C9CF7 /* TradeLogDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeLogDetailTableViewController.swift; sourceTree = "<group>"; };
 		A4B12EED1C239CBE000E945B /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		A4B38D3C1C5F39B100A8D790 /* WantSellTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WantSellTableTableViewController.swift; sourceTree = "<group>"; };
+		A4B38D3E1C5F3D8000A8D790 /* SellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellViewController.swift; sourceTree = "<group>"; };
 		A4B730241C1A646E00F054AC /* RegisterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPasswordViewController.swift; sourceTree = "<group>"; };
 		A4B730261C1A700700F054AC /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		A4B730281C1A914C00F054AC /* RegisterInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInfoViewController.swift; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 				A4691FD41C1E898B00CECB5E /* FirstTableViewController.swift */,
 				A4691FD21C1E859000CECB5E /* SecondHandTableViewController.swift */,
 				A4566C8D1C16828D0047DE86 /* MyIdaiViewController.swift */,
+				A4B38D3C1C5F39B100A8D790 /* WantSellTableTableViewController.swift */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 				A4D00FDB1C39FA9B0034CDC8 /* RechargeViewController.swift */,
 				A4E059B21C43505000E17B47 /* SafeTableViewController.swift */,
 				A4E059B41C4357B200E17B47 /* SafeDetailTableViewController.swift */,
+				A4B38D3E1C5F3D8000A8D790 /* SellViewController.swift */,
 			);
 			name = userCenter;
 			sourceTree = "<group>";
@@ -909,6 +915,7 @@
 				A4CF6A8F1C3CE59900955579 /* MWZoomingScrollView.m in Sources */,
 				A4F3C40A1C3F6211006862E6 /* POPAnimationRuntime.mm in Sources */,
 				A4CF6A901C3CE59900955579 /* UIImage+MWPhotoBrowser.m in Sources */,
+				A4B38D3F1C5F3D8000A8D790 /* SellViewController.swift in Sources */,
 				A410350A1C15927800DAFFD9 /* LoginViewController.swift in Sources */,
 				A423E0071C4F73A000564101 /* SXHalfWaveView.m in Sources */,
 				A4F3C40E1C3F6211006862E6 /* POPCGUtils.mm in Sources */,
@@ -949,6 +956,7 @@
 				A4DCBC801C213B070094B7CA /* MyTradeViewController.swift in Sources */,
 				A4CF6AE41C3CEA4800955579 /* SDWebImageDownloader.m in Sources */,
 				A4D00FDE1C3A4FD90034CDC8 /* Config.swift in Sources */,
+				A4B38D3D1C5F39B100A8D790 /* WantSellTableTableViewController.swift in Sources */,
 				A4716AAE1C51B69000FD4E7F /* DrawLineTest.swift in Sources */,
 				A44F1E471C1950CC008E3E3F /* MJRefreshFooter.m in Sources */,
 				A4CF6AEB1C3CEA4800955579 /* UIImageView+HighlightedWebCache.m in Sources */,

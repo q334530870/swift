@@ -33,6 +33,9 @@
 		A41265F91C586E9400CCE12E /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41265F81C586E9400CCE12E /* HRToast+UIView.swift */; };
 		A41265FB1C58711C00CCE12E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41265FA1C58711C00CCE12E /* LoginView.swift */; };
 		A418071A1C52209C00AD4BD0 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41807191C52209C00AD4BD0 /* BookViewController.swift */; };
+		A42208671C59E57700F9394C /* HomeworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42208661C59E57700F9394C /* HomeworkView.swift */; };
+		A42208691C59E90D00F9394C /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42208681C59E90D00F9394C /* AddBookViewController.swift */; };
+		A422086B1C5A040500F9394C /* AddBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422086A1C5A040500F9394C /* AddBookDetailViewController.swift */; };
 		A44A79061C58A5590074C9A4 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44A79051C58A5590074C9A4 /* Enum.swift */; };
 		A44A79341C58A5C20074C9A4 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44A790A1C58A5C20074C9A4 /* MJRefreshAutoFooter.m */; };
 		A44A79351C58A5C20074C9A4 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44A790C1C58A5C20074C9A4 /* MJRefreshBackFooter.m */; };
@@ -142,6 +145,9 @@
 		A41265F81C586E9400CCE12E /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		A41265FA1C58711C00CCE12E /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A41807191C52209C00AD4BD0 /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		A42208661C59E57700F9394C /* HomeworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkView.swift; sourceTree = "<group>"; };
+		A42208681C59E90D00F9394C /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		A422086A1C5A040500F9394C /* AddBookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookDetailViewController.swift; sourceTree = "<group>"; };
 		A44A79051C58A5590074C9A4 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		A44A79091C58A5C20074C9A4 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		A44A790A1C58A5C20074C9A4 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
@@ -536,6 +542,9 @@
 				A44AEDC71C55B7B5003969F5 /* BookDetailViewController.swift */,
 				A46430281C570DD00041D8E8 /* UserBookViewController.swift */,
 				A464302A1C570F7D0041D8E8 /* AvatarListView.swift */,
+				A42208661C59E57700F9394C /* HomeworkView.swift */,
+				A42208681C59E90D00F9394C /* AddBookViewController.swift */,
+				A422086A1C5A040500F9394C /* AddBookDetailViewController.swift */,
 			);
 			name = teacher;
 			sourceTree = "<group>";
@@ -792,6 +801,7 @@
 				A46430291C570DD00041D8E8 /* UserBookViewController.swift in Sources */,
 				A41265E61C586E2300CCE12E /* Download.swift in Sources */,
 				A4AA07031C576DF80006027E /* POPPropertyAnimation.mm in Sources */,
+				A422086B1C5A040500F9394C /* AddBookDetailViewController.swift in Sources */,
 				A4AA07011C576DF80006027E /* POPLayerExtras.mm in Sources */,
 				A4D8B8631C575C070091B0E3 /* MWTapDetectingImageView.m in Sources */,
 				A4D8B8651C575C070091B0E3 /* MWZoomingScrollView.m in Sources */,
@@ -858,7 +868,9 @@
 				A4D8B88D1C575D760091B0E3 /* UIButton+WebCache.m in Sources */,
 				A45B7D651C52159800C6EDB8 /* TabBarViewController.swift in Sources */,
 				A4D8B85F1C575C070091B0E3 /* MWGridCell.m in Sources */,
+				A42208671C59E57700F9394C /* HomeworkView.swift in Sources */,
 				A4D8B88A1C575D760091B0E3 /* SDWebImageDownloaderOperation.m in Sources */,
+				A42208691C59E90D00F9394C /* AddBookViewController.swift in Sources */,
 				A41265D41C586DE700CCE12E /* SwiftyJSON.swift in Sources */,
 				A41265F11C586E2300CCE12E /* Upload.swift in Sources */,
 				A44A79361C58A5C20074C9A4 /* MJRefreshComponent.m in Sources */,

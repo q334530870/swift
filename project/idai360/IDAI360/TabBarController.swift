@@ -11,7 +11,7 @@ import UIKit
 class TabBarController: UITabBarController,UITabBarControllerDelegate{
     
     var willSelectTab = ""
-    var MyIdaiSelectIndex = 3
+    var MyIdaiSelectIndex = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +27,16 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate{
     }
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        if willSelectTab == "我的账户"{
+        if willSelectTab == "我的账户" || willSelectTab == "我要卖"{
             //判断是否登录
             let user = Common.loadDefault("user")
             if user == nil{
                 self.performSegueWithIdentifier("login", sender: nil)
                 return false
             }
-            self.selectedIndex = MyIdaiSelectIndex
+            if willSelectTab == "我的账户"{
+                self.selectedIndex = MyIdaiSelectIndex
+            }
         }
         return true
     }
@@ -47,18 +49,24 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate{
                 myIdai.jump = "MyTrade"
             }
         }
+        else if let _ = segue.sourceViewController as? SellViewController{
+            if let myIdai = self.viewControllers![MyIdaiSelectIndex].childViewControllers[0] as? MyIdaiViewController {
+                myIdai.jump = "MyTrade"
+                myIdai.jumpFilter = "Sell"
+            }
+        }
         else if let _ = segue.sourceViewController as? RegisterInfoViewController{
             if let myIdai = self.viewControllers![MyIdaiSelectIndex].childViewControllers[0] as? MyIdaiViewController {
                 myIdai.jump = "Safe"
             }
         }
         self.selectedIndex = MyIdaiSelectIndex
-//        for view in self.viewControllers![0].childViewControllers{
-//            if let v = view as? ViewController{
-//                v.tableView.reloadData()
-//            }
-//        }
-//        self.tabBar.items![3].badgeValue = "1"
+        //        for view in self.viewControllers![0].childViewControllers{
+        //            if let v = view as? ViewController{
+        //                v.tableView.reloadData()
+        //            }
+        //        }
+        //        self.tabBar.items![3].badgeValue = "1"
     }
     
 }

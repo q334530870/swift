@@ -1,5 +1,5 @@
 enum ProductType:Int{
-    case 推荐区 = 1,首发区,二手转让
+    case 推荐区 = 1,首发区,二手转让,我要卖
 }
 
 enum RefreshType:Int{
@@ -7,7 +7,7 @@ enum RefreshType:Int{
 }
 
 enum Payment:Int {
-    case 待确认 = 0,还款中,还款结束,我的投资,我的持仓量,我的买入成交单,我的卖出成交单,本息支付,到期本息支付汇总
+    case 待确认 = 0,还款中,还款结束,我的投资,我的持仓量,我的买入成交单,我的卖出成交单,现金收付明细表,到期本息支付汇总
 }
 
 enum SafeType:Int{
