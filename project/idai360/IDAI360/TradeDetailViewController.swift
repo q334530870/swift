@@ -14,6 +14,7 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
     var dataDetail:JSON?
     var detailType:Payment?
     var hasOperate = false
+    var delegate:MyTradeViewController?
     
     @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -50,7 +51,7 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
         for dt in (dataDetail?.dictionary)!{
             detailInfo.append((dt.0,dt.1.stringValue))
         }
-        if detailType == Payment.待确认 || detailType == Payment.还款结束{
+        if detailType == Payment.待确认{
             hasOperate = true
         }
     }
@@ -78,29 +79,69 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
     
     //付款
     @IBAction func pay(sender: AnyObject) {
-        let alertController = UIAlertController(title: "", message: "确认付款", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler:nil)
-        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Destructive,handler:{ (alertSheet) -> Void in
-            self.navigationController?.popViewControllerAnimated(true)
-        } )
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        
-        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-            let popPresenter = alertController.popoverPresentationController
-            popPresenter!.sourceView = sender as? UIView
-            popPresenter!.sourceRect = sender.bounds
+        let url = API_URL + "/api/payment"
+        let token = Common.getToken()
+        let param = ["token":token,"id":dataDetail!["subscription_detail_id"].stringValue]
+        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+        Common.doRepuest(self, url: url, method: .GET, param: param, failed: nil) { (response, json) -> Void in
+            //获取本次应付金额
+            let alertController = UIAlertController(title: "本次付款金额", message: "应付余额：\(json["data"]["应付余额"])", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addTextFieldWithConfigurationHandler { (tf) -> Void in
+                tf.text = "\(json["data"]["本次付款"])"
+                tf.textAlignment = .Center
+            }
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Destructive,handler:{ (alertSheet) -> Void in
+                //确认付款
+                let amount = alertController.textFields![0].text
+                if amount == nil{
+                    Common.showAlert(self, title: "", message: "请填写本次应付金额")
+                }
+                else{
+                    let url = API_URL + "/api/payment"
+                    let token = Common.getToken()
+                    let param = ["token":token,"id":self.dataDetail!["subscription_detail_id"].stringValue,"amount":amount!]
+                    self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+                    Common.doRepuest(self, url: url, method: .PUT, param: param, failed: nil) { (response, json) -> Void in
+                        if json["code"] == "success"{
+                            self.delegate?.getData()
+                            Common.showAlert(self, title: "", message: json["message"].stringValue, ok: { (action) -> Void in
+                                self.navigationController?.popViewControllerAnimated(true)
+                            })
+                        }
+                    }
+                }
+                
+            } )
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler:nil)
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            //            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
+            //                let popPresenter = alertController.popoverPresentationController
+            //                popPresenter!.sourceView = sender as? UIView
+            //                popPresenter!.sourceRect = sender.bounds
+            //            }
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     //取消
     @IBAction func cancel(sender: AnyObject) {
-        let alertController = UIAlertController(title: "", message: "确认取消", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let alertController = UIAlertController(title: "", message: "确定要取消吗？", preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler:nil)
-        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Destructive,handler:{ (alertSheet) -> Void in
-            self.navigationController?.popViewControllerAnimated(true)
-        } )
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Destructive){ (act) -> Void in
+            let url = API_URL + "/api/payment"
+            let token = Common.getToken()
+            let param = ["token":token,"id":self.dataDetail!["subscription_detail_id"].stringValue]
+            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+            Common.doRepuest(self, url: url, method: .DELETE, param: param, failed: nil) { (response, json) -> Void in
+                if json["code"] == "success"{
+                    Common.showAlert(self, title: "", message: json["message"].stringValue, ok: { (action) -> Void in
+                        self.delegate?.getData()
+                        self.navigationController?.popViewControllerAnimated(true)
+                    })
+                }
+            }
+        }
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)

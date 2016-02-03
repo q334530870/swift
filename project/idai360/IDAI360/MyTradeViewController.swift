@@ -44,6 +44,10 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
     func setTitle(){
         tempValue = [(text:String,detailText:String)]()
         switch dataType{
@@ -162,14 +166,16 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let trade = segue.destinationViewController as? TradeDetailViewController{
-            trade.navigationItem.title = String(sender!)
+            let detail = result[sender as! Int]
+            trade.navigationItem.title = String(detail[tempValue[0].text])
             if !segmented.hidden{
                 trade.detailType = Payment(rawValue: segmented.selectedSegmentIndex)!
             }
             else{
                 trade.detailType = selectCell
             }
-            trade.dataDetail = result[sender as! Int]
+            trade.dataDetail = detail
+            trade.delegate = self
         }
     }
     
