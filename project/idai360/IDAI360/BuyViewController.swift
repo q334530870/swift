@@ -39,6 +39,10 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
         self.navigationItem.title = navTitle
         //添加键盘显示通知，获得键盘高度
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldShow:", name: UIKeyboardDidShowNotification, object: nil)
+        //添加图片点击手势
+        ok.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "okClick"))
+        ok.userInteractionEnabled = true
+        
     }
     
     //获取数据
@@ -102,9 +106,7 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
     
     //协议回调函数
     @IBAction func unwindToBuy(segue: UIStoryboardSegue){
-        agree = true
-        ok.image = UIImage(named: "ok")
-        checkNext()
+        okClick()
     }
     
     //点击空白处隐藏键盘
@@ -122,6 +124,12 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
             self.buyButton.enabled = false
             self.buyButton.alpha = 0.5
         }
+    }
+    
+    func okClick(){
+        agree = true
+        ok.image = UIImage(named: "ok")
+        checkNext()
     }
     
     @IBAction func buy(sender: AnyObject) {

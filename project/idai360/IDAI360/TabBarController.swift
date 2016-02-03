@@ -61,6 +61,7 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate{
             }
         }
         self.selectedIndex = MyIdaiSelectIndex
+        
         //        for view in self.viewControllers![0].childViewControllers{
         //            if let v = view as? ViewController{
         //                v.tableView.reloadData()

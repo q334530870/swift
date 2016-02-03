@@ -29,6 +29,8 @@ class MyIdaiViewController: UIViewController {
         super.viewDidLoad()
         //获得导航下面的实现
         navBarHairlineImageView = Common.findHairlineImageViewUnder((self.navigationController?.navigationBar)!)
+        //刷新数据
+        getData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,20 +39,15 @@ class MyIdaiViewController: UIViewController {
         navBarHairlineImageView.hidden = true
         //购买后跳转我的投资列表
         if jump != ""{
+            let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(jump))! as! MyTradeViewController
+            controller.isJump = true
             if jumpFilter == "Sell"{
-                let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(jump))! as! MyTradeViewController
                 controller.selectCell = Payment.我的卖出成交单
-                self.navigationController?.pushViewController(controller, animated: true)
             }
-            else{
-                let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(jump))!
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-            
+            self.navigationController?.pushViewController(controller, animated: false)
             jump = ""
         }
-        //刷新数据
-        getData()
+        self.tabBarController?.tabBar.hidden = false
     }
     
     func getData(){

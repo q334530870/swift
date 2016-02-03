@@ -18,12 +18,16 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     var tempValue:[(text:String,detailText:String)]!
     var selectCell = Payment.我的投资
     var dataType = Payment.待确认
+    var isJump = false
     @IBOutlet weak var tv: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var tvTop: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(isJump){
+            self.tabBarController?.tabBar.hidden = true
+        }
         if selectCell == Payment.我的投资{
             dataType = Payment.待确认
         }
