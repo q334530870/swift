@@ -84,8 +84,6 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
             self.tv.mj_header.endRefreshing()
             self.tv.mj_footer.endRefreshing()
             }) { (response, json) -> Void in
-                print(self.tempValue)
-                print(json)
                 if type == RefreshType.下拉刷新.rawValue{
                     self.result = json["data"].array!
                     self.tv.mj_header.endRefreshing()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SellViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+class SellViewController: UIViewController {
     
     var navTitle:String?
     var agree = false
@@ -18,10 +18,8 @@ class SellViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
     var productId = 0
     var seniority:Seniority?
     var model:JSON?
-    //pickview列表title
-    var pickList = [(title:String,value:String)]()
-    var pickView:UIPickerView?
-    var pickValue:String?
+    
+    var jp:JPick?
     
     var animateView:SXWaveView?
     
@@ -36,10 +34,8 @@ class SellViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pickView = Common.initPickView(self, frame: CGRectMake(0,self.view.frame.height - self.view.frame.height / 3,self.view.frame.width,self.view.frame.height / 3+50))
-        self.pickView?.delegate = self
-        self.pickView?.dataSource = self
-        tk.delegate = self
+        //初始化选择框
+        jp = JPick(target: self.view,textField:tk,frame: CGRectMake(0,self.view.frame.height - self.view.frame.height / 3,self.view.frame.width,self.view.frame.height / 3+50))
         //获取数据
         getData()
         //设置圆角
@@ -78,12 +74,12 @@ class SellViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
         productId = model!["ProductId"].intValue
         //tk.text = model!["OrderTerm"].stringValue
         let ot = model!["OrderTerm"].stringValue
-        //初始化pickView
-        pickList = [("请选择","")]
+        //初始化pickList
+        jp!.pickList = [("请选择","")]
         for o in ot.characters.split("|"){
             //初始化pickView
             let temp = String(o).characters.split(",")
-            pickList.append((String(temp[1]),String(temp[0])))
+            jp!.pickList.append((String(temp[1]),String(temp[0])))
         }
     }
     
@@ -141,13 +137,13 @@ class SellViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
     }
     
     @IBAction func buy(sender: AnyObject) {
-        if tk.text == "" || pickValue == nil{
+        if tk.text == "" || jp!.pickValue == ""{
             Common.showAlert(self, title: "", message: "请选择交易条款")
         }
         else{
             let url = API_URL + "/api/products"
             let token = Common.getToken()
-            let param = ["token":token,"id":model!["DetailId"].stringValue,"quantity":count.text!,"type":type,"orderterm":pickValue!]
+            let param = ["token":token,"id":model!["DetailId"].stringValue,"quantity":count.text!,"type":type,"orderterm":jp!.pickValue]
             self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
             Common.doRepuest(self, url: url, method: .POST, param: param as? [String : AnyObject], failed: nil) { (response, json) -> Void in
                 self.performSegueWithIdentifier("BuyToMyTrade", sender: nil)
@@ -155,55 +151,6 @@ class SellViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
         }
         
     }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        tk.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        if textField.restorationIdentifier == "sr"{
-            self.view.endEditing(true)
-            selectReceive()
-            return false
-        }
-        else{
-            self.pickView!.superview!.superview!.hidden = true
-            return true
-        }
-    }
-    
-    //显示收入选择控件
-    func selectReceive() {
-        pickView!.reloadAllComponents()
-        self.pickView!.superview!.superview!.hidden = false
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.pickList[row].title
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickList.count
-    }
-    
-    func selectSeg(){
-        let textField = self.view.viewWithTag(66) as! UITextField
-        let row = pickView?.selectedRowInComponent(0)
-        if row>0{
-            textField.text = pickList[row!].title
-            pickValue = pickList[row!].value
-        }
-        else{
-            textField.text = ""
-        }
-        self.pickView!.superview!.superview!.hidden = true
-    }
-    
     
     //关闭当前页面
     @IBAction func close(sender: AnyObject) {

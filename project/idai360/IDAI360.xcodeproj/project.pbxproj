@@ -106,6 +106,7 @@
 		A4D00FDE1C3A4FD90034CDC8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D00FDD1C3A4FD90034CDC8 /* Config.swift */; };
 		A4DCBC7E1C211AB00094B7CA /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCBC7D1C211AB00094B7CA /* UserCenterViewController.swift */; };
 		A4DCBC801C213B070094B7CA /* MyTradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCBC7F1C213B070094B7CA /* MyTradeViewController.swift */; };
+		A4DEE17A1C6194B5002F59A4 /* JPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DEE1791C6194B5002F59A4 /* JPick.swift */; };
 		A4E059B01C433CCD00E17B47 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E059AE1C433CCD00E17B47 /* FloatLabelTextField.swift */; };
 		A4E059B11C433CCD00E17B47 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E059AF1C433CCD00E17B47 /* FloatLabelTextView.swift */; };
 		A4E059B31C43505000E17B47 /* SafeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E059B21C43505000E17B47 /* SafeTableViewController.swift */; };
@@ -295,6 +296,7 @@
 		A4D00FDD1C3A4FD90034CDC8 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A4DCBC7D1C211AB00094B7CA /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
 		A4DCBC7F1C213B070094B7CA /* MyTradeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTradeViewController.swift; sourceTree = "<group>"; };
+		A4DEE1791C6194B5002F59A4 /* JPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPick.swift; sourceTree = "<group>"; };
 		A4E059AE1C433CCD00E17B47 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		A4E059AF1C433CCD00E17B47 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
 		A4E059B21C43505000E17B47 /* SafeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeTableViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				A44F1D131C194200008E3E3F /* ZWIntroductionViewController.m */,
 				A471810A1C33B0D700C95818 /* PrintObject.h */,
 				A471810B1C33B0F600C95818 /* PrintObject.m */,
+				A4DEE1791C6194B5002F59A4 /* JPick.swift */,
 			);
 			name = library;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				A44F1E4C1C1950CC008E3E3F /* MJRefreshBackGifFooter.m in Sources */,
 				A4CF6AFB1C3CEAA400955579 /* DACircularProgressView.m in Sources */,
 				A4BD71EB1C154B6C00D425DB /* ViewController.swift in Sources */,
+				A4DEE17A1C6194B5002F59A4 /* JPick.swift in Sources */,
 				A4CF6AE51C3CEA4800955579 /* SDWebImageDownloaderOperation.m in Sources */,
 				A423E0081C4F73A000564101 /* SXWaveCell.m in Sources */,
 				A44F1E511C1950CC008E3E3F /* MJRefreshStateHeader.m in Sources */,
