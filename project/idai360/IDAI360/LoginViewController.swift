@@ -48,23 +48,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //输入框内容变更监听：设置“发送验证码”和“登陆”按钮的状态（切换enable和alpha）
     @IBAction func checkPhone(sender: UITextField) {
-        if self.phone.text!.characters.count == 11{
-            self.sendCode.enabled = true
-            self.sendCode.alpha = 0.9
-            if(self.code.text!.characters.count == 6){
-                self.login.enabled = true
-                self.login.alpha = 0.9
-            }
-            else{
-                self.login.enabled = false
-                self.login.alpha = 0.6
-            }
-        }else{
-            self.sendCode.enabled = false
-            self.sendCode.alpha = 0.6
-            self.login.enabled = false
-            self.login.alpha = 0.6
-        }
+        //        if self.phone.text!.characters.count == 11{
+        //            self.sendCode.enabled = true
+        //            self.sendCode.alpha = 0.9
+        //            if(self.code.text!.characters.count == 6){
+        //                self.login.enabled = true
+        //                self.login.alpha = 0.9
+        //            }
+        //            else{
+        //                self.login.enabled = false
+        //                self.login.alpha = 0.6
+        //            }
+        //        }else{
+        //            self.sendCode.enabled = false
+        //            self.sendCode.alpha = 0.6
+        //            self.login.enabled = false
+        //            self.login.alpha = 0.6
+        //        }
         
     }
     
@@ -82,10 +82,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     //登录
     @IBAction func login(sender: AnyObject) {
         
-        if(phone.text == nil || phone.text?.isEmpty == true){
+        if(phone.text == ""){
             Common.showAlert(self, title: "", message: "请输入用户名！")
         }
-        else if(code.text == nil || code.text?.isEmpty == true){
+        else if(code.text == ""){
             Common.showAlert(self, title: "", message: "请输入短信验证码！")
         }
         else{
@@ -95,7 +95,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
             Common.doRepuest(self, url: url, method: .GET, param: param, complete: { (Response, json) -> Void in
                 Common.saveDefault(json["token"].string!, key: "token")
-                Common.saveDefault(json["data"].object, key: "user")
+                var user = json["data"]
+                //sjh判断realname是否为空
+                user["realname"].string = ""
+                Common.saveDefault(user.object, key: "user")
+                print(user.object)
                 self.performSegueWithIdentifier("loginUnwind", sender: nil)
             })
         }

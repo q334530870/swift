@@ -21,7 +21,6 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         result = [JSON]()
         
         tv.delegate = self
@@ -144,6 +143,7 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBAction func submit(sender: AnyObject) {
         let param = ["offset":"","limit":""]
+        
         
     }
     
