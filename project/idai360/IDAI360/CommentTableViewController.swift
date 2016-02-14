@@ -72,7 +72,7 @@ class CommentTableViewController: UIViewController,UITableViewDelegate,UITableVi
                     }
                     else{
                         self.data += json["data"].array!
-                        self.pageIndex++
+                        self.pageIndex += 1
                     }
                 }
                 self.tv.reloadData()
@@ -97,10 +97,10 @@ class CommentTableViewController: UIViewController,UITableViewDelegate,UITableVi
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 2
         if data[section]["FundRaiserReply"] != ""{
-            count++
+            count += 1
         }
         if data[section]["Idai360Reply"] != ""{
-            count++
+            count += 1
         }
         return count
     }

@@ -80,7 +80,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
                     }
                     else{
                         self.searchResult += json["data"].array!
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.tableView.reloadData()
                     }
                 }

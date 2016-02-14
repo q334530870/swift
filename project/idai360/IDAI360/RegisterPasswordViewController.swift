@@ -79,7 +79,7 @@ class RegisterPasswordViewController: UIViewController {
     
     //计时器更新倒计时
     func countDown(){
-        second--
+        second -= 1
         if second < 1{
             timer.invalidate()
             second = 60

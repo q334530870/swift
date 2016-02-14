@@ -51,7 +51,7 @@ class InstallmentMonthlyViewController: UITableViewController{
                     }
                     else{
                         self.result += json["data"].array!
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.tableView.reloadData()
                     }
                 }

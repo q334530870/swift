@@ -105,7 +105,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
                         self.tv.mj_footer.endRefreshingWithNoMoreData()
                     }
                     else{
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.tv.reloadData()
                     }
                 }
@@ -121,7 +121,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     //加载数据
     func loadData(){
-        pageIndex++
+        pageIndex += 1
         getData(RefreshType.上拉加载.rawValue)
     }
     
