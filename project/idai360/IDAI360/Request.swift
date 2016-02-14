@@ -68,18 +68,18 @@ public class Request {
     // MARK: - Authentication
     
     /**
-     Associates an HTTP Basic credential with the request.
-     
-     - parameter user:        The user.
-     - parameter password:    The password.
-     - parameter persistence: The URL credential persistence. `.ForSession` by default.
-     
-     - returns: The request.
-     */
+    Associates an HTTP Basic credential with the request.
+    
+    - parameter user:        The user.
+    - parameter password:    The password.
+    - parameter persistence: The URL credential persistence. `.ForSession` by default.
+    
+    - returns: The request.
+    */
     public func authenticate(
         user user: String,
-             password: String,
-             persistence: NSURLCredentialPersistence = .ForSession)
+        password: String,
+        persistence: NSURLCredentialPersistence = .ForSession)
         -> Self
     {
         let credential = NSURLCredential(user: user, password: password, persistence: persistence)
@@ -103,18 +103,18 @@ public class Request {
     // MARK: - Progress
     
     /**
-     Sets a closure to be called periodically during the lifecycle of the request as data is written to or read 
-     from the server.
-     
-     - For uploads, the progress closure returns the bytes written, total bytes written, and total bytes expected 
-     to write.
-     - For downloads and data tasks, the progress closure returns the bytes read, total bytes read, and total bytes 
-     expected to read.
-     
-     - parameter closure: The code to be executed periodically during the lifecycle of the request.
-     
-     - returns: The request.
-     */
+    Sets a closure to be called periodically during the lifecycle of the request as data is written to or read 
+    from the server.
+    
+    - For uploads, the progress closure returns the bytes written, total bytes written, and total bytes expected 
+    to write.
+    - For downloads and data tasks, the progress closure returns the bytes read, total bytes read, and total bytes 
+    expected to read.
+    
+    - parameter closure: The code to be executed periodically during the lifecycle of the request.
+    
+    - returns: The request.
+    */
     public func progress(closure: ((Int64, Int64, Int64) -> Void)? = nil) -> Self {
         if let uploadDelegate = delegate as? UploadTaskDelegate {
             uploadDelegate.uploadProgress = closure
@@ -149,8 +149,8 @@ public class Request {
     // MARK: - State
     
     /**
-     Suspends the request.
-     */
+    Suspends the request.
+    */
     public func suspend() {
         task.suspend()
     }
@@ -181,9 +181,9 @@ public class Request {
     // MARK: - TaskDelegate
     
     /**
-     The task delegate is responsible for handling all delegate callbacks for the underlying task as well as 
-     executing all operations attached to the serial operation queue upon task completion.
-     */
+    The task delegate is responsible for handling all delegate callbacks for the underlying task as well as 
+    executing all operations attached to the serial operation queue upon task completion.
+    */
     public class TaskDelegate: NSObject {
         
         /// The serial operation queue used to execute all operations after the task completes.
@@ -233,8 +233,8 @@ public class Request {
             session: NSURLSession,
             task: NSURLSessionTask,
             willPerformHTTPRedirection response: NSHTTPURLResponse,
-                                       newRequest request: NSURLRequest,
-                                                  completionHandler: ((NSURLRequest?) -> Void))
+            newRequest request: NSURLRequest,
+            completionHandler: ((NSURLRequest?) -> Void))
         {
             var redirectRequest: NSURLRequest? = request
             
@@ -249,7 +249,7 @@ public class Request {
             session: NSURLSession,
             task: NSURLSessionTask,
             didReceiveChallenge challenge: NSURLAuthenticationChallenge,
-                                completionHandler: ((NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void))
+            completionHandler: ((NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void))
         {
             var disposition: NSURLSessionAuthChallengeDisposition = .PerformDefaultHandling
             var credential: NSURLCredential?
@@ -359,7 +359,7 @@ public class Request {
             session: NSURLSession,
             dataTask: NSURLSessionDataTask,
             didReceiveResponse response: NSURLResponse,
-                               completionHandler: (NSURLSessionResponseDisposition -> Void))
+            completionHandler: (NSURLSessionResponseDisposition -> Void))
         {
             var disposition: NSURLSessionResponseDisposition = .Allow
             
@@ -408,7 +408,7 @@ public class Request {
             session: NSURLSession,
             dataTask: NSURLSessionDataTask,
             willCacheResponse proposedResponse: NSCachedURLResponse,
-                              completionHandler: ((NSCachedURLResponse?) -> Void))
+            completionHandler: ((NSCachedURLResponse?) -> Void))
         {
             var cachedResponse: NSCachedURLResponse? = proposedResponse
             
