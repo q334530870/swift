@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A410350A1C15927800DAFFD9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41035091C15927800DAFFD9 /* LoginViewController.swift */; };
 		A410350C1C15B1A400DAFFD9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A410350B1C15B1A400DAFFD9 /* RegisterViewController.swift */; };
+		A413F64E1C71BB4B00A6B460 /* GatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */; };
+		A413F6501C71BE9300A6B460 /* GatherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */; };
 		A423E0071C4F73A000564101 /* SXHalfWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */; };
 		A423E0081C4F73A000564101 /* SXWaveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A423DFFF1C4F73A000564101 /* SXWaveCell.m */; };
 		A423E0091C4F73A000564101 /* SXWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423E0011C4F73A000564101 /* SXWaveView.m */; };
@@ -139,6 +141,8 @@
 /* Begin PBXFileReference section */
 		A41035091C15927800DAFFD9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A410350B1C15B1A400DAFFD9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherTableViewController.swift; sourceTree = "<group>"; };
+		A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherDetailTableViewController.swift; sourceTree = "<group>"; };
 		A423DFFC1C4F73A000564101 /* SXHalfWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXHalfWaveView.h; sourceTree = "<group>"; };
 		A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXHalfWaveView.m; sourceTree = "<group>"; };
 		A423DFFE1C4F73A000564101 /* SXWaveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXWaveCell.h; sourceTree = "<group>"; };
@@ -562,6 +566,8 @@
 				A4DCBC7D1C211AB00094B7CA /* UserCenterViewController.swift */,
 				A4DCBC7F1C213B070094B7CA /* MyTradeViewController.swift */,
 				A45BE5621C229A5200BC3399 /* TradeDetailViewController.swift */,
+				A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */,
+				A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */,
 				A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */,
 				A4AB93921C2BC191006C9CF7 /* InstallmentMonthlyDetailTableViewController.swift */,
 				A4AB93941C2BD0EC006C9CF7 /* TradeLogTableViewController.swift */,
@@ -935,8 +941,10 @@
 				A4CF6A8A1C3CE59900955579 /* MWGridViewController.m in Sources */,
 				A4CF6AE01C3CEA4800955579 /* NSData+ImageContentType.m in Sources */,
 				A4E059B11C433CCD00E17B47 /* FloatLabelTextView.swift in Sources */,
+				A413F6501C71BE9300A6B460 /* GatherDetailTableViewController.swift in Sources */,
 				A44F1E451C1950CC008E3E3F /* MJRefreshBackFooter.m in Sources */,
 				A44F1E531C1950CC008E3E3F /* MJRefreshConst.m in Sources */,
+				A413F64E1C71BB4B00A6B460 /* GatherTableViewController.swift in Sources */,
 				A4DCBC7E1C211AB00094B7CA /* UserCenterViewController.swift in Sources */,
 				A4CF6AF41C3CEA8700955579 /* MBProgressHUD.m in Sources */,
 				A410350C1C15B1A400DAFFD9 /* RegisterViewController.swift in Sources */,

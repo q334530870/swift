@@ -11,11 +11,13 @@ import UIKit
 class UserCenterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MWPhotoBrowserDelegate{
     
     var cellData = [(title:String,detail:String,segue:String,type:Payment)]()
+    var gatherData = [(title:String,detail:String,segue:String,type:Gather)]()
     var user:JSON?
     var imagePick:UIImagePickerController?
     var imageView:UIImageView!
     var lastScaleFactor:CGFloat = 1.0
     var netTranslation:CGPoint = CGPoint(x: 0, y: 0)
+    
     
     @IBOutlet weak var avatorButton: UIButton!
     @IBOutlet weak var name: UILabel!
@@ -40,6 +42,9 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
         //模拟数据
         for i in 3...8{
             cellData.append(("\(Payment(rawValue: i)!)","","myTrade",Payment(rawValue: i)!))
+        }
+        for i in 0...1{
+            gatherData.append(("\(Gather(rawValue: i)!)","","gather",Gather(rawValue: i)!))
         }
         
         
@@ -157,12 +162,15 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return cellData.count
+        }
+        else if section == 1{
+            return gatherData.count
         }
         else{
             return 1
@@ -175,10 +183,16 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
-        let val = cellData[indexPath.row]
+        
         if indexPath.section == 0{
+            let val = cellData[indexPath.row]
             cell.textLabel?.text = val.title
             cell.detailTextLabel?.text = val.detail
+        }
+        else if indexPath.section == 1{
+            let gtr = gatherData[indexPath.row]
+            cell.textLabel?.text = gtr.title
+            cell.detailTextLabel?.text = gtr.detail
         }
         else if indexPath.section == (tableView.numberOfSections - 1){
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
@@ -212,11 +226,18 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
             }
             self.presentViewController(alertController, animated: true, completion: nil)
         }
-        else{
+        else if indexPath.section == 0{
             //跳转不同的页面
             if cellData[indexPath.row].segue != ""{
                 self.performSegueWithIdentifier(cellData[indexPath.row].segue, sender: indexPath.row)
             }
+        }
+        else if indexPath.section == 1{
+            //跳转不同的页面
+            if gatherData[indexPath.row].segue != ""{
+                self.performSegueWithIdentifier(gatherData[indexPath.row].segue, sender: indexPath.row)
+            }
+            
         }
         //取消选中效果
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -226,6 +247,10 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
         if let trade = segue.destinationViewController as? MyTradeViewController{
             trade.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
             trade.selectCell = cellData[Int(sender! as! NSNumber)].type
+        }
+        else if let gather = segue.destinationViewController as? GatherTableViewController{
+            gather.navigationItem.title = gatherData[Int(sender! as! NSNumber)].title
+            gather.selectCell = gatherData[Int(sender! as! NSNumber)].type
         }
     }
     

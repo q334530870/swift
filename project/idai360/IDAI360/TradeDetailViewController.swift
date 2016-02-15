@@ -49,7 +49,10 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
     //模拟数据
     func loadData(){
         for dt in (dataDetail?.dictionary)!{
-            detailInfo.append((dt.0,dt.1.stringValue))
+            if dt.0 != "subscription_detail_id"
+            {
+                detailInfo.append((dt.0,dt.1.stringValue))
+            }
         }
         if detailType == Payment.待确认{
             hasOperate = true

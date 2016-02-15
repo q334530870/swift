@@ -14,9 +14,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     //当前页数
     var pageIndex = 1
     //每页显示条数
-    var pageSize = 10
+    var pageSize = 100
     var tempValue:[(text:String,detailText:String)]!
-    var selectCell = Payment.我的投资
+    var selectCell = Payment.交易余额支付
     var dataType = Payment.待确认
     var isJump = false
     @IBOutlet weak var tv: UITableView!
@@ -28,7 +28,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         if(isJump){
             self.tabBarController?.tabBar.hidden = true
         }
-        if selectCell == Payment.我的投资{
+        if selectCell == Payment.交易余额支付{
             dataType = Payment.待确认
         }
         else{
@@ -42,10 +42,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         tv.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
         //上拉加载
         tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
+        self.tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
     func setTitle(){

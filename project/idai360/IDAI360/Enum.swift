@@ -7,7 +7,11 @@ enum RefreshType:Int{
 }
 
 enum Payment:Int {
-    case 待确认 = 0,还款中,还款结束,我的投资,我的持仓量,我的买入成交单,我的卖出成交单,现金收付明细表,到期本息支付汇总
+    case 待确认 = 0,还款中,还款结束,交易余额支付,我的持仓量,我的买入成交单,我的卖出成交单,现金收付明细表,到期本息支付汇总
+}
+
+enum Gather:Int{
+    case 集合求售申请 = 0,集合求购申请
 }
 
 enum SafeType:Int{

@@ -17,7 +17,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
     //当前页数
     var pageIndex = 1
     //每页显示条数
-    var pageSize = 10
+    var pageSize = 100
     //搜索结果试图
     var searchController:UISearchController?
     

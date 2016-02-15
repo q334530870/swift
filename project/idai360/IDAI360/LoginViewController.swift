@@ -99,7 +99,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 //sjh判断realname是否为空
                 user["realname"].string = ""
                 Common.saveDefault(user.object, key: "user")
-                print(user.object)
                 self.performSegueWithIdentifier("loginUnwind", sender: nil)
             })
         }
