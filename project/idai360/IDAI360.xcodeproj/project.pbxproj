@@ -47,6 +47,7 @@
 		A4716AAE1C51B69000FD4E7F /* DrawLineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4716AAD1C51B69000FD4E7F /* DrawLineTest.swift */; };
 		A47181091C33761900C95818 /* RegisterRealNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47181081C33761900C95818 /* RegisterRealNameViewController.swift */; };
 		A471810C1C33B0F600C95818 /* PrintObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A471810B1C33B0F600C95818 /* PrintObject.m */; };
+		A47640671C72BD170044CD4B /* GatherSellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */; };
 		A4951E7D1C30D182003DD474 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E6F1C30D182003DD474 /* Alamofire.swift */; };
 		A4951E7E1C30D182003DD474 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E701C30D182003DD474 /* Download.swift */; };
 		A4951E7F1C30D182003DD474 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E711C30D182003DD474 /* Error.swift */; };
@@ -136,6 +137,7 @@
 		A4F3C4171C3F6211006862E6 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C4001C3F6211006862E6 /* TransformationMatrix.cpp */; };
 		A4F3C4191C3F6349006862E6 /* PopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C4181C3F6349006862E6 /* PopButton.swift */; };
 		A4F7AD2F1C2CD56C00484F53 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F7AD2E1C2CD56C00484F53 /* CommentTableViewController.swift */; };
+		A4F98ACE1C72F1E400860443 /* JDatePick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F98ACD1C72F1E400860443 /* JDatePick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,6 +207,7 @@
 		A47181081C33761900C95818 /* RegisterRealNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRealNameViewController.swift; sourceTree = "<group>"; };
 		A471810A1C33B0D700C95818 /* PrintObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintObject.h; sourceTree = "<group>"; };
 		A471810B1C33B0F600C95818 /* PrintObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintObject.m; sourceTree = "<group>"; };
+		A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherSellTableViewController.swift; sourceTree = "<group>"; };
 		A4951E6E1C30D182003DD474 /* Alamofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alamofire.h; sourceTree = "<group>"; };
 		A4951E6F1C30D182003DD474 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		A4951E701C30D182003DD474 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 		A4F3C4021C3F6211006862E6 /* UnitBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitBezier.h; sourceTree = "<group>"; };
 		A4F3C4181C3F6349006862E6 /* PopButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopButton.swift; sourceTree = "<group>"; };
 		A4F7AD2E1C2CD56C00484F53 /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
+		A4F98ACD1C72F1E400860443 /* JDatePick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JDatePick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +414,7 @@
 				A471810A1C33B0D700C95818 /* PrintObject.h */,
 				A471810B1C33B0F600C95818 /* PrintObject.m */,
 				A4DEE1791C6194B5002F59A4 /* JPick.swift */,
+				A4F98ACD1C72F1E400860443 /* JDatePick.swift */,
 			);
 			name = library;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				A45BE5621C229A5200BC3399 /* TradeDetailViewController.swift */,
 				A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */,
 				A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */,
+				A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */,
 				A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */,
 				A4AB93921C2BC191006C9CF7 /* InstallmentMonthlyDetailTableViewController.swift */,
 				A4AB93941C2BD0EC006C9CF7 /* TradeLogTableViewController.swift */,
@@ -917,6 +923,7 @@
 				A4CF6A8B1C3CE59900955579 /* MWPhoto.m in Sources */,
 				A4CF6AE91C3CEA4800955579 /* UIImage+GIF.m in Sources */,
 				A4F3C4171C3F6211006862E6 /* TransformationMatrix.cpp in Sources */,
+				A4F98ACE1C72F1E400860443 /* JDatePick.swift in Sources */,
 				A4691FD51C1E898B00CECB5E /* FirstTableViewController.swift in Sources */,
 				A4B730251C1A646E00F054AC /* RegisterPasswordViewController.swift in Sources */,
 				A4B12EEE1C239CBE000E945B /* Enum.swift in Sources */,
@@ -970,6 +977,7 @@
 				A4B38D3D1C5F39B100A8D790 /* WantSellTableTableViewController.swift in Sources */,
 				A4716AAE1C51B69000FD4E7F /* DrawLineTest.swift in Sources */,
 				A44F1E471C1950CC008E3E3F /* MJRefreshFooter.m in Sources */,
+				A47640671C72BD170044CD4B /* GatherSellTableViewController.swift in Sources */,
 				A4CF6AEB1C3CEA4800955579 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A4CF6AE81C3CEA4800955579 /* UIButton+WebCache.m in Sources */,
 				A4F3C4101C3F6211006862E6 /* POPDecayAnimation.mm in Sources */,

@@ -1,31 +1,30 @@
 
-class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
+class JDatePick:NSObject,UITextFieldDelegate{
     
-    var pickView:UIPickerView?
+    var pickView:UIDatePicker?
     var textField:UITextField?
     var target:UIView?
+    var fmt:String?
     
-    var pickList = [(title:String,value:String)]()
     var pickValue = ""
     var ViewFrame:CGRect?
     var pickFrame:CGRect?
     var taskView:UIView?
     
-    init(controller:UIViewController? = nil,target:UIView,textField:UITextField,frame:CGRect){
+    init(controller:UIViewController? = nil,target:UIView,textField:UITextField,frame:CGRect,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd"){
         super.init()
         
         self.target = target
         self.textField = textField
-        self.pickView = UIPickerView()
-        self.pickView?.delegate = self
-        self.pickView?.dataSource = self
+        self.pickView = UIDatePicker()
+        
         self.textField!.delegate = self
-        initFrame(controller,frame: frame)
+        initFrame(controller,frame: frame,type:type,dateFmt: dateFmt)
     }
     
-    func initFrame(controller:UIViewController?,frame:CGRect){
+    func initFrame(controller:UIViewController?,frame:CGRect,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd"){
         //遮罩层
-        taskView = UIView(frame:CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!))
+        taskView = UIView(frame: CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!))
         taskView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         taskView?.hidden = true
         //总视图
@@ -38,8 +37,11 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         if pickFrame != nil{
             pickView!.frame = pickFrame!
         }
+        self.fmt = dateFmt
         pickView!.backgroundColor = UIColor.whiteColor()
-        pickView!.showsSelectionIndicator = true
+        pickView?.datePickerMode = type
+        let locale = NSLocale(localeIdentifier: "zh_CN")
+        pickView?.locale = locale
         pv.addSubview(pickView!)
         //工具条
         let toolbar = UIToolbar(frame: CGRectMake(0,0,pickView!.frame.width,30))
@@ -54,7 +56,6 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         taskView?.addSubview(pv)
         target!.addSubview(taskView!)
     }
-    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.textField!.resignFirstResponder()
@@ -75,42 +76,15 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
     
     //显示收入选择控件
     func selectReceive() {
-        self.pickView!.reloadAllComponents()
         self.pickView!.superview!.superview!.hidden = false
         self.taskView?.frame = CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!)
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.pickList[row].title
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.pickList.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
-        let pickerLabel = UILabel()
-        pickerLabel.font = UIFont.boldSystemFontOfSize(16)
-        pickerLabel.adjustsFontSizeToFitWidth = true
-        pickerLabel.textAlignment = .Center
-        pickerLabel.text = self.pickerView(pickerView, titleForRow: row, forComponent: component)
-        return pickerLabel
-    }
-    
     func selectSeg(){
         let textField = self.textField
-        let row = pickView?.selectedRowInComponent(0)
-        if row>0{
-            textField!.text = self.pickList[row!].title
-            self.pickValue = self.pickList[row!].value
-        }
-        else{
-            textField!.text = ""
-        }
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = self.fmt
+        textField!.text = formatter.stringFromDate((self.pickView?.date)!)
         self.pickView!.superview!.superview!.hidden = true
     }
     

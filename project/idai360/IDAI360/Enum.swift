@@ -11,7 +11,7 @@ enum Payment:Int {
 }
 
 enum Gather:Int{
-    case 集合求售申请 = 0,集合求购申请
+    case 集合求售 = 0,集合求购
 }
 
 enum SafeType:Int{

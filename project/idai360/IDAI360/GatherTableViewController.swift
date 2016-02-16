@@ -75,7 +75,12 @@ class GatherTableViewController: UITableViewController {
     }
     
     @IBAction func apply(sender: AnyObject) {
-        
+        if selectCell == Gather.集合求售{
+            self.performSegueWithIdentifier("sell", sender: nil)
+        }
+        else if selectCell == Gather.集合求购{
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,6 +115,9 @@ class GatherTableViewController: UITableViewController {
             gather.navigationItem.title = String(detail[tempValue[0].text])
             gather.dataDetail = detail
             gather.delegate = self
+        }
+        if let apy = segue.destinationViewController as? GatherSellTableViewController{
+            apy.navigationItem.title = "\(Gather(rawValue: (selectCell?.rawValue)!)!)申请"
         }
     }
     

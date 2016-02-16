@@ -2527,6 +2527,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" textLabel="Hmw-wO-7A5" detailTextLabel="yhP-sl-8aT" style="IBUITableViewCellStyleValue1" id="Xmi-r9-wT4">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -2568,11 +2569,43 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="rZH-Ri-3Z6" kind="show" identifier="gatherDetail" id="0Xj-T0-hCG"/>
+                        <segue destination="vba-h6-BB6" kind="show" identifier="sell" id="ooS-Hh-NVI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3z-Ko-HQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3948.5" y="1345.5"/>
+        </scene>
+        <!--Gather Sell Table View Controller-->
+        <scene sceneID="j03-Dc-gJR">
+            <objects>
+                <tableViewController id="vba-h6-BB6" customClass="GatherSellTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bLq-EG-Mer">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" id="l79-PX-5ZN">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l79-PX-5ZN" id="mMV-U2-ydr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vba-h6-BB6" id="Iae-VV-eeL"/>
+                            <outlet property="delegate" destination="vba-h6-BB6" id="pXQ-zr-Oiq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="GbR-kR-7X4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTn-fe-Zql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3948.5" y="2223.5"/>
         </scene>
         <!--Gather Detail Table View Controller-->
         <scene sceneID="JYN-s0-B84">
@@ -2582,6 +2615,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" textLabel="rOF-6u-1VE" detailTextLabel="mlS-gV-PRD" style="IBUITableViewCellStyleValue2" id="QJ0-Nd-3cE">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -3737,11 +3771,11 @@
         <image name="zfb" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WNe-4z-xr1"/>
-        <segue reference="Nqt-Fv-bKS"/>
-        <segue reference="u2r-Ax-89C"/>
-        <segue reference="7Ld-ON-WbQ"/>
-        <segue reference="YER-PZ-Zab"/>
+        <segue reference="diJ-in-QhB"/>
         <segue reference="hwW-ym-eI3"/>
+        <segue reference="WNe-4z-xr1"/>
+        <segue reference="zL8-Be-vaO"/>
+        <segue reference="1EE-sp-uxB"/>
+        <segue reference="ZZm-FH-8kg"/>
     </inferredMetricsTieBreakers>
 </document>
