@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E39d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tbm-cT-nlp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E39d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tbm-cT-nlp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -2570,6 +2570,7 @@
                     <connections>
                         <segue destination="rZH-Ri-3Z6" kind="show" identifier="gatherDetail" id="0Xj-T0-hCG"/>
                         <segue destination="vba-h6-BB6" kind="show" identifier="sell" id="ooS-Hh-NVI"/>
+                        <segue destination="uln-XG-juE" kind="show" identifier="buy" id="bqe-yy-3sF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3z-Ko-HQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2600,12 +2601,63 @@
                             <outlet property="delegate" destination="vba-h6-BB6" id="pXQ-zr-Oiq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="GbR-kR-7X4"/>
+                    <navigationItem key="navigationItem" id="GbR-kR-7X4">
+                        <barButtonItem key="rightBarButtonItem" title="提交" id="d5q-sh-ImJ">
+                            <connections>
+                                <action selector="submit:" destination="vba-h6-BB6" id="EjK-xA-kt4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="CRj-C5-sAN" kind="unwind" identifier="unwindSell" unwindAction="unwindToGather:" id="owI-kJ-daC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTn-fe-Zql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CRj-C5-sAN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3948.5" y="2223.5"/>
+        </scene>
+        <!--Gather Buy Table View Controller-->
+        <scene sceneID="FJ5-VO-UTc">
+            <objects>
+                <tableViewController id="uln-XG-juE" customClass="GatherBuyTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IdJ-E8-4sD">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" id="rnl-cc-pLm">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnl-cc-pLm" id="Z6A-13-A7c">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uln-XG-juE" id="Ua5-nK-dFN"/>
+                            <outlet property="delegate" destination="uln-XG-juE" id="Ttx-Kk-1PP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="8GD-Co-yh0">
+                        <barButtonItem key="rightBarButtonItem" title="提交" id="PxK-Uj-uYU">
+                            <connections>
+                                <action selector="submit:" destination="uln-XG-juE" id="ycE-6t-Ooh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="huE-FG-sIV" kind="unwind" identifier="unwindBuy" unwindAction="unwindToGather:" id="Fml-vd-LXV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7wS-pS-ij3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="huE-FG-sIV" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4455.5" y="2223.5"/>
         </scene>
         <!--Gather Detail Table View Controller-->
         <scene sceneID="JYN-s0-B84">

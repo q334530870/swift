@@ -40,6 +40,7 @@
 		A4566C901C16D7430047DE86 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4566C8F1C16D7430047DE86 /* InfoViewController.swift */; };
 		A4566C921C16E9C20047DE86 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4566C911C16E9C20047DE86 /* Common.swift */; };
 		A45BE5631C229A5200BC3399 /* TradeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45BE5621C229A5200BC3399 /* TradeDetailViewController.swift */; };
+		A466094A1C74032E0003ED84 /* GatherBuyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46609491C74032E0003ED84 /* GatherBuyTableViewController.swift */; };
 		A467E61E1C351602005CB659 /* publicCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467E61D1C351602005CB659 /* publicCommentViewController.swift */; };
 		A4691FD31C1E859000CECB5E /* SecondHandTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4691FD21C1E859000CECB5E /* SecondHandTableViewController.swift */; };
 		A4691FD51C1E898B00CECB5E /* FirstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4691FD41C1E898B00CECB5E /* FirstTableViewController.swift */; };
@@ -199,6 +200,7 @@
 		A4566C8F1C16D7430047DE86 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A4566C911C16E9C20047DE86 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		A45BE5621C229A5200BC3399 /* TradeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDetailViewController.swift; sourceTree = "<group>"; };
+		A46609491C74032E0003ED84 /* GatherBuyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherBuyTableViewController.swift; sourceTree = "<group>"; };
 		A467E61D1C351602005CB659 /* publicCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = publicCommentViewController.swift; sourceTree = "<group>"; };
 		A4691FD21C1E859000CECB5E /* SecondHandTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandTableViewController.swift; sourceTree = "<group>"; };
 		A4691FD41C1E898B00CECB5E /* FirstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewController.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 				A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */,
 				A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */,
 				A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */,
+				A46609491C74032E0003ED84 /* GatherBuyTableViewController.swift */,
 				A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */,
 				A4AB93921C2BC191006C9CF7 /* InstallmentMonthlyDetailTableViewController.swift */,
 				A4AB93941C2BD0EC006C9CF7 /* TradeLogTableViewController.swift */,
@@ -911,6 +914,7 @@
 				A4B730291C1A914C00F054AC /* RegisterInfoViewController.swift in Sources */,
 				A4691FD31C1E859000CECB5E /* SecondHandTableViewController.swift in Sources */,
 				A4F3C40F1C3F6211006862E6 /* POPCustomAnimation.mm in Sources */,
+				A466094A1C74032E0003ED84 /* GatherBuyTableViewController.swift in Sources */,
 				A4CF6A8D1C3CE59900955579 /* MWTapDetectingImageView.m in Sources */,
 				A4CF6AE21C3CEA4800955579 /* SDWebImageCompat.m in Sources */,
 				A44F1E4D1C1950CC008E3E3F /* MJRefreshBackNormalFooter.m in Sources */,

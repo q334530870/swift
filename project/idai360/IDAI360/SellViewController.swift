@@ -35,7 +35,7 @@ class SellViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //初始化选择框
-        jp = JPick(target: self.view,textField:tk,frame: CGRectMake(0,self.view.frame.height - self.view.frame.height / 3,self.view.frame.width,self.view.frame.height / 3+50))
+        jp = JPick(target: self.view,textField:tk)
         //获取数据
         getData()
         //设置圆角

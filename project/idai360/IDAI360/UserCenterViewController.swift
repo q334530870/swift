@@ -262,7 +262,7 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
         return 1
     }
     
-    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol {
         return MWPhoto(image: self.avatorButton.imageView?.image)
     }
     

@@ -4,40 +4,56 @@ class JDatePick:NSObject,UITextFieldDelegate{
     var pickView:UIDatePicker?
     var textField:UITextField?
     var target:UIView?
-    var fmt:String?
+    var dateFmt:String?
+    var controller:UIViewController?
+    var height:CGFloat?
+    var type:UIDatePickerMode?
     
     var pickValue = ""
-    var ViewFrame:CGRect?
-    var pickFrame:CGRect?
     var taskView:UIView?
+    var pickButton:UIButton?
     
-    init(controller:UIViewController? = nil,target:UIView,textField:UITextField,frame:CGRect,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd"){
+    init(controller:UIViewController? = nil,target:UIView,textField:UITextField,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd",height:CGFloat = 200){
         super.init()
+        //添加键盘隐藏通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldHide:", name: UIKeyboardDidHideNotification, object: nil)
         
         self.target = target
         self.textField = textField
         self.pickView = UIDatePicker()
-        
         self.textField!.delegate = self
-        initFrame(controller,frame: frame,type:type,dateFmt: dateFmt)
+        self.controller = controller
+        self.height = height
+        self.dateFmt = dateFmt
+        self.type = type
     }
     
-    func initFrame(controller:UIViewController?,frame:CGRect,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd"){
-        //遮罩层
-        taskView = UIView(frame: CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!))
-        taskView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-        taskView?.hidden = true
-        //总视图
-        let pv = UIView(frame: CGRectMake(frame.origin.x,frame.origin.y,frame.width,frame.height - 50))
-        if ViewFrame != nil{
-            pv.frame = ViewFrame!
+    //键盘隐藏
+    func keyboardShouldHide(notification:NSNotification){
+        if taskView?.subviews.count > 0{
+            var offset = (target?.frame.height)!
+            if let tb = target as? UITableView{
+                offset += tb.contentOffset.y
+            }
+            if offset < taskView?.frame.height{
+                taskView?.removeFromSuperview()
+                initFrame(controller, type: type!, dateFmt: dateFmt!, height: height!)
+            }
         }
+    }
+    
+    func initFrame(controller:UIViewController?,type:UIDatePickerMode ,dateFmt:String,height:CGFloat){
+        var offset = (target?.frame.height)!
+        if let tb = target as? UITableView{
+            offset += tb.contentOffset.y
+        }
+        //遮罩层
+        taskView = UIView(frame:CGRectMake(0,0,(target?.frame.width)!,offset))
+        taskView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        //总视图
+        let pv = UIView(frame: CGRectMake(0,(taskView?.height)! - height,(taskView?.width)!,height))
         //选择视图
         pickView!.frame = CGRectMake(0,30,pv.frame.width,pv.frame.height - 30)
-        if pickFrame != nil{
-            pickView!.frame = pickFrame!
-        }
-        self.fmt = dateFmt
         pickView!.backgroundColor = UIColor.whiteColor()
         pickView?.datePickerMode = type
         let locale = NSLocale(localeIdentifier: "zh_CN")
@@ -46,12 +62,12 @@ class JDatePick:NSObject,UITextFieldDelegate{
         //工具条
         let toolbar = UIToolbar(frame: CGRectMake(0,0,pickView!.frame.width,30))
         //确定按钮
-        let pickButton = UIButton(frame: CGRectMake(toolbar.frame.width - 45,0,40,30))
-        pickButton.setTitle("确定", forState: .Normal)
-        pickButton.titleLabel?.font = UIFont.systemFontOfSize(16)
-        pickButton.setTitleColor(MAIN_COLOR, forState: .Normal)
-        pickButton.addTarget(controller == nil ? self : controller!, action: Selector("selectSeg"), forControlEvents:.TouchUpInside)
-        toolbar.addSubview(pickButton)
+        pickButton = UIButton(frame: CGRectMake(toolbar.frame.width - 45,0,40,30))
+        pickButton?.setTitle("确定", forState: .Normal)
+        pickButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
+        pickButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
+        pickButton?.addTarget(controller == nil ? self : controller!, action: Selector("selectSeg:"), forControlEvents:.TouchUpInside)
+        toolbar.addSubview(pickButton!)
         pv.addSubview(toolbar)
         taskView?.addSubview(pv)
         target!.addSubview(taskView!)
@@ -69,23 +85,25 @@ class JDatePick:NSObject,UITextFieldDelegate{
             return false
         }
         else{
-            pickView!.superview!.superview!.hidden = true
+            pickView!.superview!.superview!.removeFromSuperview()
             return true
         }
     }
     
     //显示收入选择控件
     func selectReceive() {
-        self.pickView!.superview!.superview!.hidden = false
-        self.taskView?.frame = CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!)
+        //重置位置
+        initFrame(controller, type: type!, dateFmt: dateFmt!, height: height!)
     }
     
-    func selectSeg(){
+    func selectSeg(button:UIButton) ->String{
         let textField = self.textField
         let formatter = NSDateFormatter()
-        formatter.dateFormat = self.fmt
-        textField!.text = formatter.stringFromDate((self.pickView?.date)!)
-        self.pickView!.superview!.superview!.hidden = true
+        formatter.dateFormat = self.dateFmt
+        let strDate = formatter.stringFromDate((self.pickView?.date)!)
+        textField!.text = strDate
+        self.pickView!.superview!.superview!.removeFromSuperview()
+        return strDate
     }
     
 }

@@ -47,9 +47,9 @@
             _margin = 0, _gutter = 1;
             _marginL = 0, _gutterL = 2;
         }
-
+        
         _initialContentOffset = CGPointMake(0, CGFLOAT_MAX);
- 
+        
     }
     return self;
 }
@@ -156,7 +156,7 @@
     if (!cell) {
         cell = [[MWGridCell alloc] init];
     }
-    id <MWPhoto> photo = [_browser thumbPhotoAtIndex:indexPath.row];
+    id <MWPhotoProtocol> photo = [_browser thumbPhotoAtIndex:indexPath.row];
     cell.photo = photo;
     cell.gridController = self;
     cell.selectionMode = _selectionMode;

@@ -4,15 +4,18 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
     var pickView:UIPickerView?
     var textField:UITextField?
     var target:UIView?
+    var controller:UIViewController?
+    var height:CGFloat?
     
     var pickList = [(title:String,value:String)]()
     var pickValue = ""
-    var ViewFrame:CGRect?
-    var pickFrame:CGRect?
     var taskView:UIView?
+    var pickButton:UIButton?
     
-    init(controller:UIViewController? = nil,target:UIView,textField:UITextField,frame:CGRect){
+    init(controller:UIViewController? = nil,target:UIView,textField:UITextField,height:CGFloat = 200){
         super.init()
+        //添加键盘隐藏通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldHide:", name: UIKeyboardDidHideNotification, object: nil)
         
         self.target = target
         self.textField = textField
@@ -20,36 +23,48 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         self.pickView?.delegate = self
         self.pickView?.dataSource = self
         self.textField!.delegate = self
-        initFrame(controller,frame: frame)
+        self.controller = controller
+        self.height = height
     }
     
-    func initFrame(controller:UIViewController?,frame:CGRect){
-        //遮罩层
-        taskView = UIView(frame:CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!))
-        taskView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-        taskView?.hidden = true
-        //总视图
-        let pv = UIView(frame: CGRectMake(frame.origin.x,frame.origin.y,frame.width,frame.height - 50))
-        if ViewFrame != nil{
-            pv.frame = ViewFrame!
+    //键盘隐藏
+    func keyboardShouldHide(notification:NSNotification){
+        if taskView?.subviews.count > 0{
+            var offset = (target?.frame.height)!
+            if let tb = target as? UITableView{
+                offset += tb.contentOffset.y
+            }
+            if offset < taskView?.frame.height{
+                taskView?.removeFromSuperview()
+                initFrame(controller,height: height!)
+            }
         }
+    }
+    
+    func initFrame(controller:UIViewController?,height:CGFloat){
+        var offset = (target?.frame.height)!
+        if let tb = target as? UITableView{
+            offset += tb.contentOffset.y
+        }
+        //遮罩层
+        taskView = UIView(frame:CGRectMake(0,0,(target?.frame.width)!,offset))
+        taskView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        //总视图
+        let pv = UIView(frame: CGRectMake(0,(taskView?.height)! - height,(taskView?.width)!,height))
         //选择视图
         pickView!.frame = CGRectMake(0,30,pv.frame.width,pv.frame.height - 30)
-        if pickFrame != nil{
-            pickView!.frame = pickFrame!
-        }
         pickView!.backgroundColor = UIColor.whiteColor()
         pickView!.showsSelectionIndicator = true
         pv.addSubview(pickView!)
         //工具条
         let toolbar = UIToolbar(frame: CGRectMake(0,0,pickView!.frame.width,30))
         //确定按钮
-        let pickButton = UIButton(frame: CGRectMake(toolbar.frame.width - 45,0,40,30))
-        pickButton.setTitle("确定", forState: .Normal)
-        pickButton.titleLabel?.font = UIFont.systemFontOfSize(16)
-        pickButton.setTitleColor(MAIN_COLOR, forState: .Normal)
-        pickButton.addTarget(controller == nil ? self : controller!, action: Selector("selectSeg"), forControlEvents:.TouchUpInside)
-        toolbar.addSubview(pickButton)
+        pickButton = UIButton(frame: CGRectMake(toolbar.frame.width - 45,0,40,30))
+        pickButton?.setTitle("确定", forState: .Normal)
+        pickButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
+        pickButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
+        pickButton?.addTarget(controller == nil ? self : controller!, action: Selector("selectSeg:"), forControlEvents:.TouchUpInside)
+        toolbar.addSubview(pickButton!)
         pv.addSubview(toolbar)
         taskView?.addSubview(pv)
         target!.addSubview(taskView!)
@@ -68,7 +83,7 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
             return false
         }
         else{
-            pickView!.superview!.superview!.hidden = true
+            pickView!.superview!.superview!.removeFromSuperview()
             return true
         }
     }
@@ -76,8 +91,8 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
     //显示收入选择控件
     func selectReceive() {
         self.pickView!.reloadAllComponents()
-        self.pickView!.superview!.superview!.hidden = false
-        self.taskView?.frame = CGRectMake(0,0,(target?.frame.width)!,(target?.frame.height)!)
+        //重置位置
+        initFrame(controller,height: height!)
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -94,14 +109,14 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.font = UIFont.boldSystemFontOfSize(16)
+        pickerLabel.font = UIFont.boldSystemFontOfSize(18)
         pickerLabel.adjustsFontSizeToFitWidth = true
         pickerLabel.textAlignment = .Center
         pickerLabel.text = self.pickerView(pickerView, titleForRow: row, forComponent: component)
         return pickerLabel
     }
     
-    func selectSeg(){
+    func selectSeg(button:UIButton) ->String{
         let textField = self.textField
         let row = pickView?.selectedRowInComponent(0)
         if row>0{
@@ -111,7 +126,8 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         else{
             textField!.text = ""
         }
-        self.pickView!.superview!.superview!.hidden = true
+        self.pickView!.superview!.superview!.removeFromSuperview()
+        return self.pickList[row!].value
     }
     
 }
