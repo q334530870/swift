@@ -218,6 +218,25 @@ class Common{
         return formatter.stringFromDate(localDate)
     }
     
+    static func dateFromString(date:String,fmt:String = "yyyy-MM-dd HH:mm:ss")->NSDate{
+        //日期格式化
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = fmt
+        return formatter.dateFromString(date)!
+    }
+    
+    static func stringDateFromString(date:String,fmt:String = "yyyy-MM-dd HH:mm:ss")->String{
+        if date == ""{
+            return ""
+        }
+        //日期格式化
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let newDate = formatter.dateFromString(date)!
+        formatter.dateFormat = fmt
+        return formatter.stringFromDate(newDate)
+    }
+    
     //获取当前controller
     static func currentController(view:UIView) ->UIViewController?{
         var result:UIViewController? = nil
@@ -304,7 +323,7 @@ class Common{
          26         * 区号：010,020,021,022,023,024,025,027,028,029
          27         * 号码：七位或八位
          28         */
-         // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+        // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
         
         let regextestmobile = NSPredicate(format: "SELF MATCHES %@", mobile)
         let regextestcm = NSPredicate(format: "SELF MATCHES %@", cm)

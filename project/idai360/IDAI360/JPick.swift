@@ -27,6 +27,11 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         self.height = height
     }
     
+    func initTextField(textField:UITextField){
+        self.textField = textField
+        self.textField!.delegate = self
+    }
+    
     //键盘隐藏
     func keyboardShouldHide(notification:NSNotification){
         if taskView?.subviews.count > 0{

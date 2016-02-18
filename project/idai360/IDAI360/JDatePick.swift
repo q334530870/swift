@@ -28,6 +28,12 @@ class JDatePick:NSObject,UITextFieldDelegate{
         self.type = type
     }
     
+    
+    func initTextField(textField:UITextField){
+        self.textField = textField
+        self.textField!.delegate = self
+    }
+    
     //键盘隐藏
     func keyboardShouldHide(notification:NSNotification){
         if taskView?.subviews.count > 0{

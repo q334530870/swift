@@ -10,19 +10,79 @@ import UIKit
 
 class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     var titleList:[String]?
+    var result:[JSON]?
+    var productList = [(title:"请选择",value:"")]
+    var detail:JSON?
+    
     var product:JPick?
     var tk:JPick?
     var startDate:JDatePick?
     var endDate:JDatePick?
     var defaultCount = 1
     var selectedName = ""
-    var bl:UITextField?
+    var selectedId = ""
     var tempValue = Dictionary<Int,String>()
+    var terms:[JSON]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        product = JPick(controller:self, target: self.tableView,textField:UITextField(),height:200)
+        startDate = JDatePick(controller:self,target: self.tableView, textField: UITextField())
+        endDate = JDatePick(controller:self,target: self.tableView, textField: UITextField())
+        
+        getProduct()
         titleList = ["出售产品","1-是否接受初次发行？","2-是否接受T+1交易（全款24小时内付清）？","3-是否接受集合竞价交易？","4-是否是发行人的回购？","5-认购下单，可接受支付的选项（可多选）","(T+1) 保证金","(T+1) 首付款","(T+1) 全款","(T+0) 全款","出售数量/片","过息利息金额","最低收益率（%）","竞价开始日期","竞价结束日期"]
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
+    }
+    
+    //获取产品列表
+    func getProduct(){
+        let url = API_URL + "/api/Transaction"
+        let token = Common.getToken()
+        let param = ["token":token,"type":"3"]
+        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+        Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
+            self.result = json["data"].array!
+            var i = 0
+            for r in self.result!{
+                self.productList.append((r["产品"].stringValue,"\(i)"))
+                i += 1
+            }
+            //绑定产品数据
+            self.product!.pickList = self.productList
+        }
+    }
+    
+    //获得产品明细
+    func productDetail(){
+        let pt = result![Int(selectedId)!]
+        let url = API_URL + "/api/Transaction"
+        let token = Common.getToken()
+        let param = ["token":token,"productId":pt["product_factor_rental_id"].stringValue,
+                     "seniority":pt["seniority"].stringValue,"type":"3"]
+        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+        Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
+            //绑定默认数据
+            self.detail = json["data"]
+            self.terms = self.detail!["ProductToBuyDetailOrderTerms"].array
+            print(json)
+            self.tempValue[0] = self.selectedName
+            self.tempValue[1] = self.detail!["IsInitialIssueAcceptable"].stringValue
+            self.tempValue[2] = self.detail!["IsTradeConditionalAcceptable"].stringValue
+            self.tempValue[3] = self.detail!["IsAutoMatchAcceptable"].stringValue
+            self.tempValue[4] = self.detail!["IsIssuerBuyback"].stringValue
+            self.tempValue[5] = self.detail!["IsBuyAgainstDepositAllowed"].stringValue
+            self.tempValue[6] = self.detail!["EarnestMoneyRatioUpperLimit"].stringValue
+            self.tempValue[7] = self.detail!["DepositRatioUpperLimit"].stringValue
+            self.tempValue[8] = "100"
+            self.tempValue[9] = "100"
+            self.tempValue[10] = self.detail!["UnitsToBuy"].stringValue
+            self.tempValue[11] = self.detail!["EarnedInterestToBuy"].stringValue
+            self.tempValue[12] = self.detail!["IrrForQuotation"].stringValue
+            self.tempValue[13] = Common.stringDateFromString(self.detail!["BidStartDatetime"].stringValue,fmt: "yyyy-MM-dd")
+            self.tempValue[14] = Common.stringDateFromString(self.detail!["BidEndDatetime"].stringValue,fmt: "yyyy-MM-dd")
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,18 +98,21 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     }
     
     func selectSeg(button:UIButton){
+        tempValue.removeAll()
         if button == product?.pickButton{
             let value = product?.selectSeg(button)
             if (value?.isEmpty == false){
                 defaultCount = (titleList?.count)!
                 selectedName = (product?.textField?.text)!
+                selectedId = value!
+                productDetail()
             }
             else{
                 defaultCount = 1
                 selectedName = ""
+                selectedId = ""
+                self.tableView.reloadData()
             }
-            tempValue.removeAll()
-            self.tableView.reloadData()
         }
         else{
             if button == startDate?.pickButton{
@@ -77,7 +140,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
             let imageView = UIImageView(frame: CGRectMake(cell.width - 44,(cell.height-24)/2,24,24))
             var imageName = "no-ok"
             if tempValue.count>0{
-                if  tempValue[indexPath.row] == "True"{
+                if  tempValue[indexPath.row] == "1"{
                     imageName = "ok"
                 }
             }
@@ -91,9 +154,6 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
             textField.placeholder = titleList![indexPath.row]
             textField.tag = indexPath.row
             cell.contentView.addSubview(textField)
-            if titleList![indexPath.row] == "条款比例（%）"{
-                bl = textField
-            }
             if tempValue.count>0{
                 textField.text = tempValue[indexPath.row]
             }
@@ -102,8 +162,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                     textField.text = selectedName
                 }
                 //初始化选择框
-                product = JPick(controller:self, target: self.tableView,textField:textField)
-                product!.pickList = [("请选择",""),("产品AA","1"),("产品B","2"),("产品C","3"),("产品D","4")]
+                product?.initTextField(textField)
             }
             else if indexPath.row > 5 && indexPath.row < 10{
                 textField.frame = CGRectMake(15,3,cell.width-100,cell.height-6)
@@ -114,21 +173,52 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                 let imageView = UIImageView(frame: CGRectMake(cell.width - 44,(cell.height-24)/2,24,24))
                 var imageName = "no-ok"
                 if tempValue.count>0{
-                    if  tempValue[indexPath.row]?.isEmpty == false{
+                    var termValue = 0
+                    switch titleList![indexPath.row] {
+                    case "(T+1) 保证金":
+                        termValue = 1
+                        break
+                    case "(T+1) 首付款":
+                        termValue = 2
+                        break
+                    case "(T+1) 全款":
+                        termValue = 3
+                        break
+                    case "(T+0) 全款":
+                        termValue = 4
+                        break
+                    default:
+                        break
+                    }
+                    if self.terms?.filter({ (json:JSON) -> Bool in
+                        return json["OrderTermsAcceptable"].intValue == termValue
+                    }).count > 0{
                         imageName = "ok"
                         if indexPath.row != 8 && indexPath.row != 9{
                             textField.enabled = true
                         }
                     }
                 }
+                //
+                //
+                //
+                //
+                //
+                //保存是否选中
+                //
+                //
+                //
+                //
+                //
+                
                 imageView.image = UIImage(named: imageName)
                 cell.contentView.addSubview(imageView)
             }
             else if indexPath.row == 13{
-                startDate = JDatePick(controller:self,target: self.tableView, textField: textField)
+                startDate?.initTextField(textField)
             }
             else if indexPath.row == 14{
-                endDate = JDatePick(controller:self,target: self.tableView, textField: textField)
+                endDate?.initTextField(textField)
             }
             else{
                 textField.keyboardType = .NumbersAndPunctuation
@@ -157,11 +247,11 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                 if let imageView = v as? UIImageView{
                     if imageView.image == UIImage(named: "no-ok"){
                         imageView.image = UIImage(named: "ok")
-                        stat = "True"
+                        stat = "1"
                     }
                     else{
                         imageView.image = UIImage(named: "no-ok")
-                        stat = "False"
+                        stat = "0"
                     }
                 }
             }

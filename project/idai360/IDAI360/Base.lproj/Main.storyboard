@@ -2700,18 +2700,9 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="US0-Jo-gyO">
-                        <barButtonItem key="rightBarButtonItem" title="变更" id="BYh-c6-qyo">
-                            <connections>
-                                <action selector="change:" destination="rZH-Ri-3Z6" id="Fma-hD-65z"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="US0-Jo-gyO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="changeButton" destination="BYh-c6-qyo" id="vwn-jK-umm"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTa-Fp-zm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
