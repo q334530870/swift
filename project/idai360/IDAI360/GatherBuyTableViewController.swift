@@ -68,7 +68,6 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
             for t in terms!{
                 self.selectTK.append(t["OrderTermsAcceptable"].stringValue)
             }
-            print(json)
             self.tempValue[0] = self.selectedName
             self.tempValue[1] = self.detail!["IsInitialIssueAcceptable"].stringValue
             self.tempValue[2] = self.detail!["IsTradeConditionalAcceptable"].stringValue
