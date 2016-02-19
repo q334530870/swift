@@ -106,8 +106,8 @@ class GatherSellTableViewController: UITableViewController,UITextFieldDelegate {
     
     func selectSeg(button:UIButton){
         //选择产品
-        tempValue.removeAll()
         if button == product?.pickButton{
+            tempValue.removeAll()
             let value = product?.selectSeg(button)
             if (value?.isEmpty == false){
                 defaultCount = (titleList?.count)!

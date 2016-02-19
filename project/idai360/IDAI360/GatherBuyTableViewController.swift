@@ -22,7 +22,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     var selectedName = ""
     var selectedId = ""
     var tempValue = Dictionary<Int,String>()
-    var terms:[JSON]?
+    var selectTK = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
         endDate = JDatePick(controller:self,target: self.tableView, textField: UITextField())
         
         getProduct()
-        titleList = ["出售产品","1-是否接受初次发行？","2-是否接受T+1交易（全款24小时内付清）？","3-是否接受集合竞价交易？","4-是否是发行人的回购？","5-认购下单，可接受支付的选项（可多选）","(T+1) 保证金","(T+1) 首付款","(T+1) 全款","(T+0) 全款","出售数量/片","过息利息金额","最低收益率（%）","竞价开始日期","竞价结束日期"]
+        titleList = ["出售产品","1-是否接受初次发行？","2-是否接受T+1交易（全款24小时内付清）？","3-是否接受集合竞价交易？","4-是否是发行人的回购？","5-认购下单，可接受支付的选项（可多选）","(T+1) 保证金","(T+1) 首付款","(T+1) 全款","(T+0) 全款","购买数量/片","过息利息金额","最低收益率（%）","竞价开始日期","竞价结束日期"]
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
     }
     
@@ -64,7 +64,10 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             //绑定默认数据
             self.detail = json["data"]
-            self.terms = self.detail!["ProductToBuyDetailOrderTerms"].array
+            let terms = self.detail!["ProductToBuyDetailOrderTerms"].array
+            for t in terms!{
+                self.selectTK.append(t["OrderTermsAcceptable"].stringValue)
+            }
             print(json)
             self.tempValue[0] = self.selectedName
             self.tempValue[1] = self.detail!["IsInitialIssueAcceptable"].stringValue
@@ -98,8 +101,8 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     }
     
     func selectSeg(button:UIButton){
-        tempValue.removeAll()
         if button == product?.pickButton{
+            tempValue.removeAll()
             let value = product?.selectSeg(button)
             if (value?.isEmpty == false){
                 defaultCount = (titleList?.count)!
@@ -190,27 +193,13 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                     default:
                         break
                     }
-                    if self.terms?.filter({ (json:JSON) -> Bool in
-                        return json["OrderTermsAcceptable"].intValue == termValue
-                    }).count > 0{
+                    if self.selectTK.contains("\(termValue)"){
                         imageName = "ok"
                         if indexPath.row != 8 && indexPath.row != 9{
                             textField.enabled = true
                         }
                     }
                 }
-                //
-                //
-                //
-                //
-                //
-                //保存是否选中
-                //
-                //
-                //
-                //
-                //
-                
                 imageView.image = UIImage(named: imageName)
                 cell.contentView.addSubview(imageView)
             }
@@ -259,10 +248,28 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
         }
         else if (indexPath.row > 5 && indexPath.row < 10){
             let cell = tableView.cellForRowAtIndexPath(indexPath)
+            var termValue = 0
+            switch titleList![indexPath.row] {
+            case "(T+1) 保证金":
+                termValue = 1
+                break
+            case "(T+1) 首付款":
+                termValue = 2
+                break
+            case "(T+1) 全款":
+                termValue = 3
+                break
+            case "(T+0) 全款":
+                termValue = 4
+                break
+            default:
+                break
+            }
             for v in (cell?.contentView.subviews)!{
                 if let imageView = v as? UIImageView{
                     if imageView.image == UIImage(named: "no-ok"){
                         imageView.image = UIImage(named: "ok")
+                        selectTK.append("\(termValue)")
                         if let textField = self.view.viewWithTag(indexPath.row) as? UITextField{
                             textField.enabled = true
                             switch indexPath.row{
@@ -272,6 +279,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                                 textField.enabled = false
                                 break
                             default:
+                                tempValue[indexPath.row] = ""
                                 textField.becomeFirstResponder()
                                 break
                             }
@@ -279,10 +287,12 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                         
                     }
                     else{
+                        selectTK.removeAtIndex(selectTK.indexOf("\(termValue)")!)
                         imageView.image = UIImage(named: "no-ok")
                         if let textField = self.view.viewWithTag(indexPath.row) as? UITextField{
                             textField.enabled = false
                             textField.text = ""
+                            tempValue[indexPath.row] = ""
                             
                         }
                     }
@@ -294,6 +304,32 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     }
     
     @IBAction func submit(sender: AnyObject) {
-        self.performSegueWithIdentifier("unwindBuy", sender: nil)
+        let url = API_URL + "/api/Transaction"
+        let token = Common.getToken()
+        var param = ["token":token]
+        param["type"] = "3"
+        param["orderterms"] = self.selectTK.joinWithSeparator("|")
+        param["depositratioupperlimit"] = tempValue[6]
+        param["earnestmoneyratioupperlimit"] = tempValue[7]
+        param["isinitialissueacceptable"] = tempValue[1]
+        param["istradeconditionalacceptable"] = tempValue[2]
+        param["isautomatchacceptable"] = tempValue[3]
+        param["isissuerbuyback"] = tempValue[4]
+        //        param["isbuyagainstdepositallowed"] = tempValue[5]
+        param["productid"] = detail!["ProductFactorRentalId"].stringValue
+        param["seniority"] = detail!["Seniority"].stringValue
+        param["unitstobuy"] = tempValue[10]
+        param["earnedinteresttobuy"] = tempValue[11]
+        param["irrforquotation"] = tempValue[12]
+        param["bidstartdatetime"] = tempValue[13]
+        param["bidenddatetime"] = tempValue[14]
+        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+        Common.doRepuest(self, url: url, method: .POST, param: param) { (response, json) -> Void in
+            //绑定默认数据
+            Common.showAlert(self, title: "", message: "提交成功", ok: { (action) in
+                self.performSegueWithIdentifier("unwindBuy", sender: nil)
+            })
+        }
     }
+    
 }
