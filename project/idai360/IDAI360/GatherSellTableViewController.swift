@@ -62,7 +62,7 @@ class GatherSellTableViewController: UITableViewController,UITextFieldDelegate {
         let url = API_URL + "/api/Transaction"
         let token = Common.getToken()
         let param = ["token":token,"productId":pt["product_factor_rental_id"].stringValue,
-                     "seniority":pt["seniority"].stringValue,"isinitialissue":pt["isinitialissue"].stringValue,"type":"2"]
+            "seniority":pt["seniority"].stringValue,"isinitialissue":pt["isinitialissue"].stringValue,"type":"2"]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             //绑定默认数据
@@ -262,37 +262,42 @@ class GatherSellTableViewController: UITableViewController,UITextFieldDelegate {
     }
     
     @IBAction func submit(sender: AnyObject) {
-        let url = API_URL + "/api/Transaction"
-        let token = Common.getToken()
-        var param = ["token":token]
-        param["type"] = "2"
-        param["orderterms"] = self.tk?.pickList.filter({ (ft:(title: String, value: String)) -> Bool in
-            return ft.title == tempValue[5]
-        })[0].value
-        if param["orderterms"]! == "1"{
-            param["earnestmoneyratio"] = tempValue[6]
+        if selectedName == ""{
+            Common.showAlert(self, title: "", message: "请选择产品")
         }
-        else if param["orderterms"]! == "2"{
-            param["depositratio"] = tempValue[6]
-        }
-        param["isinitialissue"] = tempValue[1]
-        param["tvalue"] = "t1"
-        param["productid"] = detail!["ProductFactorRentalId"].stringValue
-        param["seniority"] = detail!["Seniority"].stringValue
-        param["unitstosell"] = tempValue[7]
-        param["irrforquotation"] = tempValue[9]
-        //        param["istradeconditionalacceptable"] = tempValue[2]
-        param["isautomatchacceptable"] = tempValue[3]
-        param["isbuyagainstdepositallowed"] = tempValue[4]
-        param["earnedinteresttosell"] = tempValue[8]
-        param["bidstartdatetime"] = tempValue[10]
-        param["bidenddatetime"] = tempValue[11]
-        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
-        Common.doRepuest(self, url: url, method: .POST, param: param) { (response, json) -> Void in
-            //绑定默认数据
-            Common.showAlert(self, title: "", message: "提交成功", ok: { (action) in
-                self.performSegueWithIdentifier("unwindSell", sender: nil)
-            })
+        else{
+            let url = API_URL + "/api/Transaction"
+            let token = Common.getToken()
+            var param = ["token":token]
+            param["type"] = "2"
+            param["orderterms"] = self.tk?.pickList.filter({ (ft:(title: String, value: String)) -> Bool in
+                return ft.title == tempValue[5]
+            })[0].value
+            if param["orderterms"]! == "1"{
+                param["earnestmoneyratio"] = tempValue[6]
+            }
+            else if param["orderterms"]! == "2"{
+                param["depositratio"] = tempValue[6]
+            }
+            param["isinitialissue"] = tempValue[1]
+            param["tvalue"] = "t1"
+            param["productid"] = detail!["ProductFactorRentalId"].stringValue
+            param["seniority"] = detail!["Seniority"].stringValue
+            param["unitstosell"] = tempValue[7]
+            param["irrforquotation"] = tempValue[9]
+            //        param["istradeconditionalacceptable"] = tempValue[2]
+            param["isautomatchacceptable"] = tempValue[3]
+            param["isbuyagainstdepositallowed"] = tempValue[4]
+            param["earnedinteresttosell"] = tempValue[8]
+            param["bidstartdatetime"] = tempValue[10]
+            param["bidenddatetime"] = tempValue[11]
+            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+            Common.doRepuest(self, url: url, method: .POST, param: param) { (response, json) -> Void in
+                //绑定默认数据
+                Common.showAlert(self, title: "", message: "提交成功", ok: { (action) in
+                    self.performSegueWithIdentifier("unwindSell", sender: nil)
+                })
+            }
         }
     }
 }

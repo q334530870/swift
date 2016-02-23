@@ -59,7 +59,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
         let url = API_URL + "/api/Transaction"
         let token = Common.getToken()
         let param = ["token":token,"productId":pt["product_factor_rental_id"].stringValue,
-                     "seniority":pt["seniority"].stringValue,"type":"3"]
+            "seniority":pt["seniority"].stringValue,"type":"3"]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             //绑定默认数据
@@ -303,31 +303,36 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     }
     
     @IBAction func submit(sender: AnyObject) {
-        let url = API_URL + "/api/Transaction"
-        let token = Common.getToken()
-        var param = ["token":token]
-        param["type"] = "3"
-        param["orderterms"] = self.selectTK.joinWithSeparator("|")
-        param["depositratioupperlimit"] = tempValue[6]
-        param["earnestmoneyratioupperlimit"] = tempValue[7]
-        param["isinitialissueacceptable"] = tempValue[1]
-        param["istradeconditionalacceptable"] = tempValue[2]
-        param["isautomatchacceptable"] = tempValue[3]
-        param["isissuerbuyback"] = tempValue[4]
-        //        param["isbuyagainstdepositallowed"] = tempValue[5]
-        param["productid"] = detail!["ProductFactorRentalId"].stringValue
-        param["seniority"] = detail!["Seniority"].stringValue
-        param["unitstobuy"] = tempValue[10]
-        param["earnedinteresttobuy"] = tempValue[11]
-        param["irrforquotation"] = tempValue[12]
-        param["bidstartdatetime"] = tempValue[13]
-        param["bidenddatetime"] = tempValue[14]
-        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
-        Common.doRepuest(self, url: url, method: .POST, param: param) { (response, json) -> Void in
-            //绑定默认数据
-            Common.showAlert(self, title: "", message: "提交成功", ok: { (action) in
-                self.performSegueWithIdentifier("unwindBuy", sender: nil)
-            })
+        if selectedName == ""{
+            Common.showAlert(self, title: "", message: "请选择产品")
+        }
+        else{
+            let url = API_URL + "/api/Transaction"
+            let token = Common.getToken()
+            var param = ["token":token]
+            param["type"] = "3"
+            param["orderterms"] = self.selectTK.joinWithSeparator("|")
+            param["depositratioupperlimit"] = tempValue[6]
+            param["earnestmoneyratioupperlimit"] = tempValue[7]
+            param["isinitialissueacceptable"] = tempValue[1]
+            param["istradeconditionalacceptable"] = tempValue[2]
+            param["isautomatchacceptable"] = tempValue[3]
+            param["isissuerbuyback"] = tempValue[4]
+            //        param["isbuyagainstdepositallowed"] = tempValue[5]
+            param["productid"] = detail!["ProductFactorRentalId"].stringValue
+            param["seniority"] = detail!["Seniority"].stringValue
+            param["unitstobuy"] = tempValue[10]
+            param["earnedinteresttobuy"] = tempValue[11]
+            param["irrforquotation"] = tempValue[12]
+            param["bidstartdatetime"] = tempValue[13]
+            param["bidenddatetime"] = tempValue[14]
+            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+            Common.doRepuest(self, url: url, method: .POST, param: param) { (response, json) -> Void in
+                //绑定默认数据
+                Common.showAlert(self, title: "", message: "提交成功", ok: { (action) in
+                    self.performSegueWithIdentifier("unwindBuy", sender: nil)
+                })
+            }
         }
     }
     
