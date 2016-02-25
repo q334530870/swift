@@ -8,16 +8,11 @@
 
 import UIKit
 
-class UserCenterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MWPhotoBrowserDelegate{
+class UserCenterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate{
     
     var cellData = [(title:String,detail:String,segue:String,type:Payment)]()
     var gatherData = [(title:String,detail:String,segue:String,type:Gather)]()
     var user:JSON?
-    var imagePick:UIImagePickerController?
-    var imageView:UIImageView!
-    var lastScaleFactor:CGFloat = 1.0
-    var netTranslation:CGPoint = CGPoint(x: 0, y: 0)
-    
     
     @IBOutlet weak var avatorButton: UIButton!
     @IBOutlet weak var name: UILabel!
@@ -40,98 +35,13 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
             avatorButton.setImage(avt,forState: UIControlState.Normal)
         }
         //模拟数据
-        for i in 3...8{
+        for i in 4...8{
             cellData.append(("\(Payment(rawValue: i)!)","","myTrade",Payment(rawValue: i)!))
         }
         for i in 0...1{
             gatherData.append(("\(Gather(rawValue: i)!)","","gather",Gather(rawValue: i)!))
         }
         
-        
-    }
-    
-    //设置头像
-    @IBAction func setAvator(sender: AnyObject) {
-        imagePick = UIImagePickerController()
-        //支持裁剪
-        imagePick?.allowsEditing = true
-        imagePick!.delegate = self
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        //从相册选取
-        let photo = UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.Default) { (action) -> Void in
-            self.imagePick!.sourceType = .PhotoLibrary
-            self.presentViewController(self.imagePick!, animated: true, completion: nil)
-            
-        }
-        //拍照
-        let camera = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Destructive) { (action) -> Void in
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
-                self.imagePick!.sourceType = .Camera
-                self.imagePick!.showsCameraControls = true
-                self.presentViewController(self.imagePick!, animated: true, completion: nil)
-            }
-            else{
-                Common.showAlert(self, title: nil, message: "该手机无摄像头")
-            }
-        }
-        //查看高清大图
-        let review = UIAlertAction(title: "查看高清大图", style: UIAlertActionStyle.Default) { (action) -> Void in
-            let browser = MWPhotoBrowser(delegate: self)
-            browser.alwaysShowControls = false
-            browser.modalTransitionStyle = .CrossDissolve
-            self.presentViewController(browser, animated: true, completion: nil)
-        }
-        //取消
-        let cancel = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel,handler: nil)
-        alert.addAction(camera)
-        alert.addAction(photo)
-        alert.addAction(review)
-        alert.addAction(cancel)
-        //ipad特殊处理
-        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-            let popPresenter = alert.popoverPresentationController
-            popPresenter!.sourceView = sender as? UIView
-            popPresenter!.sourceRect = sender.bounds
-        }
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    //取消选择后处理
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.imagePick?.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
-        })
-    }
-    
-    //选择完图片后处理
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        self.imagePick?.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
-            let image = info[UIImagePickerControllerEditedImage] as? UIImage
-            
-            self.avatorButton.setImage(image, forState: .Normal)
-            //保存图片到应用沙盒
-            let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-            //区分不用账号头像
-            let fileName = "\(self.phone.text!)-avatar"
-            let filePath = path[0].stringByAppendingString("/\(fileName).png")
-            let result = UIImagePNGRepresentation(image!)?.writeToFile(filePath, atomically: true)
-            if (result == true){
-                if picker.sourceType == .Camera{
-                    Common.showAlert(self, title: nil, message: "是否存入相册？",cancel:true,okTitle: "是", cancelTitle:"否", ok: { (action) -> Void in
-                        //保存图片到相册
-                        UIImageWriteToSavedPhotosAlbum(image!, self, "saveImage:didFinishSavingWithError:contextInfo:", nil)
-                    })
-                }
-                //保存图片变量
-                Common.saveDefault(filePath, key: fileName)
-            }
-            self.view.hideToastActivity()
-        })
-    }
-    
-    //保存图片到相册后的回调
-    func saveImage(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:AnyObject){
         
     }
     
@@ -252,18 +162,6 @@ class UserCenterViewController: UIViewController,UITableViewDelegate,UITableView
             gather.navigationItem.title = gatherData[Int(sender! as! NSNumber)].title
             gather.selectCell = gatherData[Int(sender! as! NSNumber)].type
         }
-    }
-    
-    func photoBrowserDidFinishModalPresentation(photoBrowser: MWPhotoBrowser!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
-        return 1
-    }
-    
-    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol {
-        return MWPhoto(image: self.avatorButton.imageView?.image)
     }
     
     @IBAction func close(sender: AnyObject) {

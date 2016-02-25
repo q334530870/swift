@@ -114,7 +114,11 @@ class Common{
         //        }
         //        let y:CGFloat = 0 - otherHeight
         //创建遮罩层
-        grayView.frame = CGRectMake(0, 0,currentView.bounds.width, currentView.bounds.height)
+        var height:CGFloat = 0
+        if let tempView = currentView as? UITableView{
+            height += tempView.contentOffset.y
+        }
+        grayView.frame = CGRectMake(0, 0,currentView.bounds.width, currentView.bounds.height + height)
         grayView.backgroundColor = UIColor.grayColor()
         grayView.alpha = 0.2
         //遮罩层添加到试图中
@@ -323,7 +327,7 @@ class Common{
          26         * 区号：010,020,021,022,023,024,025,027,028,029
          27         * 号码：七位或八位
          28         */
-        // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+         // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
         
         let regextestmobile = NSPredicate(format: "SELF MATCHES %@", mobile)
         let regextestcm = NSPredicate(format: "SELF MATCHES %@", cm)

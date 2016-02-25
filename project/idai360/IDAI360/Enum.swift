@@ -25,8 +25,3 @@ enum Sex:Int{
 enum Seniority:Int{
     case A = 1,B
 }
-
-
-
-
-

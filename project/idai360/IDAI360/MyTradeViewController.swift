@@ -16,7 +16,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     //每页显示条数
     var pageSize = 100
     var tempValue:[(text:String,detailText:String)]!
-    var selectCell = Payment.交易余额支付
+    var selectCell = Payment.待确认
     var dataType = Payment.待确认
     var isJump = false
     @IBOutlet weak var tv: UITableView!
@@ -28,13 +28,13 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         if(isJump){
             self.tabBarController?.tabBar.hidden = true
         }
-        if selectCell == Payment.交易余额支付{
-            dataType = Payment.待确认
-        }
-        else{
-            dataType = selectCell
+        dataType = selectCell
+        if selectCell.rawValue > 3{
             segmented.hidden = true
             tvTop.constant = 0
+        }
+        else{
+            segmented.selectedSegmentIndex = selectCell.rawValue
         }
         //获取数据
         getData()
