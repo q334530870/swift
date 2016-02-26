@@ -42,7 +42,6 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
         //添加图片点击手势
         ok.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "okClick"))
         ok.userInteractionEnabled = true
-        
     }
     
     //获取数据
@@ -159,6 +158,10 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
         else if let monthly = segue.destinationViewController as? InstallmentMonthlyViewController{
             monthly.productId = productId
             monthly.seniority = seniority
+        }
+        else if let enterprise = segue.destinationViewController as? EnterpriseTableViewController{
+            enterprise.productId = productId
+            enterprise.model = self.model
         }
         else{
             let destination = segue.destinationViewController as? InfoViewController

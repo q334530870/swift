@@ -84,12 +84,12 @@ class SafeDetailTableViewController: UITableViewController,UIPickerViewDelegate,
             break
             //            case 3:
             //                list = ["邮箱地址"]
-            //
+        //
         case SafeType.银行卡绑定:
             
             list = ["开户银行","开户网点","银行卡号"]
             bankList = ["中国工商银行":"ICBC","中国建设银行":"CCB","招商银行":"CMB","中国农业银行":"ABC","广发银行":"GDB",
-                "中国银行":"BOC","中国民生银行":"CMBC","交通银行":"CIB","中国光大银行":"BCM"]
+                        "中国银行":"BOC","中国民生银行":"CMBC","交通银行":"CIB","中国光大银行":"BCM"]
             pickList.append("请选择")
             for key in (bankList?.keys)!{
                 pickList.append(key)
@@ -107,6 +107,14 @@ class SafeDetailTableViewController: UITableViewController,UIPickerViewDelegate,
             }
             break
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
     }
     
     func getBankName(value:String) ->String{
@@ -215,7 +223,7 @@ class SafeDetailTableViewController: UITableViewController,UIPickerViewDelegate,
             //                //
             //
             //            }
-            //            break
+        //            break
         case SafeType.银行卡绑定:
             
             if bankNameTextfield.text == "" {
@@ -388,7 +396,7 @@ class SafeDetailTableViewController: UITableViewController,UIPickerViewDelegate,
             //            emailTextField.returnKeyType = .Done
             //            emailTextField.delegate = self
             //            cell.contentView.addSubview(emailTextField)
-            //            break
+        //            break
         case SafeType.银行卡绑定:
             
             switch indexPath.row{

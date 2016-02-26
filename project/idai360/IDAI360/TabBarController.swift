@@ -57,7 +57,8 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate{
         }
         else if let _ = segue.sourceViewController as? RegisterInfoViewController{
             if let myIdai = self.viewControllers![MyIdaiSelectIndex].childViewControllers[0] as? MyIdaiViewController {
-                myIdai.jump = "Safe"
+                //                myIdai.jump = "Safe"
+                myIdai.jump = ""
             }
         }
         self.selectedIndex = MyIdaiSelectIndex

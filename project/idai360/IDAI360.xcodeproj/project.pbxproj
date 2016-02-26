@@ -49,6 +49,7 @@
 		A47181091C33761900C95818 /* RegisterRealNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47181081C33761900C95818 /* RegisterRealNameViewController.swift */; };
 		A471810C1C33B0F600C95818 /* PrintObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A471810B1C33B0F600C95818 /* PrintObject.m */; };
 		A47640671C72BD170044CD4B /* GatherSellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */; };
+		A48011A41C7FE4EF005E6E70 /* EnterpriseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */; };
 		A4951E7D1C30D182003DD474 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E6F1C30D182003DD474 /* Alamofire.swift */; };
 		A4951E7E1C30D182003DD474 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E701C30D182003DD474 /* Download.swift */; };
 		A4951E7F1C30D182003DD474 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E711C30D182003DD474 /* Error.swift */; };
@@ -210,6 +211,7 @@
 		A471810A1C33B0D700C95818 /* PrintObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintObject.h; sourceTree = "<group>"; };
 		A471810B1C33B0F600C95818 /* PrintObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintObject.m; sourceTree = "<group>"; };
 		A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherSellTableViewController.swift; sourceTree = "<group>"; };
+		A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterpriseTableViewController.swift; sourceTree = "<group>"; };
 		A4951E6E1C30D182003DD474 /* Alamofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alamofire.h; sourceTree = "<group>"; };
 		A4951E6F1C30D182003DD474 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		A4951E701C30D182003DD474 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				A4E059B21C43505000E17B47 /* SafeTableViewController.swift */,
 				A4E059B41C4357B200E17B47 /* SafeDetailTableViewController.swift */,
 				A4B38D3E1C5F3D8000A8D790 /* SellViewController.swift */,
+				A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */,
 			);
 			name = userCenter;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				A4F3C4121C3F6211006862E6 /* POPLayerExtras.mm in Sources */,
 				A4F3C4081C3F6211006862E6 /* POPAnimationEvent.mm in Sources */,
 				A44F1E4C1C1950CC008E3E3F /* MJRefreshBackGifFooter.m in Sources */,
+				A48011A41C7FE4EF005E6E70 /* EnterpriseTableViewController.swift in Sources */,
 				A4CF6AFB1C3CEAA400955579 /* DACircularProgressView.m in Sources */,
 				A4BD71EB1C154B6C00D425DB /* ViewController.swift in Sources */,
 				A4DEE17A1C6194B5002F59A4 /* JPick.swift in Sources */,

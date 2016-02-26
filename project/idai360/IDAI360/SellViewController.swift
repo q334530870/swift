@@ -177,6 +177,9 @@ class SellViewController: UIViewController {
             monthly.productId = productId
             monthly.seniority = seniority
         }
+        else if let enterprise = segue.destinationViewController as? EnterpriseTableViewController{
+            enterprise.productId = productId
+        }
         else{
             let destination = segue.destinationViewController as? InfoViewController
             if destination == nil{
