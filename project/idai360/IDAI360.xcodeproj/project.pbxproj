@@ -50,6 +50,7 @@
 		A471810C1C33B0F600C95818 /* PrintObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A471810B1C33B0F600C95818 /* PrintObject.m */; };
 		A47640671C72BD170044CD4B /* GatherSellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */; };
 		A48011A41C7FE4EF005E6E70 /* EnterpriseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */; };
+		A481414F1C8931CC00AA67DA /* Index.cshtml in Resources */ = {isa = PBXBuildFile; fileRef = A481414E1C8931CC00AA67DA /* Index.cshtml */; };
 		A4951E7D1C30D182003DD474 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E6F1C30D182003DD474 /* Alamofire.swift */; };
 		A4951E7E1C30D182003DD474 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E701C30D182003DD474 /* Download.swift */; };
 		A4951E7F1C30D182003DD474 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4951E711C30D182003DD474 /* Error.swift */; };
@@ -212,6 +213,7 @@
 		A471810B1C33B0F600C95818 /* PrintObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintObject.m; sourceTree = "<group>"; };
 		A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherSellTableViewController.swift; sourceTree = "<group>"; };
 		A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterpriseTableViewController.swift; sourceTree = "<group>"; };
+		A481414E1C8931CC00AA67DA /* Index.cshtml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Index.cshtml; sourceTree = "<group>"; };
 		A4951E6E1C30D182003DD474 /* Alamofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alamofire.h; sourceTree = "<group>"; };
 		A4951E6F1C30D182003DD474 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		A4951E701C30D182003DD474 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 				A4BD71EF1C154B6C00D425DB /* Assets.xcassets */,
 				A4BD71F11C154B6C00D425DB /* LaunchScreen.storyboard */,
 				A4BD71F41C154B6C00D425DB /* Info.plist */,
+				A481414E1C8931CC00AA67DA /* Index.cshtml */,
 			);
 			path = IDAI360;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				A4F3C4041C3F6211006862E6 /* pop-osx-Info.plist in Resources */,
 				A4BD71F31C154B6C00D425DB /* LaunchScreen.storyboard in Resources */,
 				A4BD71F01C154B6C00D425DB /* Assets.xcassets in Resources */,
+				A481414F1C8931CC00AA67DA /* Index.cshtml in Resources */,
 				A44F1E521C1950CC008E3E3F /* MJRefresh.bundle in Resources */,
 				A4BD71EE1C154B6C00D425DB /* Main.storyboard in Resources */,
 			);
