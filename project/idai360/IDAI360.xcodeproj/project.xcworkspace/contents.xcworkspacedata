@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:IDAI360.xcodeproj">
+      location = "self:/Users/YaoJ/Documents/swift/project/IDAI360/IDAI360.xcodeproj">
    </FileRef>
 </Workspace>

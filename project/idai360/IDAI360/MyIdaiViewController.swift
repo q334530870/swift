@@ -26,21 +26,14 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     var gatherData = [(title:String,detail:String,segue:String,type:Gather)]()
     var otherData = [(title:String,detail:String,segue:String)]()
     var imageList = [String]()
-    var titleList = [[(title:String,value:String)]]()
-    var sectionList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sectionList = ["过程中...","现金余额","利息汇总","本息汇总"]
-        
-        //初始化按钮标题和图片
-        buttonList = [("\(Payment(rawValue: 0)!)","wait"),("\(Payment(rawValue: 1)!)","in"),("\(Payment(rawValue: 2)!)","finish")]
         //初始化头部隐藏view
         topView = UIView(frame: CGRectMake(0,-10000,self.view.frame.width,10000))
         topView.backgroundColor = MAIN_COLOR
         self.view.addSubview(topView)
         //初始化表格头部
-        let head = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width/4*2+2+130))
         let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,60))
         headerView.backgroundColor = MAIN_COLOR
         //绑定用户信息
@@ -83,24 +76,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         headerView.addSubview(phone)
         headerView.addSubview(ye)
         headerView.addSubview(yeValue)
-        head.addSubview(headerView)
-        //操作按钮
-        let tabbar = UITabBar(frame: CGRectMake(0,70,head.frame.width,44))
-        tabbar.translucent = false
-        let tbi1 = UITabBarItem(title: buttonList[0].title, image: UIImage(named: buttonList[0].image), tag: 1)
-        tbi1.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
-        tbi1.tag = 0
-        let tbi2 = UITabBarItem(title: buttonList[1].title, image: UIImage(named: buttonList[1].image), tag: 2)
-        tbi2.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
-        tbi2.tag = 1
-        let tbi3 = UITabBarItem(title: buttonList[2].title, image: UIImage(named: buttonList[2].image), tag: 3)
-        tbi3.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
-        tbi3.tag = 2
-        let tbiArray = [tbi1,tbi2,tbi3]
-        tabbar.setItems(tbiArray, animated: true)
-        tabbar.delegate = self
-        head.addSubview(tabbar)
-        
+        tv.tableHeaderView = headerView
         //模拟数据
         for i in 0...8{
             cellData.append(("\(Payment(rawValue: i)!)","","myTrade",Payment(rawValue: i)!))
@@ -111,15 +87,14 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         otherData.append(("充值","","recharge"))
         imageList = ["ccl","buyIn","buyOut","detailTable","bx","gatherBuy","gatherSell","cz"]
         //初始化表格底部
-        //        let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 3 + 3))
-        //        footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 3 + 3))
+        footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         let vWidth:CGFloat = self.view.frame.width / 4
         //初始化快捷按钮
-        let kjView = UIView(frame:CGRectMake(0,130,head.frame.width,vWidth*2+2))
         var vTop:CGFloat = 0
         var vLeft:CGFloat = 0
-        for i in 0...7{
-            if i == 4{
+        for i in 0...11{
+            if i == 4 || i == 8{
                 vTop = vTop + 1
                 vLeft = 0
             }
@@ -162,11 +137,12 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
                 v.addSubview(label)
                 v.addSubview(imageView)
             }
-            kjView.addSubview(v)
+            footerView.addSubview(v)
             vLeft = vLeft + 1
         }
-        head.addSubview(kjView)
-        tv.tableHeaderView = head
+        tv.tableFooterView = footerView
+        //初始化按钮标题和图片
+        buttonList = [("\(Payment(rawValue: 0)!)","wait"),("\(Payment(rawValue: 1)!)","in"),("\(Payment(rawValue: 2)!)","finish")]
         //获得导航下面的实现
         navBarHairlineImageView = Common.findHairlineImageViewUnder((self.navigationController?.navigationBar)!)
     }
@@ -232,68 +208,27 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             self.yeValue.text = json["data"]["banlace"].stringValue
-            //绑定表格数据
-            let process = json["data"]["process"]
-            self.titleList.append([("买入交易中-数量",process["condi_buy_units"].stringValue),
-                ("买入交易中-购买价格",process["condi_buy_price"].stringValue),
-                ("买入交易中-待付款",process["condi_buy_payable"].stringValue),
-                ("待下单提交-数量",process["orders_yet_submitted_units"].stringValue),
-                ("待下单提交-购买价格",process["orders_yet_submitted_price"].stringValue),
-                ("待下单提交-待付款","")])
-            
-            let cashBalance = json["data"]["cashBalance"]
-            self.titleList.append([("保证金",cashBalance["cash_bal"].stringValue),
-                ("金币价值",cashBalance["coins_yet_to_redeem"].stringValue),
-                ("债款交易中-买入已付",cashBalance["condi_pmt_paid"].stringValue),
-                ("债款交易中-线下支付中",cashBalance["condi_pmt_offline_paying"].stringValue),
-                ("债款交易中-买入应付",cashBalance["condi_pmt_payable"].stringValue),
-                ("债款交易中-卖出应收",cashBalance["condi_receivable"].stringValue),
-                ("本息到期应收",cashBalance["instalments_receivable"].stringValue),
-                ("本息本月到期",cashBalance["instalments_due_mtd"].stringValue)])
-            
-            let interestSummary = json["data"]["interestSummary"]
-            self.titleList.append([("应收利息",interestSummary["interest_receivable"].stringValue),
-                ("本日利息",interestSummary["interest_today"].stringValue),
-                ("实际利息-本周",interestSummary["interest_act_wtd"].stringValue),
-                ("实际利息-本月",interestSummary["interest_act_mtd"].stringValue),
-                ("实际利息-本年",interestSummary["interest_act_ytd"].stringValue),
-                ("持有到期利息-本周",interestSummary["interest_maturity_week"].stringValue),
-                ("持有到期利息-本月",interestSummary["interest_maturity_month"].stringValue),
-                ("持有到期利息-本年",interestSummary["interest_maturity_year"].stringValue)])
-            
-            let principalInterestSummary = json["data"]["principalInterestSummary"]
-            self.titleList.append([("本息到期应收",principalInterestSummary["instalments_receivable"].stringValue),
-                ("实际本息-本月到期",principalInterestSummary["instalments_due_mtd"].stringValue),
-                ("实际利息-本年到期",principalInterestSummary["instalments_due_ytd"].stringValue),
-                ("持有到期本息-本月到期",principalInterestSummary["instalments_maturity_month"].stringValue),
-                ("持有到期本息-本年到期",principalInterestSummary["instalments_maturity_year"].stringValue)])
-            
-            self.tv.reloadData()
         }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
-            return 40
-        }
-        return 20
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sectionList.count
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionList[section]
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section < titleList.count{
-            return titleList[section].count
-        }
-        else{
-            return 0
-        }
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -302,9 +237,22 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         for v in cell.contentView.subviews{
             v.removeFromSuperview()
         }
-        let title = titleList[indexPath.section]
-        cell.textLabel?.text = title[indexPath.row].title
-        cell.detailTextLabel?.text = title[indexPath.row].value
+        let tabbar = UITabBar(frame: CGRectMake(0,0,cell.frame.width,cell.frame.height))
+        tabbar.translucent = false
+        let tbi1 = UITabBarItem(title: buttonList[0].title, image: UIImage(named: buttonList[0].image), tag: 1)
+        tbi1.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
+        tbi1.tag = 0
+        let tbi2 = UITabBarItem(title: buttonList[1].title, image: UIImage(named: buttonList[1].image), tag: 2)
+        tbi2.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
+        tbi2.tag = 1
+        let tbi3 = UITabBarItem(title: buttonList[2].title, image: UIImage(named: buttonList[2].image), tag: 3)
+        tbi3.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
+        tbi3.tag = 2
+        
+        let tbiArray = [tbi1,tbi2,tbi3]
+        tabbar.setItems(tbiArray, animated: true)
+        cell.contentView.addSubview(tabbar)
+        tabbar.delegate = self
         return cell
     }
     
