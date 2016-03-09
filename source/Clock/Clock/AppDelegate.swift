@@ -10,17 +10,17 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
- 
-
+    
+    
+    
+    
     func applicationWillResignActive(application: UIApplication) {
-               // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         let stat = loadDefault("tutustat") as! String
         if stat == "ok"{
@@ -106,52 +106,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        application.cancelAllLocalNotifications()
+        application.applicationIconBadgeNumber = 0
         //let userInfo = notification.userInfo!
         //let title = userInfo["key"] as! String
         
-        let alertController = UIAlertController(title: "咳咳", message: "我是谁？", preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Cancel, handler: nil)
-        let okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default) {
-            (action: UIAlertAction!) -> Void in
-            let name = (alertController.textFields?.first)! as UITextField
-            if(name.text == "姚杰"){
-                let alert2 = UIAlertController(title: "咳咳", message: "有多爱我？", preferredStyle: UIAlertControllerStyle.Alert)
-                let cancelAction2 = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Cancel, handler: nil)
-                let okAction2 = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default) {
-                    (action: UIAlertAction!) -> Void in
-                    let name2 = (alert2.textFields?.first)! as UITextField
-                    if(name2.text == "超爱"){
-                        self.saveDefault("ok",key:"tutustat")
-                        application.cancelAllLocalNotifications()
-                        application.applicationIconBadgeNumber = 0
-                    }
-                }
-                alert2.addAction(cancelAction2)
-                alert2.addAction(okAction2)
-                
-                alert2.addTextFieldWithConfigurationHandler {
-                    (textField: UITextField!) -> Void in
-                    textField.placeholder = "有多爱我？"
-                }
-                self.window?.rootViewController!.presentViewController(alert2, animated: true, completion: nil)
-            }
-        }
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        
-        alertController.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "我是谁？"
-        }
-        self.window?.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
-        
-//        let alert = UIAlertView()
-//        alert.title = title
-//        alert.message = notification.alertBody
-//        alert.addButtonWithTitle(notification.alertAction!)
-//        alert.cancelButtonIndex = 0
-//        alert.show()
+        //        let alert = UIAlertView()
+        //        alert.title = title
+        //        alert.message = notification.alertBody
+        //        alert.addButtonWithTitle(notification.alertAction!)
+        //        alert.cancelButtonIndex = 0
+        //        alert.show()
         
         //APService.showLocalNotificationAtFront(notification, identifierKey: nil)
     }
@@ -160,8 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         //setting the desk top application icon‘s badge as zero
         //application.applicationIconBadgeNumber = 0
-//        application.cancelAllLocalNotifications()
-//        application.applicationIconBadgeNumber = 0
+        //        application.cancelAllLocalNotifications()
+        //        application.applicationIconBadgeNumber = 0
         
     }
     
@@ -189,9 +154,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dft:NSUserDefaults  = NSUserDefaults.standardUserDefaults()
         return dft.objectForKey(key)
     }
-
-
-
-
+    
+    
+    
+    
 }
 
