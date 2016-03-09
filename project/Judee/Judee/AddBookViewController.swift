@@ -142,7 +142,7 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     @IBAction func submit(sender: AnyObject) {
-        let param = ["offset":"","limit":""]
+        _ = ["offset":"","limit":""]
         
         
     }
