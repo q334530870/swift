@@ -25,6 +25,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     var cellData = [(title:String,detail:String,segue:String,type:Payment)]()
     var gatherData = [(title:String,detail:String,segue:String,type:Gather)]()
     var otherData = [(title:String,detail:String,segue:String)]()
+    var buyData = [(title:String,image:String)]()
     var imageList = [String]()
     
     override func viewDidLoad() {
@@ -34,7 +35,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         topView.backgroundColor = MAIN_COLOR
         self.view.addSubview(topView)
         //初始化表格头部
-        let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,60))
+        let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,100))
         headerView.backgroundColor = MAIN_COLOR
         //绑定用户信息
         let user = Common.getCurrentUser()
@@ -71,11 +72,20 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         yeValue.font = UIFont.systemFontOfSize(17)
         yeValue.textAlignment = .Right
         
+        //标题
+        let tv0 = UIView(frame: CGRectMake(0,60,self.view.frame.width,40))
+        tv0.backgroundColor = UIColor.whiteColor()
+        let label0 = UILabel(frame: CGRectMake(10,0,self.view.frame.width,40))
+        label0.text = "我的订单"
+        label0.font = UIFont.systemFontOfSize(14)
+        tv0.addSubview(label0)
+        
         headerView.addSubview(avatorButton)
         headerView.addSubview(name)
         headerView.addSubview(phone)
         headerView.addSubview(ye)
         headerView.addSubview(yeValue)
+        headerView.addSubview(tv0)
         tv.tableHeaderView = headerView
         //模拟数据
         for i in 0...8{
@@ -84,62 +94,138 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         for i in 0...1{
             gatherData.append(("\(Gather(rawValue: i)!)","","gather",Gather(rawValue: i)!))
         }
+        buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托买出","wtmc")]
         otherData.append(("充值","","recharge"))
-        imageList = ["ccl","buyIn","buyOut","detailTable","bx","gatherBuy","gatherSell","cz"]
+        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx"]
         //初始化表格底部
         let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 3 + 3))
         footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
-        let vWidth:CGFloat = self.view.frame.width / 4
         //初始化快捷按钮
-        var vTop:CGFloat = 0
-        var vLeft:CGFloat = 0
-        for i in 0...11{
-            if i == 4 || i == 8{
-                vTop = vTop + 1
-                vLeft = 0
-            }
-            let v = UIView(frame: CGRectMake(CGFloat(vLeft) * (vWidth+1),vTop * (vWidth+1),vWidth,vWidth))
+        let tv1 = UIView(frame: CGRectMake(0,0,self.view.frame.width,40))
+        tv1.backgroundColor = UIColor.whiteColor()
+        let label = UILabel(frame: CGRectMake(10,0,self.view.frame.width,40))
+        label.text = "我的订单"
+        label.font = UIFont.systemFontOfSize(14)
+        tv1.addSubview(label)
+        footerView.addSubview(tv1)
+        for i in 0...3{
+            let v = UIView(frame: CGRectMake(0+CGFloat(i) * self.view.frame.width/4,41,self.view.frame.width/4-1,self.view.frame.width/4-1))
             v.backgroundColor = UIColor.whiteColor()
-            if i < (cellData.count - 4) + gatherData.count + otherData.count{
-                let width:CGFloat = 32
-                let imageView = UIImageView(frame: CGRectMake(v.frame.width/2-width/2,20,width,width))
-                imageView.image = UIImage(named:imageList[i])
-                let label = UILabel(frame: CGRectMake(0,width+22,v.frame.width,30))
+            let imageView = UIImageView(frame: CGRectMake(v.frame.width/2-32/2,20,32,32))
+            imageView.image = UIImage(named:imageList[i])
+            let label = UILabel(frame: CGRectMake(0,32+22,v.frame.width,30))
+            label.font = UIFont.systemFontOfSize(10)
+            label.textAlignment = .Center
+            label.text = cellData[i].title
+            v.tag = i
+            v.addSubview(label)
+            v.addSubview(imageView)
+            
+            if i == 3{
+                //点击other手势
+                v.tag = 0
+                let tapGesture = UITapGestureRecognizer(target: self, action: "tapOther:")
+                v.addGestureRecognizer(tapGesture)
+                label.text = "充值"
+            }
+            else{
+                //点击payment手势
+                let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
+                v.addGestureRecognizer(tapGesture)
+            }
+            
+            footerView.addSubview(v)
+        }
+        
+        let tv2 = UIView(frame: CGRectMake(0,self.view.frame.width/4 + 50,self.view.frame.width,40))
+        tv2.backgroundColor = UIColor.whiteColor()
+        let label2 = UILabel(frame: CGRectMake(10,0,self.view.frame.width,40))
+        label2.text = "我的报表"
+        label2.font = UIFont.systemFontOfSize(14)
+        tv2.addSubview(label2)
+        footerView.addSubview(tv2)
+        
+        for i in 0...7{
+            var v = UIView(frame: CGRectMake(0+CGFloat(i) * self.view.frame.width/4,self.view.frame.width/4 + 91,
+                self.view.frame.width/4-1,self.view.frame.width/4-1))
+            if i >= 4{
+                v = UIView(frame: CGRectMake(0+CGFloat(i-4) * self.view.frame.width/4,self.view.frame.width/4*2 + 91,
+                    self.view.frame.width/4-1,self.view.frame.width/4-1))
+            }
+            v.backgroundColor = UIColor.whiteColor()
+            if cellData.count > i+4{
+                let imageView = UIImageView(frame: CGRectMake(v.frame.width/2-32/2,20,32,32))
+                imageView.image = UIImage(named:imageList[i+4])
+                let label = UILabel(frame: CGRectMake(0,32+22,v.frame.width,30))
                 label.font = UIFont.systemFontOfSize(10)
                 label.textAlignment = .Center
-                var index = -1
-                if i < cellData.count - 4{
-                    index = i+4
-                    label.text = cellData[index].title
-                    //点击payment手势
-                    let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
-                    v.addGestureRecognizer(tapGesture)
-                }
-                else{
-                    index = i - (cellData.count - 4)
-                    if index < gatherData.count{
-                        label.text = gatherData[index].title
-                        //点击gather手势
-                        let tapGesture = UITapGestureRecognizer(target: self, action: "tapGather:")
-                        v.addGestureRecognizer(tapGesture)
-                    }
-                    else{
-                        index = i - (cellData.count - 4) - gatherData.count
-                        if index < otherData.count{
-                            label.text = otherData[index].title
-                            //点击other手势
-                            let tapGesture = UITapGestureRecognizer(target: self, action: "tapOther:")
-                            v.addGestureRecognizer(tapGesture)
-                        }
-                    }
-                }
-                v.tag = index
+                label.text = cellData[i+4].title
+                v.tag = i+4
                 v.addSubview(label)
                 v.addSubview(imageView)
+                //点击payment手势
+                let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
+                v.addGestureRecognizer(tapGesture)
             }
             footerView.addSubview(v)
-            vLeft = vLeft + 1
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        //        var vTop:CGFloat = 0
+        //        var vLeft:CGFloat = 0
+        //        for i in 0...11{
+        //            if i == 4 || i == 8{
+        //                vTop = vTop + 1
+        //                vLeft = 0
+        //            }
+        //            let v = UIView(frame: CGRectMake(CGFloat(vLeft) * (vWidth+1),vTop * (vWidth+1),vWidth,vWidth))
+        //            v.backgroundColor = UIColor.whiteColor()
+        //            if i < (cellData.count - 4) + gatherData.count + otherData.count{
+        //                let width:CGFloat = 32
+        //                let imageView = UIImageView(frame: CGRectMake(v.frame.width/2-width/2,20,width,width))
+        //                imageView.image = UIImage(named:imageList[i])
+        //                let label = UILabel(frame: CGRectMake(0,width+22,v.frame.width,30))
+        //                label.font = UIFont.systemFontOfSize(10)
+        //                label.textAlignment = .Center
+        //                var index = -1
+        //                if i < cellData.count - 4{
+        //                    index = i+4
+        //                    label.text = cellData[index].title
+        //                    //点击payment手势
+        //                    let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
+        //                    v.addGestureRecognizer(tapGesture)
+        //                }
+        //                else{
+        //                    index = i - (cellData.count - 4)
+        //                    if index < gatherData.count{
+        //                        label.text = gatherData[index].title
+        //                        //点击gather手势
+        //                        let tapGesture = UITapGestureRecognizer(target: self, action: "tapGather:")
+        //                        v.addGestureRecognizer(tapGesture)
+        //                    }
+        //                    else{
+        //                        index = i - (cellData.count - 4) - gatherData.count
+        //                        if index < otherData.count{
+        //                            label.text = otherData[index].title
+        //                            //点击other手势
+        //                            let tapGesture = UITapGestureRecognizer(target: self, action: "tapOther:")
+        //                            v.addGestureRecognizer(tapGesture)
+        //                        }
+        //                    }
+        //                }
+        //                v.tag = index
+        //                v.addSubview(label)
+        //                v.addSubview(imageView)
+        //            }
+        //            footerView.addSubview(v)
+        //            vLeft = vLeft + 1
+        //        }
         tv.tableFooterView = footerView
         //初始化按钮标题和图片
         buttonList = [("\(Payment(rawValue: 0)!)","wait"),("\(Payment(rawValue: 1)!)","in"),("\(Payment(rawValue: 2)!)","finish")]
@@ -212,7 +298,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -231,6 +317,10 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         return 50
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "我要买"
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ScrollView", forIndexPath: indexPath)
         cell.selectionStyle = .None
@@ -239,17 +329,16 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         let tabbar = UITabBar(frame: CGRectMake(0,0,cell.frame.width,cell.frame.height))
         tabbar.translucent = false
-        let tbi1 = UITabBarItem(title: buttonList[0].title, image: UIImage(named: buttonList[0].image), tag: 1)
+        let tbi1 = UITabBarItem(title: buyData[0].title, image: UIImage(named: buyData[0].image), tag: 1)
         tbi1.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
-        tbi1.tag = 0
-        let tbi2 = UITabBarItem(title: buttonList[1].title, image: UIImage(named: buttonList[1].image), tag: 2)
+        let tbi2 = UITabBarItem(title: buyData[1].title, image: UIImage(named: buyData[1].image), tag: 2)
         tbi2.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
-        tbi2.tag = 1
-        let tbi3 = UITabBarItem(title: buttonList[2].title, image: UIImage(named: buttonList[2].image), tag: 3)
+        let tbi3 = UITabBarItem(title: buyData[2].title, image: UIImage(named: buyData[2].image), tag: 3)
         tbi3.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
-        tbi3.tag = 2
+        let tbi4 = UITabBarItem(title: buyData[3].title, image: UIImage(named: buyData[3].image), tag: 4)
+        tbi4.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState:.Normal)
         
-        let tbiArray = [tbi1,tbi2,tbi3]
+        let tbiArray = [tbi1,tbi2,tbi3,tbi4]
         tabbar.setItems(tbiArray, animated: true)
         cell.contentView.addSubview(tabbar)
         tabbar.delegate = self
@@ -257,8 +346,20 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        if cellData[item.tag].segue != ""{
-            self.performSegueWithIdentifier(cellData[item.tag].segue, sender: item.tag)
+        //        if cellData[item.tag].segue != ""{
+        //            self.performSegueWithIdentifier(cellData[item.tag].segue, sender: item.tag)
+        //        }
+        switch item.tag{
+        case 1:self.tabBarController?.selectedIndex = 2
+            break
+        case 2:self.tabBarController?.selectedIndex = 3
+            break
+        case 3:self.performSegueWithIdentifier(gatherData[0].segue, sender: 1)
+            break
+        case 4:self.performSegueWithIdentifier(gatherData[1].segue, sender: 0)
+            break
+        default:
+            break
         }
         tabBar.selectedItem = nil
     }

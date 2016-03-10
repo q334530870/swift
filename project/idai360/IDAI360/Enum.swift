@@ -1,5 +1,5 @@
 enum ProductType:Int{
-    case 推荐区 = 1,首发区,二手转让,我要卖
+    case 推荐区 = 1,首发区,市价买入,市价卖出
 }
 
 enum RefreshType:Int{
@@ -11,7 +11,7 @@ enum Payment:Int {
 }
 
 enum Gather:Int{
-    case 集合求售 = 0,集合求购
+    case 委托卖出 = 0,委托买入
 }
 
 enum SafeType:Int{

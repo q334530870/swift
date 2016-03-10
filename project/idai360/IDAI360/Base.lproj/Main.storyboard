@@ -1108,7 +1108,7 @@
             </objects>
             <point key="canvasLocation" x="1004.5" y="2223.5"/>
         </scene>
-        <!--我要卖-->
+        <!--市价卖出-->
         <scene sceneID="mhM-BO-PIM">
             <objects>
                 <tableViewController id="I9d-q9-GiD" customClass="WantSellTableTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
@@ -1140,7 +1140,7 @@
                             <outlet property="delegate" destination="I9d-q9-GiD" id="m2H-B2-r9J"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我要卖" id="zNI-Sn-VT1"/>
+                    <navigationItem key="navigationItem" title="市价卖出" id="zNI-Sn-VT1"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="MXh-VX-c1L" kind="show" identifier="sell" id="YeF-tf-qrI"/>
@@ -2744,7 +2744,7 @@
             </objects>
             <point key="canvasLocation" x="500.5" y="479.5"/>
         </scene>
-        <!--出售债权-->
+        <!--市价买入-->
         <scene sceneID="IQb-AR-z8O">
             <objects>
                 <tableViewController id="nqO-Na-Afz" customClass="SecondHandTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
@@ -2775,7 +2775,7 @@
                             <outlet property="delegate" destination="nqO-Na-Afz" id="fSU-FW-YCt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="出售债权" id="fdG-a6-gqQ"/>
+                    <navigationItem key="navigationItem" title="市价买入" id="fdG-a6-gqQ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="U8R-pp-d4z" kind="show" identifier="second" id="3eU-Qq-nML"/>
@@ -2842,11 +2842,11 @@
             </objects>
             <point key="canvasLocation" x="1004.5" y="-2056.5"/>
         </scene>
-        <!--二手转让-nav-->
+        <!--市价买入-nav-->
         <scene sceneID="tor-b8-ydG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6VV-sj-85Y" userLabel="二手转让-nav" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="出售债权" image="sell" id="zGG-da-AAN"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6VV-sj-85Y" userLabel="市价买入-nav" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="市价买入" image="sell" id="zGG-da-AAN"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nVQ-9F-Zcl">
@@ -2939,11 +2939,11 @@
             </objects>
             <point key="canvasLocation" x="3852.5" y="-1241.5"/>
         </scene>
-        <!--我要卖-->
+        <!--市价卖出-->
         <scene sceneID="JQl-C8-ZSC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4UJ-a4-fDe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我要卖" image="bill" id="gnM-Sp-bXj"/>
+                    <tabBarItem key="tabBarItem" title="市价卖出" image="bill" id="gnM-Sp-bXj"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wP7-7d-t6m">
@@ -3414,11 +3414,11 @@
         <image name="zfb" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3eU-Qq-nML"/>
-        <segue reference="7Ld-ON-WbQ"/>
-        <segue reference="u2r-Ax-89C"/>
-        <segue reference="YER-PZ-Zab"/>
-        <segue reference="Nqt-Fv-bKS"/>
+        <segue reference="zL8-Be-vaO"/>
+        <segue reference="WNe-4z-xr1"/>
+        <segue reference="ZZm-FH-8kg"/>
+        <segue reference="1EE-sp-uxB"/>
+        <segue reference="diJ-in-QhB"/>
         <segue reference="k8K-x5-Ype"/>
     </inferredMetricsTieBreakers>
 </document>

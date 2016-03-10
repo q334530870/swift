@@ -52,7 +52,7 @@ class WantSellTableTableViewController: UITableViewController,UISearchBarDelegat
     func getData(type:Int = RefreshType.下拉刷新.rawValue,let keyword:String? = nil){
         let url = API_URL + "/api/products"
         let token = Common.getToken()
-        let param = ["token":token,"pageIndex":pageIndex,"pageSize":pageSize,"keyword":keyword ?? "","type":ProductType.我要卖.rawValue]
+        let param = ["token":token,"pageIndex":pageIndex,"pageSize":pageSize,"keyword":keyword ?? "","type":ProductType.市价卖出.rawValue]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()

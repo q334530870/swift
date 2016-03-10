@@ -222,13 +222,13 @@
 "fI1-qP-c7Q.text" = "Title";
 
 /* Class = "UINavigationItem"; title = "出售债权"; ObjectID = "fdG-a6-gqQ"; */
-"fdG-a6-gqQ.title" = "出售债权";
+"fdG-a6-gqQ.title" = "市价买入";
 
 /* Class = "UILabel"; text = "→"; ObjectID = "fkt-KB-8dt"; */
 "fkt-KB-8dt.text" = "→";
 
 /* Class = "UITabBarItem"; title = "我要卖"; ObjectID = "gnM-Sp-bXj"; */
-"gnM-Sp-bXj.title" = "我要卖";
+"gnM-Sp-bXj.title" = "市价卖出";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "h2n-DP-eYW"; */
 "h2n-DP-eYW.text" = "Subtitle";
@@ -369,10 +369,10 @@
 "yhP-sl-8aT.text" = "Detail";
 
 /* Class = "UITabBarItem"; title = "出售债权"; ObjectID = "zGG-da-AAN"; */
-"zGG-da-AAN.title" = "出售债权";
+"zGG-da-AAN.title" = "市价买入";
 
 /* Class = "UINavigationItem"; title = "我要卖"; ObjectID = "zNI-Sn-VT1"; */
-"zNI-Sn-VT1.title" = "我要卖";
+"zNI-Sn-VT1.title" = "市价卖出";
 
 /* Class = "UIButton"; normalTitle = "支付宝支付"; ObjectID = "zoA-yd-kqq"; */
 "zoA-yd-kqq.normalTitle" = "支付宝支付";

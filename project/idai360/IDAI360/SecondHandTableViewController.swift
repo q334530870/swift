@@ -52,37 +52,37 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
     func getData(type:Int = RefreshType.下拉刷新.rawValue,let keyword:String? = nil){
         let url = API_URL + "/api/products"
         let token = Common.getToken()
-        let param = ["token":token,"pageIndex":pageIndex,"pageSize":pageSize,"keyword":keyword ?? "","type":ProductType.二手转让.rawValue]
+        let param = ["token":token,"pageIndex":pageIndex,"pageSize":pageSize,"keyword":keyword ?? "","type":ProductType.市价买入.rawValue]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-        }) { (response, json) -> Void in
-            if type == RefreshType.下拉刷新.rawValue{
-                //筛选
-                if keyword != nil &&  keyword != ""{
-                    self.searchResult = json["data"].array!
-                }
-                    //正常刷新
-                else{
-                    self.result = json["data"].array!
-                }
-                self.tableView.mj_header.endRefreshing()
-                self.tableView.reloadData()
-                //暂时没有分页功能
-                self.tableView.mj_footer.endRefreshingWithNoMoreData()
-            }
-            else if type == RefreshType.上拉加载.rawValue{
-                self.tableView.mj_footer.endRefreshing()
-                if json["data"].count == 0{
+            }) { (response, json) -> Void in
+                if type == RefreshType.下拉刷新.rawValue{
+                    //筛选
+                    if keyword != nil &&  keyword != ""{
+                        self.searchResult = json["data"].array!
+                    }
+                        //正常刷新
+                    else{
+                        self.result = json["data"].array!
+                    }
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.reloadData()
+                    //暂时没有分页功能
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
-                else{
-                    self.searchResult += json["data"].array!
-                    self.pageIndex += 1
-                    self.tableView.reloadData()
+                else if type == RefreshType.上拉加载.rawValue{
+                    self.tableView.mj_footer.endRefreshing()
+                    if json["data"].count == 0{
+                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                    else{
+                        self.searchResult += json["data"].array!
+                        self.pageIndex += 1
+                        self.tableView.reloadData()
+                    }
                 }
-            }
         }
     }
     

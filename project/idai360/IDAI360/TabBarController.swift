@@ -27,7 +27,7 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate{
     }
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        if willSelectTab == "我的账户" || willSelectTab == "我要卖"{
+        if willSelectTab == "我的账户" || willSelectTab == "市价卖出"{
             //判断是否登录
             let user = Common.loadDefault("user")
             if user == nil{
