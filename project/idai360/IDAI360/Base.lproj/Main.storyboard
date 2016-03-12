@@ -2327,9 +2327,9 @@
                                     <constraint firstAttribute="width" constant="200" id="YUG-Xu-QNF"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="待确认"/>
-                                    <segment title="还款中"/>
-                                    <segment title="还款结束"/>
+                                    <segment title="交易付款"/>
+                                    <segment title="履约中"/>
+                                    <segment title="履约结束"/>
                                 </segments>
                                 <color key="tintColor" red="0.18039215689999999" green="0.65490196079999996" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>

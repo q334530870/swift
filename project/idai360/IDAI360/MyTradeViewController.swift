@@ -15,9 +15,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     var pageIndex = 1
     //每页显示条数
     var pageSize = 100
-    var tempValue:[(text:String,detailText:String)]!
-    var selectCell = Payment.待确认
-    var dataType = Payment.待确认
+    var tempValue:[(text:String,detailText:String,detailText2:String)]!
+    var selectCell = Payment.交易付款
+    var dataType = Payment.交易付款
     var isJump = false
     @IBOutlet weak var tv: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
@@ -46,31 +46,31 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     func setTitle(){
-        tempValue = [(text:String,detailText:String)]()
+        tempValue = [(text:String,detailText:String,detailText2:String)]()
         switch dataType{
-        case Payment.待确认:
-            tempValue.append(("产品名称","到期时间"))
+        case Payment.交易付款:
+            tempValue.append(("产品名称","到期时间",""))
             break
-        case Payment.还款中:
-            tempValue.append(("产品名称","年化收益率"))
+        case Payment.履约中:
+            tempValue.append(("产品名称","年化收益率",""))
             break
-        case Payment.还款结束:
-            tempValue.append(("产品名称","完成时间"))
+        case Payment.履约结束:
+            tempValue.append(("产品名称","完成时间",""))
             break
         case Payment.我的持仓量:
-            tempValue.append(("产品","条件持有量"))
+            tempValue.append(("产品","条件持有量",""))
             break
-        case Payment.我的买入成交单:
-            tempValue.append(("产品","成交时间"))
+        case Payment.买入成交单:
+            tempValue.append(("产品","成交时间",""))
             break
-        case Payment.我的卖出成交单:
-            tempValue.append(("产品","成交时间"))
+        case Payment.卖出成交单:
+            tempValue.append(("产品","成交时间",""))
             break
         case Payment.现金日记账:
-            tempValue.append(("摘要","日期"))
+            tempValue.append(("日期","摘要","金额"))
             break
-        case Payment.到期本息支付汇总:
-            tempValue.append(("产品","日期"))
+        case Payment.到期本息支付:
+            tempValue.append(("产品","日期",""))
             break
         default:
             break
@@ -88,24 +88,24 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tv.mj_header.endRefreshing()
             self.tv.mj_footer.endRefreshing()
-        }) { (response, json) -> Void in
-            if type == RefreshType.下拉刷新.rawValue{
-                self.result = json["data"].array!
-                self.tv.mj_header.endRefreshing()
-                self.tv.reloadData()
-                //暂时没有分页功能
-                self.tv.mj_footer.endRefreshingWithNoMoreData()
-            }
-            else if type == RefreshType.上拉加载.rawValue{
-                self.tv.mj_footer.endRefreshing()
-                if json["data"].count == 0{
+            }) { (response, json) -> Void in
+                if type == RefreshType.下拉刷新.rawValue{
+                    self.result = json["data"].array!
+                    self.tv.mj_header.endRefreshing()
+                    self.tv.reloadData()
+                    //暂时没有分页功能
                     self.tv.mj_footer.endRefreshingWithNoMoreData()
                 }
-                else{
-                    self.pageIndex += 1
-                    self.tv.reloadData()
+                else if type == RefreshType.上拉加载.rawValue{
+                    self.tv.mj_footer.endRefreshing()
+                    if json["data"].count == 0{
+                        self.tv.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                    else{
+                        self.pageIndex += 1
+                        self.tv.reloadData()
+                    }
                 }
-            }
         }
         
     }
@@ -123,14 +123,14 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     @IBAction func changeType(sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == Payment.待确认.rawValue{
-            dataType = Payment.待确认
+        if sender.selectedSegmentIndex == Payment.交易付款.rawValue{
+            dataType = Payment.交易付款
         }
-        else if sender.selectedSegmentIndex == Payment.还款中.rawValue{
-            dataType = Payment.还款中
+        else if sender.selectedSegmentIndex == Payment.履约中.rawValue{
+            dataType = Payment.履约中
         }
-        else if sender.selectedSegmentIndex == Payment.还款结束.rawValue{
-            dataType = Payment.还款结束
+        else if sender.selectedSegmentIndex == Payment.履约结束.rawValue{
+            dataType = Payment.履约结束
         }
         getData()
     }
@@ -148,11 +148,24 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
         let rowData = result[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
+        if dataType == Payment.交易付款{
+            if rowData["认购金额"] == rowData["已付认购款"]{
+                cell.imageView?.image =  UIImage(named: "ok")
+            }
+        }
+        else{
+            cell.imageView?.image = nil
+        }
         cell.textLabel?.text = rowData[tempValue[0].text].stringValue
-        cell.detailTextLabel?.text = rowData[tempValue[0].detailText].stringValue
+        
+        var detailText = rowData[tempValue[0].detailText].stringValue
+        if !tempValue[0].detailText2.isEmpty && rowData[tempValue[0].detailText2] != nil{
+            detailText = detailText + "：" + rowData[tempValue[0].detailText2].stringValue
+        }
+        cell.detailTextLabel?.text = detailText
         return cell
     }
     

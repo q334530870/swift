@@ -30,6 +30,13 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
             cancelButton.hidden = true
             tvBottom.constant = 0
         }
+        else if hasOperate && detailType == Payment.交易付款{
+            if dataDetail!["认购金额"] == dataDetail!["已付认购款"]{
+                payButton.hidden = true
+                cancelButton.hidden = true
+                tvBottom.constant = 0
+            }
+        }
         //设置表格尾部（去除多余cell线）
         tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
@@ -54,7 +61,7 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
                 detailInfo.append((dt.0,dt.1.stringValue))
             }
         }
-        if detailType == Payment.待确认{
+        if detailType == Payment.交易付款{
             hasOperate = true
         }
     }

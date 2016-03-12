@@ -268,7 +268,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
             let controller = (self.storyboard?.instantiateViewControllerWithIdentifier(jump))! as! MyTradeViewController
             controller.isJump = true
             if jumpFilter == "Sell"{
-                controller.selectCell = Payment.我的卖出成交单
+                controller.selectCell = Payment.卖出成交单
             }
             self.navigationController?.pushViewController(controller, animated: false)
             jump = ""

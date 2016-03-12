@@ -9,7 +9,7 @@
 "2a3-IC-N3B.text" = "→";
 
 /* Class = "UISegmentedControl"; 37P-mA-LNd.segmentTitles[0] = "待确认"; ObjectID = "37P-mA-LNd"; */
-"37P-mA-LNd.segmentTitles[0]" = "待确认";
+"37P-mA-LNd.segmentTitles[0]" = "交易付款";
 
 /* Class = "UISegmentedControl"; 37P-mA-LNd.segmentTitles[1] = "还款中"; ObjectID = "37P-mA-LNd"; */
 "37P-mA-LNd.segmentTitles[1]" = "还款中";
