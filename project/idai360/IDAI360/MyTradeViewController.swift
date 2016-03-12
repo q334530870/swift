@@ -66,7 +66,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         case Payment.我的卖出成交单:
             tempValue.append(("产品","成交时间"))
             break
-        case Payment.现金收付明细表:
+        case Payment.现金日记账:
             tempValue.append(("摘要","日期"))
             break
         case Payment.到期本息支付汇总:

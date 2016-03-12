@@ -212,6 +212,8 @@
 		A471810B1C33B0F600C95818 /* PrintObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintObject.m; sourceTree = "<group>"; };
 		A47640661C72BD170044CD4B /* GatherSellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherSellTableViewController.swift; sourceTree = "<group>"; };
 		A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterpriseTableViewController.swift; sourceTree = "<group>"; };
+		A495039B1C93B860005F50D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		A495039C1C93B860005F50D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A4951E6E1C30D182003DD474 /* Alamofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alamofire.h; sourceTree = "<group>"; };
 		A4951E6F1C30D182003DD474 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		A4951E701C30D182003DD474 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A4BD71ED1C154B6C00D425DB /* Base */,
+				A495039B1C93B860005F50D3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1052,6 +1055,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A4BD71F21C154B6C00D425DB /* Base */,
+				A495039C1C93B860005F50D3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
