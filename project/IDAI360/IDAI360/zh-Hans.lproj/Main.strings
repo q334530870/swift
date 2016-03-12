@@ -77,8 +77,8 @@
 /* Class = "UINavigationItem"; title = "登录"; ObjectID = "EdJ-mf-MOi"; */
 "EdJ-mf-MOi.title" = "登录";
 
-/* Class = "UITabBarItem"; title = "债券首发"; ObjectID = "EfR-WV-9gH"; */
-"EfR-WV-9gH.title" = "债券首发";
+/* Class = "UITabBarItem"; title = "债首发111"; ObjectID = "EfR-WV-9gH"; */
+"EfR-WV-9gH.title" = "债首发";
 
 /* Class = "UITextField"; placeholder = "点击选择交易条款"; ObjectID = "EkB-As-OdL"; */
 "EkB-As-OdL.placeholder" = "点击选择交易条款";
@@ -221,13 +221,13 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "fI1-qP-c7Q"; */
 "fI1-qP-c7Q.text" = "Title";
 
-/* Class = "UINavigationItem"; title = "出售债权"; ObjectID = "fdG-a6-gqQ"; */
+/* Class = "UINavigationItem"; title = "市价买入"; ObjectID = "fdG-a6-gqQ"; */
 "fdG-a6-gqQ.title" = "市价买入";
 
 /* Class = "UILabel"; text = "→"; ObjectID = "fkt-KB-8dt"; */
 "fkt-KB-8dt.text" = "→";
 
-/* Class = "UITabBarItem"; title = "我要卖"; ObjectID = "gnM-Sp-bXj"; */
+/* Class = "UITabBarItem"; title = "市价卖出"; ObjectID = "gnM-Sp-bXj"; */
 "gnM-Sp-bXj.title" = "市价卖出";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "h2n-DP-eYW"; */
@@ -248,8 +248,8 @@
 /* Class = "UILabel"; text = "Detail"; ObjectID = "jnB-iJ-JBj"; */
 "jnB-iJ-JBj.text" = "Detail";
 
-/* Class = "UINavigationItem"; title = "债券首发"; ObjectID = "kxx-4T-qRP"; */
-"kxx-4T-qRP.title" = "债券首发";
+/* Class = "UINavigationItem"; title = "债首发"; ObjectID = "kxx-4T-qRP"; */
+"kxx-4T-qRP.title" = "债首发";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "l2A-gF-spj"; */
 "l2A-gF-spj.text" = "2";
@@ -368,10 +368,10 @@
 /* Class = "UILabel"; text = "Detail"; ObjectID = "yhP-sl-8aT"; */
 "yhP-sl-8aT.text" = "Detail";
 
-/* Class = "UITabBarItem"; title = "出售债权"; ObjectID = "zGG-da-AAN"; */
+/* Class = "UITabBarItem"; title = "市价买入"; ObjectID = "zGG-da-AAN"; */
 "zGG-da-AAN.title" = "市价买入";
 
-/* Class = "UINavigationItem"; title = "我要卖"; ObjectID = "zNI-Sn-VT1"; */
+/* Class = "UINavigationItem"; title = "市价卖出"; ObjectID = "zNI-Sn-VT1"; */
 "zNI-Sn-VT1.title" = "市价卖出";
 
 /* Class = "UIButton"; normalTitle = "支付宝支付"; ObjectID = "zoA-yd-kqq"; */

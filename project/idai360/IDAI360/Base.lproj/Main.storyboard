@@ -2809,7 +2809,7 @@
             </objects>
             <point key="canvasLocation" x="500.5" y="-372.5"/>
         </scene>
-        <!--债券首发-->
+        <!--债首发-->
         <scene sceneID="0RT-2y-uA8">
             <objects>
                 <tableViewController id="aR0-xq-cnv" customClass="FirstTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
@@ -2832,7 +2832,7 @@
                             <outlet property="delegate" destination="aR0-xq-cnv" id="zt9-SD-a86"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="债券首发" id="kxx-4T-qRP"/>
+                    <navigationItem key="navigationItem" title="债首发" id="kxx-4T-qRP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="U8R-pp-d4z" kind="show" identifier="first" id="ple-50-cro"/>
@@ -2871,7 +2871,7 @@
         <scene sceneID="p7b-aQ-Ail">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="68C-JM-Y1J" userLabel="首发区-nav" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="债券首发" image="first" id="EfR-WV-9gH"/>
+                    <tabBarItem key="tabBarItem" title="债首发" image="first" id="EfR-WV-9gH"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ejx-U4-vWV">
@@ -3414,10 +3414,10 @@
         <image name="zfb" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ple-50-cro"/>
         <segue reference="zL8-Be-vaO"/>
-        <segue reference="WNe-4z-xr1"/>
-        <segue reference="ZZm-FH-8kg"/>
         <segue reference="1EE-sp-uxB"/>
+        <segue reference="ZZm-FH-8kg"/>
         <segue reference="diJ-in-QhB"/>
         <segue reference="k8K-x5-Ype"/>
     </inferredMetricsTieBreakers>
