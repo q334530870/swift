@@ -58,7 +58,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
             tempValue.append(("产品名称","完成时间",""))
             break
         case Payment.我的持仓量:
-            tempValue.append(("产品","条件持有量",""))
+            tempValue.append(("产品","持有量",""))
             break
         case Payment.买入成交单:
             tempValue.append(("产品","成交时间",""))
@@ -154,6 +154,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         if dataType == Payment.交易付款{
             if rowData["认购金额"] == rowData["已付认购款"]{
                 cell.imageView?.image =  UIImage(named: "ok")
+            }
+            else{
+                cell.imageView?.image = UIImage(named: "no-ok")
             }
         }
         else{

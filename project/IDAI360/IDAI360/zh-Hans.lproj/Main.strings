@@ -12,10 +12,10 @@
 "37P-mA-LNd.segmentTitles[0]" = "交易付款";
 
 /* Class = "UISegmentedControl"; 37P-mA-LNd.segmentTitles[1] = "还款中"; ObjectID = "37P-mA-LNd"; */
-"37P-mA-LNd.segmentTitles[1]" = "还款中";
+"37P-mA-LNd.segmentTitles[1]" = "履约中";
 
 /* Class = "UISegmentedControl"; 37P-mA-LNd.segmentTitles[2] = "还款结束"; ObjectID = "37P-mA-LNd"; */
-"37P-mA-LNd.segmentTitles[2]" = "还款结束";
+"37P-mA-LNd.segmentTitles[2]" = "履约结束";
 
 /* Class = "UIButton"; normalTitle = "显示"; ObjectID = "4Bp-RF-bah"; */
 "4Bp-RF-bah.normalTitle" = "显示";

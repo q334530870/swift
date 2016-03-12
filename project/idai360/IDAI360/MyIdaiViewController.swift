@@ -76,7 +76,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         let tv0 = UIView(frame: CGRectMake(0,60,self.view.frame.width,40))
         tv0.backgroundColor = UIColor.whiteColor()
         let label0 = UILabel(frame: CGRectMake(10,0,self.view.frame.width,40))
-        label0.text = "我的订单"
+        label0.text = "我要交易"
         label0.font = UIFont.systemFontOfSize(14)
         tv0.addSubview(label0)
         
@@ -98,7 +98,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         otherData.append(("充值","","recharge"))
         imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx"]
         //初始化表格底部
-        let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 3 + 3))
+        let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 4 + 3))
         footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         //初始化快捷按钮
         let tv1 = UIView(frame: CGRectMake(0,0,self.view.frame.width,40))
@@ -108,6 +108,8 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         label.font = UIFont.systemFontOfSize(14)
         tv1.addSubview(label)
         footerView.addSubview(tv1)
+        
+        
         for i in 0...3{
             let v = UIView(frame: CGRectMake(0+CGFloat(i) * self.view.frame.width/4,41,self.view.frame.width/4-1,self.view.frame.width/4-1))
             v.backgroundColor = UIColor.whiteColor()
@@ -146,28 +148,30 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         footerView.addSubview(tv2)
         
         for i in 0...7{
-            var v = UIView(frame: CGRectMake(0+CGFloat(i) * self.view.frame.width/4,self.view.frame.width/4 + 91,
-                self.view.frame.width/4-1,self.view.frame.width/4-1))
+            let v:UIView?
             if i >= 4{
-                v = UIView(frame: CGRectMake(0+CGFloat(i-4) * self.view.frame.width/4,self.view.frame.width/4*2 + 91,
+                v = UIView(frame:CGRectMake(0+CGFloat(i-4) * self.view.frame.width/4,self.view.frame.width/4*2 + 91,
                     self.view.frame.width/4-1,self.view.frame.width/4-1))
             }
-            v.backgroundColor = UIColor.whiteColor()
+            else{
+                v = UIView(frame: CGRectMake(0+CGFloat(i) * self.view.frame.width/4,self.view.frame.width/4 + 91,
+                    self.view.frame.width/4-1,self.view.frame.width/4-1))
+            }
+            v!.backgroundColor = UIColor.whiteColor()
             if cellData.count > i+4{
-                let imageView = UIImageView(frame: CGRectMake(v.frame.width/2-32/2,20,32,32))
+                let imageView = UIImageView(frame: CGRectMake(v!.frame.width/2-32/2,20,32,32))
                 imageView.image = UIImage(named:imageList[i+4])
-                let label = UILabel(frame: CGRectMake(0,32+22,v.frame.width,30))
+                let label = UILabel(frame: CGRectMake(0,32+22,v!.frame.width,30))
                 label.font = UIFont.systemFontOfSize(10)
                 label.textAlignment = .Center
                 label.text = cellData[i+4].title
-                v.tag = i+4
-                v.addSubview(label)
-                v.addSubview(imageView)
                 //点击payment手势
-                let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
-                v.addGestureRecognizer(tapGesture)
+                v!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tapPayment:"))
+                v!.tag = i+4
+                v!.addSubview(label)
+                v!.addSubview(imageView)
             }
-            footerView.addSubview(v)
+            footerView.addSubview(v!)
         }
         
         
@@ -294,6 +298,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             self.yeValue.text = json["data"]["banlace"].stringValue
+            print(json)
         }
     }
     
