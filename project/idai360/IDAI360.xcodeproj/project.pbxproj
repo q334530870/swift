@@ -12,7 +12,6 @@
 		A413F64E1C71BB4B00A6B460 /* GatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */; };
 		A413F6501C71BE9300A6B460 /* GatherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */; };
 		A415301B1C9649E300D0E738 /* TotalViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415301A1C9649E300D0E738 /* TotalViewTableViewController.swift */; };
-		A415301D1C964C5A00D0E738 /* Index.cshtml in Resources */ = {isa = PBXBuildFile; fileRef = A415301C1C964C5A00D0E738 /* Index.cshtml */; };
 		A423E0071C4F73A000564101 /* SXHalfWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */; };
 		A423E0081C4F73A000564101 /* SXWaveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A423DFFF1C4F73A000564101 /* SXWaveCell.m */; };
 		A423E0091C4F73A000564101 /* SXWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423E0011C4F73A000564101 /* SXWaveView.m */; };
@@ -150,7 +149,6 @@
 		A413F64D1C71BB4B00A6B460 /* GatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherTableViewController.swift; sourceTree = "<group>"; };
 		A413F64F1C71BE9300A6B460 /* GatherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatherDetailTableViewController.swift; sourceTree = "<group>"; };
 		A415301A1C9649E300D0E738 /* TotalViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalViewTableViewController.swift; sourceTree = "<group>"; };
-		A415301C1C964C5A00D0E738 /* Index.cshtml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Index.cshtml; sourceTree = "<group>"; };
 		A423DFFC1C4F73A000564101 /* SXHalfWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXHalfWaveView.h; sourceTree = "<group>"; };
 		A423DFFD1C4F73A000564101 /* SXHalfWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXHalfWaveView.m; sourceTree = "<group>"; };
 		A423DFFE1C4F73A000564101 /* SXWaveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXWaveCell.h; sourceTree = "<group>"; };
@@ -597,7 +595,6 @@
 				A4B38D3E1C5F3D8000A8D790 /* SellViewController.swift */,
 				A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */,
 				A415301A1C9649E300D0E738 /* TotalViewTableViewController.swift */,
-				A415301C1C964C5A00D0E738 /* Index.cshtml */,
 			);
 			name = userCenter;
 			sourceTree = "<group>";
@@ -904,7 +901,6 @@
 				A4F3C4041C3F6211006862E6 /* pop-osx-Info.plist in Resources */,
 				A4BD71F31C154B6C00D425DB /* LaunchScreen.storyboard in Resources */,
 				A4BD71F01C154B6C00D425DB /* Assets.xcassets in Resources */,
-				A415301D1C964C5A00D0E738 /* Index.cshtml in Resources */,
 				A44F1E521C1950CC008E3E3F /* MJRefresh.bundle in Resources */,
 				A4BD71EE1C154B6C00D425DB /* Main.storyboard in Resources */,
 			);

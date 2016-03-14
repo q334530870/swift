@@ -1742,7 +1742,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="家庭电话" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVf-4Y-5Jd" customClass="FloatLabelTextField" customModule="IDAI360" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="家庭电话,格式：区号-xxxxxxxx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVf-4Y-5Jd" customClass="FloatLabelTextField" customModule="IDAI360" customModuleProvider="target">
                                         <rect key="frame" x="57" y="44" width="218" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="WRd-0b-hky"/>
