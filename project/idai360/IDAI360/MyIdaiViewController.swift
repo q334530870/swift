@@ -22,11 +22,12 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     var yeValue:UILabel!
     var user:JSON?
     var imagePick:UIImagePickerController?
-    var cellData = [(title:String,detail:String,segue:String,type:Payment)]()
+    var cellData = [(title:String,detail:String,segue:String,type:Payment?)]()
     var gatherData = [(title:String,detail:String,segue:String,type:Gather)]()
     var otherData = [(title:String,detail:String,segue:String)]()
     var buyData = [(title:String,image:String)]()
     var imageList = [String]()
+    var result:JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,12 +92,13 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         for i in 0...8{
             cellData.append(("\(Payment(rawValue: i)!)","","myTrade",Payment(rawValue: i)!))
         }
+        cellData.append(("账户总览","","totalView",nil))
         for i in 0...1{
             gatherData.append(("\(Gather(rawValue: i)!)","","gather",Gather(rawValue: i)!))
         }
         buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托买出","wtmc")]
         otherData.append(("充值","","recharge"))
-        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx"]
+        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","hkz"]
         //初始化表格底部
         let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 4 + 3))
         footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
@@ -298,7 +300,8 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             self.yeValue.text = json["data"]["banlace"].stringValue
-            print(json)
+            self.result = json["data"]
+            
         }
     }
     
@@ -372,12 +375,17 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let trade = segue.destinationViewController as? MyTradeViewController{
             trade.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
-            trade.selectCell = cellData[Int(sender! as! NSNumber)].type
+            trade.selectCell = cellData[Int(sender! as! NSNumber)].type!
         }
         else if let gather = segue.destinationViewController as? GatherTableViewController{
             gather.navigationItem.title = gatherData[Int(sender! as! NSNumber)].title
             gather.selectCell = gatherData[Int(sender! as! NSNumber)].type
         }
+        else if let totalView = segue.destinationViewController as? TotalViewTableViewController{
+            totalView.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
+            totalView.result = self.result
+        }
+        
     }
     
     
