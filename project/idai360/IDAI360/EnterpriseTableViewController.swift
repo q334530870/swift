@@ -13,7 +13,7 @@ class EnterpriseTableViewController: UITableViewController,MWPhotoBrowserDelegat
     var productId:Int = 0
     var titleList = [(title:String,value:String)]()
     var browser:MWPhotoBrowser?
-    var imageList = [UIImage]()
+    var imageList = [UIImage?]()
     var photo = [MWPhoto]()
     var model:JSON?
     
@@ -25,15 +25,18 @@ class EnterpriseTableViewController: UITableViewController,MWPhotoBrowserDelegat
     
     func getData() {
         //测试
-        imageList = [
-            UIImage(data: NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][0].stringValue)!)!)!,
-            UIImage(data: NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][1].stringValue)!)!)!,
-            UIImage(data: NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][2].stringValue)!)!)!]
+        let dataList = [NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][0].stringValue)!),
+            NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][1].stringValue)!),
+            NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][2].stringValue)!)]
+        imageList =  [
+            dataList[0] == nil ? UIImage() : UIImage(data:dataList[0]!),
+            dataList[1] == nil ? UIImage() :UIImage(data: dataList[1]!),
+            dataList[2] == nil ? UIImage() :UIImage(data: dataList[2]!)]
         
-        photo = [
-            MWPhoto(image: UIImage(data: NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][0].stringValue)!)!)!),
-            MWPhoto(image: UIImage(data: NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][1].stringValue)!)!)!),
-            MWPhoto(image: UIImage(data: NSData(contentsOfURL: NSURL(string: MAIN_URL + model!["FundRaiserImages"][2].stringValue)!)!)!)]
+        photo =  [
+            MWPhoto(image: imageList[0]),
+            MWPhoto(image: imageList[1]),
+            MWPhoto(image: imageList[2])]
         
         photo[0].caption = "管理层申明"
         photo[1].caption = "审计报告"
