@@ -98,7 +98,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托买出","wtmc")]
         otherData.append(("充值","","recharge"))
-        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","hkz"]
+        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","zl"]
         //初始化表格底部
         let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 4 + 3))
         footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
