@@ -9,13 +9,13 @@
 import UIKit
 
 class RechargeViewController: UIViewController {
-
+    
     @IBOutlet weak var cash: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -33,7 +33,7 @@ class RechargeViewController: UIViewController {
             Common.doRepuest(self, url: url, method: .POST, param: param, failed: nil, complete: { (Response, json) -> Void in
                 Common.showAlert(self, title: nil, message: "充值成功") { (action) -> Void in
                     //支付成功
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewControllerAnimated(false)
                 }
             })
         }
