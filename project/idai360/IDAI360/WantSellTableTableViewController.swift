@@ -57,32 +57,32 @@ class WantSellTableTableViewController: UITableViewController,UISearchBarDelegat
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-        }) { (response, json) -> Void in
-            if type == RefreshType.下拉刷新.rawValue{
-                //筛选
-                if keyword != nil &&  keyword != ""{
-                    self.searchResult = json["data"].array!
-                }
-                    //正常刷新
-                else{
-                    self.result = json["data"].array!
-                }
-                self.tableView.mj_header.endRefreshing()
-                self.tableView.reloadData()
-                //暂时没有分页功能
-                self.tableView.mj_footer.endRefreshingWithNoMoreData()
-            }
-            else if type == RefreshType.上拉加载.rawValue{
-                self.tableView.mj_footer.endRefreshing()
-                if json["data"].count == 0{
+            }) { (response, json) -> Void in
+                if type == RefreshType.下拉刷新.rawValue{
+                    //筛选
+                    if keyword != nil &&  keyword != ""{
+                        self.searchResult = json["data"].array!
+                    }
+                        //正常刷新
+                    else{
+                        self.result = json["data"].array!
+                    }
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.reloadData()
+                    //暂时没有分页功能
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
-                else{
-                    self.searchResult += json["data"].array!
-                    self.pageIndex += 1
-                    self.tableView.reloadData()
+                else if type == RefreshType.上拉加载.rawValue{
+                    self.tableView.mj_footer.endRefreshing()
+                    if json["data"].count == 0{
+                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                    else{
+                        self.searchResult += json["data"].array!
+                        self.pageIndex += 1
+                        self.tableView.reloadData()
+                    }
                 }
-            }
         }
     }
     
@@ -186,6 +186,23 @@ class WantSellTableTableViewController: UITableViewController,UISearchBarDelegat
             repaymentLabel.clipsToBounds = true
             repaymentLabel.layer.cornerRadius = 8
             topView.addSubview(repaymentLabel)
+            //是否self
+            if cellData["Self"].string == "1"{
+                let selfLabel = UILabel()
+                selfLabel.text = "self"
+                selfLabel.backgroundColor = UIColor.orangeColor()
+                selfLabel.textColor = UIColor.whiteColor()
+                selfLabel.font = UIFont.systemFontOfSize(12)
+                selfLabel.textAlignment = .Center
+                newsize = selfLabel.sizeThatFits(selfLabel.frame.size)
+                selfLabel.frame = CGRect(x: pmtCycleLabel.frame.width + titleLabel.frame.width + repaymentLabel.frame.width + 30, y: 6, width: newsize.width+8, height: cell.frame.height/5)
+                //设置圆角
+                selfLabel.clipsToBounds = true
+                selfLabel.layer.cornerRadius = 8
+                topView.addSubview(selfLabel)
+                
+            }
+            
             //期数
             let cycleLabel = UILabel(frame: CGRect(x: 10, y:titleLabel.frame.height + 2, width: 30, height: cell.frame.height/4))
             cycleLabel.text = "期数:"

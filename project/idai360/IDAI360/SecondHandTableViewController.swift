@@ -186,6 +186,22 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
             repaymentLabel.clipsToBounds = true
             repaymentLabel.layer.cornerRadius = 8
             topView.addSubview(repaymentLabel)
+            //是否self
+            if cellData["Self"].string == "1"{
+                let selfLabel = UILabel()
+                selfLabel.text = "self"
+                selfLabel.backgroundColor = UIColor.orangeColor()
+                selfLabel.textColor = UIColor.whiteColor()
+                selfLabel.font = UIFont.systemFontOfSize(12)
+                selfLabel.textAlignment = .Center
+                newsize = selfLabel.sizeThatFits(selfLabel.frame.size)
+                selfLabel.frame = CGRect(x: pmtCycleLabel.frame.width + titleLabel.frame.width + repaymentLabel.frame.width + 30, y: 6, width: newsize.width+8, height: cell.frame.height/5)
+                //设置圆角
+                selfLabel.clipsToBounds = true
+                selfLabel.layer.cornerRadius = 8
+                topView.addSubview(selfLabel)
+                
+            }
             //期数
             let cycleLabel = UILabel(frame: CGRect(x: 10, y:titleLabel.frame.height + 2, width: 30, height: cell.frame.height/4))
             cycleLabel.text = "期数:"

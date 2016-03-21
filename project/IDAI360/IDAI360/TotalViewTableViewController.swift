@@ -18,26 +18,25 @@ class TotalViewTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         titleList1 = ["保证金","金币价值","买入已付","线下支付中","买入应付","卖出应收","本息到期应收","本息本月到期"]
         titleList2 = ["应收利息","本日利息","本周实际利息","本月实际利息","本年实际利息","本周持有到期利息","本月持有到期利息","本年持有到期利息"]
-        valueList1.append(result!["cashBalance"]["cash_bal"].stringValue)
-        valueList1.append(result!["cashBalance"]["coins_yet_to_redeem"].stringValue)
-        valueList1.append(result!["cashBalance"]["condi_pmt_paid"].stringValue)
-        valueList1.append(result!["cashBalance"]["condi_pmt_offline_paying"].stringValue)
-        valueList1.append(result!["cashBalance"]["condi_pmt_payable"].stringValue)
-        valueList1.append(result!["cashBalance"]["condi_receivable"].stringValue)
-        valueList1.append(result!["cashBalance"]["instalments_receivable"].stringValue)
-        valueList1.append(result!["cashBalance"]["instalments_due_mtd"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["cash_bal"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["coins_yet_to_redeem"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["condi_pmt_paid"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["condi_pmt_offline_paying"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["condi_pmt_payable"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["condi_receivable"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["instalments_receivable"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["instalments_due_mtd"].stringValue)
         
-        valueList2.append(result!["interestSummary"]["interest_receivable"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_today"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_act_wtd"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_act_mtd"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_act_ytd"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_maturity_week"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_maturity_month"].stringValue)
-        valueList2.append(result!["interestSummary"]["interest_maturity_year"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_receivable"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_today"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_act_wtd"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_act_mtd"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_act_ytd"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_maturity_week"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_maturity_month"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_maturity_year"].stringValue)
     }
     
     override func didReceiveMemoryWarning() {
