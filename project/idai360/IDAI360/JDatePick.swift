@@ -12,12 +12,13 @@ class JDatePick:NSObject,UITextFieldDelegate{
     var pickValue = ""
     var taskView:UIView?
     var pickButton:UIButton?
+    var pv:UIView!
     
     init(controller:UIViewController? = nil,target:UIView,textField:UITextField,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd",height:CGFloat = 200){
         super.init()
-        //添加键盘隐藏通知
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldHide:", name: UIKeyboardDidHideNotification, object: nil)
-        
+        //        //添加键盘隐藏通知
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldHide:", name: UIKeyboardDidHideNotification, object: nil)
+        //        
         self.target = target
         self.textField = textField
         self.pickView = UIDatePicker()
@@ -34,32 +35,42 @@ class JDatePick:NSObject,UITextFieldDelegate{
         self.textField!.delegate = self
     }
     
-    //键盘隐藏
-    func keyboardShouldHide(notification:NSNotification){
-        if taskView?.subviews.count > 0{
-            var offset = (target?.frame.height)!
-            if let tb = target as? UITableView{
-                offset += tb.contentOffset.y
-            }
-            if offset < taskView?.frame.height{
-                taskView?.removeFromSuperview()
-                initFrame(controller, type: type!, dateFmt: dateFmt!, height: height!)
-            }
-        }
+    //    //键盘隐藏
+    //    func keyboardShouldHide(notification:NSNotification){
+    //        if taskView?.subviews.count > 0{
+    //            var offset = (target?.frame.height)!
+    //            if let tb = target as? UITableView{
+    //                offset += tb.contentOffset.y
+    //            }
+    //            if offset < taskView?.frame.height{
+    //                taskView?.removeFromSuperview()
+    //                initFrame(controller, type: type!, dateFmt: dateFmt!, height: height!)
+    //            }
+    //        }
+    //    }
+    
+    //页面滚动时调整taskview位置
+    func setOffset(y:CGFloat){
+        pv?.frame.origin.y = (target?.frame.height)! - height! + y
     }
     
     func initFrame(controller:UIViewController?,type:UIDatePickerMode ,dateFmt:String,height:CGFloat){
-        var offset = (target?.frame.height)!
+        var offset:CGFloat = 0
+        var taskHeight = (target?.frame.height)!
         if let tb = target as? UITableView{
             offset += tb.contentOffset.y
+            if tb.contentSize.height > tb.frame.height{
+                taskHeight = tb.contentSize.height
+            }
         }
         //遮罩层
-        taskView = UIView(frame:CGRectMake(0,0,(target?.frame.width)!,offset))
+        taskView = UIView(frame:CGRectMake(0,0,(target?.frame.width)!,taskHeight))
         taskView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         //总视图
-        let pv = UIView(frame: CGRectMake(0,(taskView?.height)! - height,(taskView?.width)!,height))
+        pv = UIView(frame: CGRectMake(0,(target?.frame.height)! - height + offset,(taskView?.width)!,height))
+        pv.backgroundColor = UIColor.whiteColor()
         //选择视图
-        pickView!.frame = CGRectMake(0,30,pv.frame.width,pv.frame.height - 30)
+        pickView!.frame = CGRectMake(0,30,pv.frame.width,pv.frame.height - 30 - 50)
         pickView!.backgroundColor = UIColor.whiteColor()
         pickView?.datePickerMode = type
         let locale = NSLocale(localeIdentifier: "zh_CN")
