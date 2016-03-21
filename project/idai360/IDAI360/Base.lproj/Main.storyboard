@@ -2557,7 +2557,6 @@
         <scene sceneID="xcM-Pm-1EZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4MO-R7-6IL" userLabel="登录-nav" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的爱贷" id="bnu-bo-KXL"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
