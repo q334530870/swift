@@ -38,6 +38,13 @@ class GatherSellTableViewController: UITableViewController,UITextFieldDelegate {
         
     }
     
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        product?.setOffset(scrollView.contentOffset.y)
+        tk?.setOffset(scrollView.contentOffset.y)
+        startDate?.setOffset(scrollView.contentOffset.y)
+        endDate?.setOffset(scrollView.contentOffset.y)
+    }
+    
     //获取产品列表
     func getProduct(){
         let url = API_URL + "/api/Transaction"
