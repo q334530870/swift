@@ -29,10 +29,10 @@ import Foundation
 */
 public protocol ResponseSerializerType {
     /// The type of serialized object to be created by this `ResponseSerializerType`.
-    typealias SerializedObject
+    associatedtype SerializedObject
 
     /// The type of error to be created by this `ResponseSerializer` if serialization fails.
-    typealias ErrorObject: ErrorType
+    associatedtype ErrorObject: ErrorType
 
     /**
         A closure used by response handlers that takes a request, response, data and error and returns a result.
@@ -185,8 +185,8 @@ extension Request {
 
         - returns: A string response serializer.
     */
-    public static func stringResponseSerializer(
-        var encoding encoding: NSStringEncoding? = nil)
+    public static func stringResponseSerializer
+        (var encoding: NSStringEncoding? = nil)
         -> ResponseSerializer<String, NSError>
     {
         return ResponseSerializer { _, response, data, error in
@@ -234,7 +234,7 @@ extension Request {
         -> Self
     {
         return response(
-            responseSerializer: Request.stringResponseSerializer(encoding: encoding),
+            responseSerializer: Request.stringResponseSerializer(encoding),
             completionHandler: completionHandler
         )
     }

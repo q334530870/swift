@@ -24,7 +24,7 @@ class publicCommentViewController: UIViewController {
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
         //添加键盘显示通知，获得键盘高度
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(publicCommentViewController.keyboardShouldShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
     }
     
     //键盘出现时获得键盘高度，并让textview向上移动

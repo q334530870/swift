@@ -73,7 +73,7 @@ class RegisterPasswordViewController: UIViewController {
             yzm.setTitle("重新获取验证码 \(second)", forState: UIControlState.Normal)
             yzm.enabled = false
             timer?.invalidate()
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "countDown", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(RegisterPasswordViewController.countDown), userInfo: nil, repeats: true)
         }
     }
     

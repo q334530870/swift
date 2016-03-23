@@ -39,9 +39,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         //获取数据
         getData()
         //下拉刷新
-        tv.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        tv.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyTradeViewController.refresh))
         //上拉加载
-        tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
+        tv.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyTradeViewController.loadData))
         self.tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     

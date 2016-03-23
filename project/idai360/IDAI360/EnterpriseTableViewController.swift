@@ -48,17 +48,17 @@ class EnterpriseTableViewController: UITableViewController,MWPhotoBrowserDelegat
         let image1 = UIButton(frame: CGRectMake(5,10,width,width))
         image1.setBackgroundImage(imageList[0], forState: UIControlState.Normal)
         image1.tag = 0
-        image1.addTarget(self, action: "ViewPhoto:", forControlEvents: UIControlEvents.TouchUpInside)
+        image1.addTarget(self, action: #selector(EnterpriseTableViewController.ViewPhoto(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         let image2 = UIButton(frame: CGRectMake(10+(width+5),10,width,width))
         image2.setBackgroundImage(imageList[1], forState: UIControlState.Normal)
         image2.tag = 1
-        image2.addTarget(self, action: "ViewPhoto:", forControlEvents: UIControlEvents.TouchUpInside)
+        image2.addTarget(self, action: #selector(EnterpriseTableViewController.ViewPhoto(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         let image3 = UIButton(frame: CGRectMake(15+(width+5)*2,10,width,width))
         image3.setBackgroundImage(imageList[2], forState: UIControlState.Normal)
         image3.tag = 2
-        image3.addTarget(self, action: "ViewPhoto:", forControlEvents: UIControlEvents.TouchUpInside)
+        image3.addTarget(self, action: #selector(EnterpriseTableViewController.ViewPhoto(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         footView.addSubview(image1)
         footView.addSubview(image2)

@@ -12,7 +12,7 @@ class ViewController: UITableViewController,UISearchBarDelegate {
         super.viewDidLoad()
         getData()
         //下拉刷新
-        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(ViewController.refresh))
         //self.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
         //        let header = MJRefreshGifHeader(refreshingTarget: self, refreshingAction: "refresh")
         //        // 设置普通状态的动画图片
@@ -37,7 +37,7 @@ class ViewController: UITableViewController,UISearchBarDelegate {
         //        header.stateLabel?.hidden = true
         self.tableView.mj_header = header
         //上拉加载
-        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ViewController.loadData))
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -299,7 +299,7 @@ class ViewController: UITableViewController,UISearchBarDelegate {
             button.layer.cornerRadius = 3
             rightView.addSubview(button)
             button.tag = indexPath.section
-            button.addTarget(self, action: "buy:", forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(ViewController.buy(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             cell.addSubview(leftView)
             cell.addSubview(rightView)
         }

@@ -47,7 +47,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         if let avt = user.avatar{
             avatorButton.setImage(avt,forState: UIControlState.Normal)
         }
-        avatorButton.addTarget(self, action: "setAvator:", forControlEvents: UIControlEvents.TouchUpInside)
+        avatorButton.addTarget(self, action: #selector(MyIdaiViewController.setAvator(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         //设置头像圆角
         avatorButton.layer.cornerRadius = avatorButton.frame.width/2
         avatorButton.clipsToBounds = true
@@ -128,13 +128,13 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
             if i == 3{
                 //点击other手势
                 v.tag = 0
-                let tapGesture = UITapGestureRecognizer(target: self, action: "tapOther:")
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MyIdaiViewController.tapOther(_:)))
                 v.addGestureRecognizer(tapGesture)
                 label.text = "充值"
             }
             else{
                 //点击payment手势
-                let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MyIdaiViewController.tapPayment(_:)))
                 v.addGestureRecognizer(tapGesture)
             }
             
@@ -168,7 +168,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
                 label.textAlignment = .Center
                 label.text = cellData[i+4].title
                 //点击payment手势
-                v!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tapPayment:"))
+                v!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MyIdaiViewController.tapPayment(_:))))
                 v!.tag = i+4
                 v!.addSubview(label)
                 v!.addSubview(imageView)
@@ -463,7 +463,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
                 if picker.sourceType == .Camera{
                     Common.showAlert(self, title: nil, message: "是否存入相册？",cancel:true,okTitle: "是", cancelTitle:"否", ok: { (action) -> Void in
                         //保存图片到相册
-                        UIImageWriteToSavedPhotosAlbum(image!, self, "saveImage:didFinishSavingWithError:contextInfo:", nil)
+                        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(MyIdaiViewController.saveImage(_:didFinishSavingWithError:contextInfo:)), nil)
                     })
                 }
                 //保存图片变量

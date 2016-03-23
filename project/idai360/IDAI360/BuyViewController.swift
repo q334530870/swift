@@ -38,9 +38,9 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
         redView.layer.cornerRadius = redView.frame.width / 2
         self.navigationItem.title = navTitle
         //添加键盘显示通知，获得键盘高度
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BuyViewController.keyboardShouldShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
         //添加图片点击手势
-        ok.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "okClick"))
+        ok.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BuyViewController.okClick)))
         ok.userInteractionEnabled = true
     }
     

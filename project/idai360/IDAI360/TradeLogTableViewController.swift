@@ -23,11 +23,11 @@ class TradeLogTableViewController: UITableViewController {
         super.viewDidLoad()
         getData()
         //下拉刷新
-        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(TradeLogTableViewController.refresh))
         header.lastUpdatedTimeLabel?.hidden = true
         self.tableView.mj_header = header
         //上拉加载
-        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(TradeLogTableViewController.loadData))
         //设置表格尾部（去除多余cell线）
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
@@ -43,25 +43,25 @@ class TradeLogTableViewController: UITableViewController {
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-            }){ (response, json) -> Void in
-                if type == RefreshType.下拉刷新.rawValue{
-                    self.result = json["data"].array!
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.reloadData()
-                    //暂时没有分页功能
+        }){ (response, json) -> Void in
+            if type == RefreshType.下拉刷新.rawValue{
+                self.result = json["data"].array!
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.reloadData()
+                //暂时没有分页功能
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            }
+            else if type == RefreshType.上拉加载.rawValue{
+                self.tableView.mj_footer.endRefreshing()
+                if json["data"].count == 0{
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
-                else if type == RefreshType.上拉加载.rawValue{
-                    self.tableView.mj_footer.endRefreshing()
-                    if json["data"].count == 0{
-                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
-                    }
-                    else{
-                        self.result += json["data"].array!
-                        self.pageIndex += 1
-                        self.tableView.reloadData()
-                    }
+                else{
+                    self.result += json["data"].array!
+                    self.pageIndex += 1
+                    self.tableView.reloadData()
                 }
+            }
         }
     }
     
@@ -121,7 +121,7 @@ class TradeLogTableViewController: UITableViewController {
         for view in cell.contentView.subviews{
             view.removeFromSuperview()
         }
-        let left = UILabel(frame: CGRect(x: 10, y: 0, width: cell.frame.width/3-15, height: 40))
+        let left = UILabel(frame: CGRect(x: 10, y: 0, width: cell.frame.width/3-10, height: 40))
         left.font = UIFont.systemFontOfSize(12)
         left.text = result[indexPath.row]["DateTime"].stringValue
         let center = UILabel(frame: CGRect(x: cell.frame.width/3+10, y: 0, width: cell.frame.width/3-15, height: 40))

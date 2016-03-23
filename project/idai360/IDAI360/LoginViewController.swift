@@ -17,9 +17,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         //获得导航下面的实线
         navBarHairlineImageView = Common.findHairlineImageViewUnder((self.navigationController?.navigationBar)!)
         //添加键盘隐藏通知
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideKeyboard:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.hideKeyboard(_:)), name: UIKeyboardWillHideNotification, object: nil)
         //添加键盘显示通知，获得键盘高度
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShouldShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardShouldShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
     }
     
     //键盘出现时获得键盘高度，并让view向上移动

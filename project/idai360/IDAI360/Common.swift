@@ -191,7 +191,7 @@ class Common{
         let pickButton = UIButton(frame: CGRectMake(toolbar.frame.width - 45,0,40,30))
         pickButton.setTitle("确定", forState: .Normal)
         pickButton.setTitleColor(MAIN_COLOR, forState: .Normal)
-        pickButton.addTarget(target, action: Selector("selectSeg"), forControlEvents:.TouchUpInside)
+        pickButton.addTarget(target, action:Selector("selectSeg"), forControlEvents:.TouchUpInside)
         toolbar.addSubview(pickButton)
         pv.addSubview(toolbar)
         taskView.addSubview(pv)

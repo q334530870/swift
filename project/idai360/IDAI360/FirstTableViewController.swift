@@ -25,11 +25,11 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
         super.viewDidLoad()
         getData()
         //下拉刷新
-        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "refresh")
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(FirstTableViewController.refresh))
         header.lastUpdatedTimeLabel?.hidden = true
         self.tableView.mj_header = header
         //上拉加载
-        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "loadData")
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(FirstTableViewController.loadData))
         //初始化UISearchController
         searchController = Common.initSearchController(self)
         self.tableView.tableHeaderView = searchController?.searchBar
@@ -323,7 +323,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             button.layer.cornerRadius = 3
             rightView.addSubview(button)
             button.tag = indexPath.section
-            button.addTarget(self, action: "buy:", forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(FirstTableViewController.buy(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             cell.addSubview(leftView)
             cell.addSubview(rightView)
         }

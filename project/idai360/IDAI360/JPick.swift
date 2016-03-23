@@ -62,7 +62,7 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         pickButton?.setTitle("确定", forState: .Normal)
         pickButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
         pickButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
-        pickButton?.addTarget(controller == nil ? self : controller!, action: Selector("selectSeg:"), forControlEvents:.TouchUpInside)
+        pickButton?.addTarget(controller == nil ? self : controller!, action: #selector(JPick.selectSeg(_:)), forControlEvents:.TouchUpInside)
         toolbar.addSubview(pickButton!)
         pv.addSubview(toolbar)
         taskView?.addSubview(pv)

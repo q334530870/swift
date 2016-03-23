@@ -102,5 +102,5 @@ class RegisterInfoViewController: UIViewController,UIPickerViewDelegate,UIPicker
         pickView.hidden = true
     }
     
-
+    
 }
