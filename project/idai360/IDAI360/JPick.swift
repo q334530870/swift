@@ -11,6 +11,7 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
     var pickValue = ""
     var taskView:UIView?
     var pickButton:UIButton?
+    var cancelButton:UIButton?
     var pv:UIView!
     
     init(controller:UIViewController? = nil,target:UIView,textField:UITextField,height:CGFloat = 200){
@@ -63,7 +64,15 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         pickButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
         pickButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
         pickButton?.addTarget(controller == nil ? self : controller!, action: #selector(JPick.selectSeg(_:)), forControlEvents:.TouchUpInside)
+        //取消按钮
+        cancelButton = UIButton(frame: CGRectMake(toolbar.frame.width - 100,0,40,30))
+        cancelButton?.setTitle("取消", forState: .Normal)
+        cancelButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
+        cancelButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
+        cancelButton?.addTarget(self, action: #selector(JPick.cancelSeg), forControlEvents:.TouchUpInside)
+        
         toolbar.addSubview(pickButton!)
+        toolbar.addSubview(cancelButton!)
         pv.addSubview(toolbar)
         taskView?.addSubview(pv)
         target!.addSubview(taskView!)
@@ -129,6 +138,10 @@ class JPick:NSObject, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDel
         }
         self.pickView!.superview!.superview!.removeFromSuperview()
         return self.pickList[row!].value
+    }
+    
+    func cancelSeg(){
+        self.pickView!.superview!.superview!.removeFromSuperview()
     }
     
 }

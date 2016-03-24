@@ -64,7 +64,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
         let url = API_URL + "/api/Transaction"
         let token = Common.getToken()
         let param = ["token":token,"productId":pt["product_factor_rental_id"].stringValue,
-            "seniority":pt["seniority"].stringValue,"type":"3"]
+                     "seniority":pt["seniority"].stringValue,"type":"3"]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             //绑定默认数据
@@ -231,6 +231,12 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         let tag = textField.tag
         tempValue[tag] = textField.text
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let tag = textField.tag
+        tempValue[tag] = textField.text
+        return true
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -84,6 +84,7 @@ class SellViewController: UIViewController {
             let temp = String(o).characters.split(",")
             jp!.pickList.append((String(temp[1]),String(temp[0])))
         }
+        tk.text = jp!.pickList[1].title
     }
     
     //检查数量

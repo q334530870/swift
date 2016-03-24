@@ -12,6 +12,7 @@ class JDatePick:NSObject,UITextFieldDelegate{
     var pickValue = ""
     var taskView:UIView?
     var pickButton:UIButton?
+    var cancelButton:UIButton?
     var pv:UIView!
     
     init(controller:UIViewController? = nil,target:UIView,textField:UITextField,type:UIDatePickerMode = UIDatePickerMode.Date,dateFmt:String="yyyy-MM-dd",height:CGFloat = 200){
@@ -84,7 +85,14 @@ class JDatePick:NSObject,UITextFieldDelegate{
         pickButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
         pickButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
         pickButton?.addTarget(controller == nil ? self : controller!, action: #selector(JDatePick.selectSeg(_:)), forControlEvents:.TouchUpInside)
+        //取消按钮
+        cancelButton = UIButton(frame: CGRectMake(toolbar.frame.width - 100,0,40,30))
+        cancelButton?.setTitle("取消", forState: .Normal)
+        cancelButton?.titleLabel?.font = UIFont.systemFontOfSize(18)
+        cancelButton?.setTitleColor(MAIN_COLOR, forState: .Normal)
+        cancelButton?.addTarget(self, action: #selector(JDatePick.cancelSeg), forControlEvents:.TouchUpInside)
         toolbar.addSubview(pickButton!)
+        toolbar.addSubview(cancelButton!)
         pv.addSubview(toolbar)
         taskView?.addSubview(pv)
         target!.addSubview(taskView!)
@@ -121,6 +129,10 @@ class JDatePick:NSObject,UITextFieldDelegate{
         textField!.text = strDate
         self.pickView!.superview!.superview!.removeFromSuperview()
         return strDate
+    }
+    
+    func cancelSeg(){
+        self.pickView!.superview!.superview!.removeFromSuperview()
     }
     
 }

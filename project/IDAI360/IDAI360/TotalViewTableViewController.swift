@@ -13,13 +13,18 @@ class TotalViewTableViewController: UITableViewController {
     var result :JSON?
     var titleList1:[String]?
     var titleList2:[String]?
+    var titleList3:[String]?
     var valueList1 = [String]()
     var valueList2 = [String]()
+    var valueList3 = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         titleList1 = ["保证金","金币价值","买入已付","线下支付中","买入应付","卖出应收","本息到期应收","本息本月到期"]
         titleList2 = ["应收利息","本日利息","本周实际利息","本月实际利息","本年实际利息","本周持有到期利息","本月持有到期利息","本年持有到期利息"]
+        titleList3 = ["本息到期应收","实际本息本月到期","实际本息本年到期","持有到期本息本月到期","持有到期本息本年到期"]
+        
         valueList1.append(result!["cashBalance"][0]["cash_bal"].stringValue)
         valueList1.append(result!["cashBalance"][0]["coins_yet_to_redeem"].stringValue)
         valueList1.append(result!["cashBalance"][0]["condi_pmt_paid"].stringValue)
@@ -37,6 +42,12 @@ class TotalViewTableViewController: UITableViewController {
         valueList2.append(result!["interestSummary"][0]["interest_maturity_week"].stringValue)
         valueList2.append(result!["interestSummary"][0]["interest_maturity_month"].stringValue)
         valueList2.append(result!["interestSummary"][0]["interest_maturity_year"].stringValue)
+        
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_receivable"].stringValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_due_mtd"].stringValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_due_ytd"].stringValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_month"].stringValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_year"].stringValue)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,15 +55,18 @@ class TotalViewTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return titleList1!.count
         }
-        else{
+        else if section == 1{
             return titleList2!.count
+        }
+        else{
+            return titleList3!.count
         }
     }
     
@@ -66,9 +80,13 @@ class TotalViewTableViewController: UITableViewController {
             cell.textLabel?.text = titleList1![indexPath.row]
             cell.detailTextLabel?.text = valueList1[indexPath.row]
         }
-        else{
+        else if indexPath.section == 1{
             cell.textLabel?.text = titleList2![indexPath.row]
             cell.detailTextLabel?.text = valueList2[indexPath.row]
+        }
+        else{
+            cell.textLabel?.text = titleList3![indexPath.row]
+            cell.detailTextLabel?.text = valueList3[indexPath.row]
         }
         return cell
     }
@@ -80,8 +98,11 @@ class TotalViewTableViewController: UITableViewController {
         if section == 0{
             text = "现金余额"
         }
-        else{
+        else if section == 1{
             text = "利息汇总"
+        }
+        else{
+            text = "本息汇总"
         }
         label.text = text
         label.font = UIFont.systemFontOfSize(14)

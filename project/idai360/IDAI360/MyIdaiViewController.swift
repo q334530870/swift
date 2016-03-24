@@ -96,7 +96,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         for i in 0...1{
             gatherData.append(("\(Gather(rawValue: i)!)","","gather",Gather(rawValue: i)!))
         }
-        buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托买出","wtmc")]
+        buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托卖出","wtmc")]
         otherData.append(("充值","","recharge"))
         imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","zl"]
         //初始化表格底部
