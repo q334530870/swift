@@ -248,7 +248,7 @@ class GatherSellTableViewController: UITableViewController,UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let tag = textField.tag
-        tempValue[tag] = textField.text
+        tempValue[tag] = textField.text! + string
         return true
     }
     

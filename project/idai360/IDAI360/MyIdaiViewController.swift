@@ -89,7 +89,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         headerView.addSubview(tv0)
         tv.tableHeaderView = headerView
         //模拟数据
-        for i in 0...8{
+        for i in 0...9{
             cellData.append(("\(Payment(rawValue: i)!)","","myTrade",Payment(rawValue: i)!))
         }
         cellData.append(("账户总览","","totalView",nil))
@@ -98,7 +98,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托卖出","wtmc")]
         otherData.append(("充值","","recharge"))
-        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","zl"]
+        imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","sy","zl"]
         //初始化表格底部
         let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 4 + 3))
         footerView.backgroundColor = UIColor.groupTableViewBackgroundColor()
@@ -149,7 +149,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         tv2.addSubview(label2)
         footerView.addSubview(tv2)
         
-        for i in 0...7{
+        for i in 0...8{
             let v:UIView?
             if i >= 4{
                 v = UIView(frame:CGRectMake(0+CGFloat(i-4) * self.view.frame.width/4,self.view.frame.width/4*2 + 91,
@@ -375,6 +375,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let trade = segue.destinationViewController as? MyTradeViewController{
             trade.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
+            print(cellData[Int(sender! as! NSNumber)].type!)
             trade.selectCell = cellData[Int(sender! as! NSNumber)].type!
         }
         else if let gather = segue.destinationViewController as? GatherTableViewController{
