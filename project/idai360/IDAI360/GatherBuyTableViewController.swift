@@ -30,7 +30,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
         endDate = JDatePick(controller:self,target: self.tableView, textField: UITextField())
         
         getProduct()
-        titleList = ["请选择买入产品","1-是否接受初次发行？","2-是否接受T+1交易（全款24小时内付清）？","3-是否接受集合竞价交易？","4-是否是发行人的回购？","5-认购下单，可接受支付的选项（可多选）","(T+1) 保证金","(T+1) 首付款","(T+1) 全款","(T+0) 全款","购买数量/片","过息利息金额","最低收益率（%）","竞价开始日期","竞价结束日期"]
+        titleList = ["点击选择买入产品","1-是否接受初次发行？","2-是否接受T+1交易（全款24小时内付清）？","3-是否接受集合竞价交易？","4-是否是发行人的回购？","5-认购下单，可接受支付的选项（可多选）","(T+1) 保证金","(T+1) 首付款","(T+1) 全款","(T+0) 全款","购买数量/片","过息利息金额","最低收益率（%）","竞价开始日期","竞价结束日期"]
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
     }
     
@@ -160,6 +160,9 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
             let textField = FloatLabelTextField(frame: CGRectMake(15,3,cell.width-20,cell.height-6))
             textField.font = UIFont.systemFontOfSize(14)
             textField.placeholder = titleList![indexPath.row]
+            if(indexPath.row == 0){
+                textField.font = UIFont.systemFontOfSize(18)
+            }
             textField.tag = indexPath.row
             cell.contentView.addSubview(textField)
             if tempValue.count>0{
@@ -218,6 +221,9 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
                 textField.keyboardType = .NumbersAndPunctuation
                 textField.returnKeyType = .Done
                 textField.delegate = self
+            }
+            if indexPath.row >= 10 && indexPath.row <= 12{
+                textField.titleTextColour = MAIN_COLOR
             }
         }
         return cell

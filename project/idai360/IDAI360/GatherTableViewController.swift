@@ -40,24 +40,24 @@ class GatherTableViewController: UITableViewController {
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-            }) { (response, json) -> Void in
-                if type == RefreshType.下拉刷新.rawValue{
-                    self.result = json["data"].array!
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.reloadData()
-                    //暂时没有分页功能
+        }) { (response, json) -> Void in
+            if type == RefreshType.下拉刷新.rawValue{
+                self.result = json["data"].array!
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.reloadData()
+                //暂时没有分页功能
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            }
+            else if type == RefreshType.上拉加载.rawValue{
+                self.tableView.mj_footer.endRefreshing()
+                if json["data"].count == 0{
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
-                else if type == RefreshType.上拉加载.rawValue{
-                    self.tableView.mj_footer.endRefreshing()
-                    if json["data"].count == 0{
-                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
-                    }
-                    else{
-                        self.pageIndex += 1
-                        self.tableView.reloadData()
-                    }
+                else{
+                    self.pageIndex += 1
+                    self.tableView.reloadData()
                 }
+            }
         }
         
     }

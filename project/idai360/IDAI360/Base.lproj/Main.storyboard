@@ -999,7 +999,7 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-EF-cJi">
-                                <rect key="frame" x="27" y="110" width="24" height="14.5"/>
+                                <rect key="frame" x="35" y="110" width="24" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.5568627451" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1042,14 +1042,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-ok" translatesAutoresizingMaskIntoConstraints="NO" id="71l-en-dSB">
-                                <rect key="frame" x="10" y="109" width="16" height="16"/>
+                                <rect key="frame" x="10" y="106" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="a3W-EU-Gff"/>
-                                    <constraint firstAttribute="width" constant="16" id="zXT-kc-JpQ"/>
+                                    <constraint firstAttribute="height" constant="24" id="a3W-EU-Gff"/>
+                                    <constraint firstAttribute="width" constant="24" id="zXT-kc-JpQ"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBT-Q7-fG9">
-                                <rect key="frame" x="49" y="103" width="126" height="27"/>
+                                <rect key="frame" x="57" y="103" width="126" height="27"/>
                                 <color key="tintColor" red="0.18039215689999999" green="0.65490196079999996" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -1077,7 +1077,7 @@
                             <constraint firstAttribute="trailing" secondItem="uei-Bu-4V6" secondAttribute="trailing" constant="10" id="CWV-QL-xOa"/>
                             <constraint firstItem="uei-Bu-4V6" firstAttribute="leading" secondItem="cXP-Tk-JgW" secondAttribute="leading" constant="10" id="Gf4-jf-dN6"/>
                             <constraint firstItem="WIn-vz-sPi" firstAttribute="leading" secondItem="cXP-Tk-JgW" secondAttribute="leading" id="GmT-ja-LGE"/>
-                            <constraint firstItem="71l-en-dSB" firstAttribute="top" secondItem="WIn-vz-sPi" secondAttribute="bottom" constant="7" id="PmX-6e-mfY"/>
+                            <constraint firstItem="71l-en-dSB" firstAttribute="top" secondItem="WIn-vz-sPi" secondAttribute="bottom" constant="4" id="PmX-6e-mfY"/>
                             <constraint firstItem="zBT-Q7-fG9" firstAttribute="top" secondItem="Ffn-jK-4zH" secondAttribute="bottom" constant="43" id="Poc-up-lUs"/>
                             <constraint firstAttribute="trailing" secondItem="Ffn-jK-4zH" secondAttribute="trailing" id="RCe-1z-s98"/>
                             <constraint firstItem="Ffn-jK-4zH" firstAttribute="top" secondItem="jpu-zu-Dcw" secondAttribute="bottom" constant="20" id="Xiw-8V-4VN"/>
@@ -1099,7 +1099,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="nextButton" destination="uei-Bu-4V6" id="AeU-np-9QZ"/>
-                        <outlet property="ok" destination="71l-en-dSB" id="rZY-ws-jNa"/>
+                        <outlet property="ok" destination="71l-en-dSB" id="w4I-kd-VmL"/>
                         <outlet property="phone" destination="uK5-W1-mRR" id="cQf-jb-93u"/>
                         <segue destination="UCD-oH-t4Q" kind="show" identifier="Register2" id="X9j-KN-YCD"/>
                     </connections>
@@ -1957,7 +1957,7 @@
         <!--My Idai View Controller-->
         <scene sceneID="8RB-xc-gW6">
             <objects>
-                <viewController id="dIq-N5-RjL" customClass="MyIdaiViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyIdai" id="dIq-N5-RjL" customClass="MyIdaiViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="lrI-Mh-KCH">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3184,7 +3184,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ora-l6-zHU">
                                         <rect key="frame" x="251" y="25" width="124" height="124"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可售数量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEg-eZ-oaY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可购数量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEg-eZ-oaY">
                                                 <rect key="frame" x="0.0" y="34" width="124" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -3459,11 +3459,11 @@
         <image name="zfb" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ZZm-FH-8kg"/>
+        <segue reference="k8K-x5-Ype"/>
+        <segue reference="diJ-in-QhB"/>
+        <segue reference="1EE-sp-uxB"/>
+        <segue reference="zL8-Be-vaO"/>
         <segue reference="ple-50-cro"/>
-        <segue reference="Nqt-Fv-bKS"/>
-        <segue reference="7Ld-ON-WbQ"/>
-        <segue reference="u2r-Ax-89C"/>
-        <segue reference="YER-PZ-Zab"/>
-        <segue reference="c0I-dW-4tB"/>
     </inferredMetricsTieBreakers>
 </document>

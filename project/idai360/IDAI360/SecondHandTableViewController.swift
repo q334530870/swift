@@ -16,9 +16,14 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
     //当前页数
     var pageIndex = 1
     //每页显示条数
-    var pageSize = 100
+    var pageSize = 99999
     //搜索结果试图
     var searchController:UISearchController?
+    
+    override func viewDidAppear(animated: Bool) {
+        //显示tabbar
+        self.tabBarController?.tabBar.hidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,32 +62,32 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-            }) { (response, json) -> Void in
-                if type == RefreshType.下拉刷新.rawValue{
-                    //筛选
-                    if keyword != nil &&  keyword != ""{
-                        self.searchResult = json["data"].array!
-                    }
-                        //正常刷新
-                    else{
-                        self.result = json["data"].array!
-                    }
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.reloadData()
-                    //暂时没有分页功能
+        }) { (response, json) -> Void in
+            if type == RefreshType.下拉刷新.rawValue{
+                //筛选
+                if keyword != nil &&  keyword != ""{
+                    self.searchResult = json["data"].array!
+                }
+                    //正常刷新
+                else{
+                    self.result = json["data"].array!
+                }
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.reloadData()
+                //暂时没有分页功能
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            }
+            else if type == RefreshType.上拉加载.rawValue{
+                self.tableView.mj_footer.endRefreshing()
+                if json["data"].count == 0{
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 }
-                else if type == RefreshType.上拉加载.rawValue{
-                    self.tableView.mj_footer.endRefreshing()
-                    if json["data"].count == 0{
-                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
-                    }
-                    else{
-                        self.searchResult += json["data"].array!
-                        self.pageIndex += 1
-                        self.tableView.reloadData()
-                    }
+                else{
+                    self.searchResult += json["data"].array!
+                    self.pageIndex += 1
+                    self.tableView.reloadData()
                 }
+            }
         }
     }
     
@@ -233,7 +238,7 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
             let bottomView = UIView(frame: CGRect(x: 0, y: cell.frame.height/2+7, width: cell.frame.width, height: cell.frame.height/2-1))
             //第一列
             let interestLabel = UILabel(frame: CGRect(x: 0, y:0, width: cell.frame.width/3-1, height: cell.frame.height/4))
-            interestLabel.text = cellData["Irr"].string
+            interestLabel.text = cellData["QuotationIrr"].string
             interestLabel.textColor = UIColor.orangeColor()
             interestLabel.font = UIFont.systemFontOfSize(14)
             interestLabel.textAlignment = NSTextAlignment.Center

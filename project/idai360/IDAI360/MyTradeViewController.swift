@@ -25,9 +25,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(isJump){
-            self.tabBarController?.tabBar.hidden = true
-        }
+        //        if(isJump){
+        //            self.tabBarController?.tabBar.hidden = true
+        //        }
         dataType = selectCell
         if selectCell.rawValue > 3{
             segmented.hidden = true

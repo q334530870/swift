@@ -85,6 +85,7 @@ class SellViewController: UIViewController {
             jp!.pickList.append((String(temp[1]),String(temp[0])))
         }
         tk.text = jp!.pickList[1].title
+        jp!.pickValue = jp!.pickList[1].value
     }
     
     //检查数量

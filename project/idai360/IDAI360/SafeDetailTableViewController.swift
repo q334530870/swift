@@ -47,7 +47,7 @@ class SafeDetailTableViewController: UITableViewController,UIPickerViewDelegate,
         switch selectCell{
         case SafeType.基本信息:
             
-            list = ["家庭电话","月收入","性别","开票方式"]
+            list = ["家庭电话,格式：区号-xxxxxxxx","月收入","性别","开票方式"]
             pickList = ["请选择","2000以下","2000~5000","5000~8000","8000~12000","12000~20000","20000以上"]
             //调用接口读取数据
             let url = API_URL + "/api/account"
@@ -107,14 +107,6 @@ class SafeDetailTableViewController: UITableViewController,UIPickerViewDelegate,
             }
             break
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.tabBarController?.tabBar.hidden = true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.tabBarController?.tabBar.hidden = false
     }
     
     func getBankName(value:String) ->String{

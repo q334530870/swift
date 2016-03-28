@@ -44,7 +44,7 @@ class RegisterInfoViewController: UIViewController,UIPickerViewDelegate,UIPicker
         if email.text == "" || !Common.isEmail(email.text){
             Common.showAlert(self, title: "", message: "请输入正确的邮箱")
         }
-        else if telephone.text == "" || !Common.isTel(telephone.text){
+        else if telephone.text != "" && !Common.isTel(telephone.text){
             Common.showAlert(self, title: "", message: "请输入正确的电话号码")
         }
         else if receive.text == ""{

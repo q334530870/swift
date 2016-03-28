@@ -5,13 +5,16 @@ class RegisterViewController: UIViewController {
     var agree:Bool = false
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var ok: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //添加图片点击手势
+        
+        ok.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BuyViewController.okClick)))
+        ok.userInteractionEnabled = true
     }
     
-    @IBOutlet weak var ok: UIImageView!
     //判断手机号位数
     @IBAction func checkPhone(sender: AnyObject) {
         checkNext()
@@ -19,7 +22,7 @@ class RegisterViewController: UIViewController {
     
     //检查是否可以进入下一步
     func checkNext(){
-        if(agree == true && Common.isMobile(phone.text)){
+        if(agree == true && phone.text?.characters.count == 11){
             nextButton.enabled = true
             nextButton.alpha = 1
         }
@@ -29,10 +32,14 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToRegiser(segue: UIStoryboardSegue){
+    func okClick(){
         agree = true
-        ok.image = UIImage(named:"ok")
+        ok.image = UIImage(named: "ok")
         checkNext()
+    }
+    
+    @IBAction func unwindToRegiser(segue: UIStoryboardSegue){
+        okClick()
     }
     
     @IBAction func closeLogin(sender: AnyObject) {

@@ -71,7 +71,13 @@ class JDatePick:NSObject,UITextFieldDelegate{
         pv = UIView(frame: CGRectMake(0,(target?.frame.height)! - height + offset,(taskView?.width)!,height))
         pv.backgroundColor = UIColor.whiteColor()
         //选择视图
-        pickView!.frame = CGRectMake(0,30,pv.frame.width,pv.frame.height - 30 - 50)
+        var pickViewHeight = pv.frame.height - 30
+        if let tabbar = controller?.tabBarController?.tabBar{
+            if tabbar.hidden == false{
+                pickViewHeight -= 50
+            }
+        }
+        pickView!.frame = CGRectMake(0,30,pv.frame.width,pickViewHeight)
         pickView!.backgroundColor = UIColor.whiteColor()
         pickView?.datePickerMode = type
         let locale = NSLocale(localeIdentifier: "zh_CN")

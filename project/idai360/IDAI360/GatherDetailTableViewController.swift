@@ -22,18 +22,6 @@ class GatherDetailTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
-    override func viewWillAppear(animated: Bool) {
-        if let tabBar = self.tabBarController?.tabBar{
-            tabBar.hidden = true
-        }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        if let tabBar = self.tabBarController?.tabBar{
-            tabBar.hidden = false
-        }
-    }
-    
     //模拟数据
     func loadData(){
         for dt in (dataDetail?.dictionary)!{

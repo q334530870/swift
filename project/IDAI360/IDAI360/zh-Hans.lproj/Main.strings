@@ -270,7 +270,7 @@
 "m9s-hy-Rvv.title" = "实名认证";
 
 /* Class = "UITextField"; placeholder = "家庭电话"; ObjectID = "mVf-4Y-5Jd"; */
-"mVf-4Y-5Jd.placeholder" = "家庭电话";
+"mVf-4Y-5Jd.placeholder" = "家庭电话,格式：区号-xxxxxxxx";
 
 /* Class = "UIButton"; normalTitle = "还款计划"; ObjectID = "meI-ee-BtI"; */
 "meI-ee-BtI.normalTitle" = "还款计划";
@@ -323,8 +323,8 @@
 /* Class = "UITabBarItem"; title = "我的账户"; ObjectID = "tbA-oy-xU2"; */
 "tbA-oy-xU2.title" = "我的账户";
 
-/* Class = "UILabel"; text = "可售数量"; ObjectID = "uEg-eZ-oaY"; */
-"uEg-eZ-oaY.text" = "可售数量";
+/* Class = "UILabel"; text = "可购数量"; ObjectID = "uEg-eZ-oaY"; */
+"uEg-eZ-oaY.text" = "可购数量";
 
 /* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "uK5-W1-mRR"; */
 "uK5-W1-mRR.placeholder" = "请输入手机号";

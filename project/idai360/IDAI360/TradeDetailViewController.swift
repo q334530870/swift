@@ -41,18 +41,6 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
         tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
-    override func viewWillAppear(animated: Bool) {
-        if let tabBar = self.tabBarController?.tabBar{
-            tabBar.hidden = true
-        }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        if let tabBar = self.tabBarController?.tabBar{
-            tabBar.hidden = false
-        }
-    }
-    
     //模拟数据
     func loadData(){
         for dt in (dataDetail?.dictionary)!{
@@ -106,6 +94,9 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
                 if amount == nil{
                     Common.showAlert(self, title: "", message: "请填写本次应付金额")
                 }
+                else if amount > json["data"]["应付余额"].stringValue{
+                    Common.showAlert(self, title: "", message: "本次付款超过应付余额")
+                }
                 else{
                     let url = API_URL + "/api/payment"
                     let token = Common.getToken()
@@ -130,7 +121,7 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
             //                popPresenter!.sourceView = sender as? UIView
             //                popPresenter!.sourceRect = sender.bounds
             //            }
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.presentViewController(alertController, animated: false, completion: nil)
         }
     }
     
@@ -147,7 +138,7 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
                 if json["code"] == "success"{
                     Common.showAlert(self, title: "", message: json["message"].stringValue, ok: { (action) -> Void in
                         self.delegate?.getData()
-                        self.navigationController?.popViewControllerAnimated(true)
+                        self.navigationController?.popViewControllerAnimated(false)
                     })
                 }
             }

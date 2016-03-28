@@ -289,8 +289,10 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
-        //显示导航下面的实现（其他页面）
+        //显示导航下面的实线（其他页面）
         navBarHairlineImageView.hidden = false
+        //离开页面，隐藏tabbar
+        self.tabBarController?.tabBar.hidden = true
     }
     
     func getData(){
@@ -375,7 +377,6 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let trade = segue.destinationViewController as? MyTradeViewController{
             trade.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
-            print(cellData[Int(sender! as! NSNumber)].type!)
             trade.selectCell = cellData[Int(sender! as! NSNumber)].type!
         }
         else if let gather = segue.destinationViewController as? GatherTableViewController{
