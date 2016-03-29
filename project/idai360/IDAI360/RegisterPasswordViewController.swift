@@ -21,20 +21,25 @@ class RegisterPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //临时显示
-        codeTextField.text = user.code
-        setTimer()
     }
     
     //重新获取验证码
     @IBAction func getCode(sender: AnyObject) {
+        let btn = sender as! UIButton
+        if btn.titleLabel?.text == "获取验证码"{
+            btn.titleLabel?.text = "重新获取验证码"
+        }
+        sendCode()
+    }
+    
+    func sendCode(){
         let url = API_URL + "/api/sms"
         let param = ["mobile":self.user.cellphone]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: Method.GET, param: param){ (response,json) -> Void in
             self.setTimer()
-            self.user.code = json["data"].string!
-            self.codeTextField.text = self.user.code
+            //self.user.code = json["data"].string!
+            //self.codeTextField.text = self.user.code
         }
     }
     
@@ -53,15 +58,20 @@ class RegisterPasswordViewController: UIViewController {
     
     //下一步
     @IBAction func next(sender: AnyObject) {
-        if codeTextField.text != self.user.code{
+        if codeTextField.text == ""{
             Common.showAlert(self, title: "", message: "验证码不正确")
         }
         else if (password.text == "" || password.text?.characters.count<6 || password.text?.characters.count>16){
             Common.showAlert(self, title: "", message: "请输入正确的密码")
         }
         else{
-            user.password = password.text!
-            self.performSegueWithIdentifier("Register3", sender: nil)
+            let url = API_URL + "/api/sms"
+            let param = ["mobile":self.user.cellphone,"code":self.codeTextField.text!]
+            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+            Common.doRepuest(self, url: url, method: Method.POST, param: param){ (response,json) -> Void in
+                self.user.password = self.password.text!
+                self.performSegueWithIdentifier("Register3", sender: nil)
+            }
         }
     }
     

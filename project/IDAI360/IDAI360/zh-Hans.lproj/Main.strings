@@ -126,7 +126,7 @@
 "NG2-7o-e0f.text" = "→";
 
 /* Class = "UIButton"; normalTitle = "重新获取验证码"; ObjectID = "Nh0-2D-K3F"; */
-"Nh0-2D-K3F.normalTitle" = "重新获取验证码";
+"Nh0-2D-K3F.normalTitle" = "获取验证码";
 
 /* Class = "UILabel"; text = "交易条款"; ObjectID = "Og6-Kg-t2Q"; */
 "Og6-Kg-t2Q.text" = "交易条款";

@@ -90,7 +90,14 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         tv.tableHeaderView = headerView
         //模拟数据
         for i in 0...9{
-            cellData.append(("\(Payment(rawValue: i)!)","","myTrade",Payment(rawValue: i)!))
+            var index = i
+            if i == 1{
+                index += 9
+            }
+            else if i == 2{
+                continue
+            }
+            cellData.append(("\(Payment(rawValue: index)!)","","myTrade",Payment(rawValue: index)!))
         }
         cellData.append(("账户总览","","totalView",nil))
         for i in 0...1{
@@ -125,12 +132,16 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
             v.addSubview(label)
             v.addSubview(imageView)
             
-            if i == 3{
+            if i == 2{
                 //点击other手势
                 v.tag = 0
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MyIdaiViewController.tapOther(_:)))
                 v.addGestureRecognizer(tapGesture)
                 label.text = "充值"
+            }
+            else if i == 3{
+                imageView.image = UIImage()
+                label.text = ""
             }
             else{
                 //点击payment手势
@@ -160,78 +171,24 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
                     self.view.frame.width/4-1,self.view.frame.width/4-1))
             }
             v!.backgroundColor = UIColor.whiteColor()
-            if cellData.count > i+4{
+            
+            let realIndex = i+3
+            if cellData.count > realIndex{
                 let imageView = UIImageView(frame: CGRectMake(v!.frame.width/2-32/2,20,32,32))
-                imageView.image = UIImage(named:imageList[i+4])
+                imageView.image = UIImage(named:imageList[realIndex])
                 let label = UILabel(frame: CGRectMake(0,32+22,v!.frame.width,30))
                 label.font = UIFont.systemFontOfSize(10)
                 label.textAlignment = .Center
-                label.text = cellData[i+4].title
+                label.text = cellData[realIndex].title
                 //点击payment手势
                 v!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MyIdaiViewController.tapPayment(_:))))
-                v!.tag = i+4
+                v!.tag = realIndex
                 v!.addSubview(label)
                 v!.addSubview(imageView)
             }
             footerView.addSubview(v!)
         }
         
-        
-        
-        
-        
-        
-        
-        
-        //        var vTop:CGFloat = 0
-        //        var vLeft:CGFloat = 0
-        //        for i in 0...11{
-        //            if i == 4 || i == 8{
-        //                vTop = vTop + 1
-        //                vLeft = 0
-        //            }
-        //            let v = UIView(frame: CGRectMake(CGFloat(vLeft) * (vWidth+1),vTop * (vWidth+1),vWidth,vWidth))
-        //            v.backgroundColor = UIColor.whiteColor()
-        //            if i < (cellData.count - 4) + gatherData.count + otherData.count{
-        //                let width:CGFloat = 32
-        //                let imageView = UIImageView(frame: CGRectMake(v.frame.width/2-width/2,20,width,width))
-        //                imageView.image = UIImage(named:imageList[i])
-        //                let label = UILabel(frame: CGRectMake(0,width+22,v.frame.width,30))
-        //                label.font = UIFont.systemFontOfSize(10)
-        //                label.textAlignment = .Center
-        //                var index = -1
-        //                if i < cellData.count - 4{
-        //                    index = i+4
-        //                    label.text = cellData[index].title
-        //                    //点击payment手势
-        //                    let tapGesture = UITapGestureRecognizer(target: self, action: "tapPayment:")
-        //                    v.addGestureRecognizer(tapGesture)
-        //                }
-        //                else{
-        //                    index = i - (cellData.count - 4)
-        //                    if index < gatherData.count{
-        //                        label.text = gatherData[index].title
-        //                        //点击gather手势
-        //                        let tapGesture = UITapGestureRecognizer(target: self, action: "tapGather:")
-        //                        v.addGestureRecognizer(tapGesture)
-        //                    }
-        //                    else{
-        //                        index = i - (cellData.count - 4) - gatherData.count
-        //                        if index < otherData.count{
-        //                            label.text = otherData[index].title
-        //                            //点击other手势
-        //                            let tapGesture = UITapGestureRecognizer(target: self, action: "tapOther:")
-        //                            v.addGestureRecognizer(tapGesture)
-        //                        }
-        //                    }
-        //                }
-        //                v.tag = index
-        //                v.addSubview(label)
-        //                v.addSubview(imageView)
-        //            }
-        //            footerView.addSubview(v)
-        //            vLeft = vLeft + 1
-        //        }
         tv.tableFooterView = footerView
         //初始化按钮标题和图片
         buttonList = [("\(Payment(rawValue: 0)!)","wait"),("\(Payment(rawValue: 1)!)","in"),("\(Payment(rawValue: 2)!)","finish")]

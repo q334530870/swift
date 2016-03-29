@@ -75,6 +75,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         case Payment.投资损益表:
             tempValue.append(("科目名称","金额_TT",""))
             break
+        case Payment.将到期本息汇总:
+            tempValue.append(("产品","本金到期",""))
+            break
         default:
             break
         }

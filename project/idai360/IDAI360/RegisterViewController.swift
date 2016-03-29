@@ -54,20 +54,21 @@ class RegisterViewController: UIViewController {
     
     //下一步
     @IBAction func next(sender: AnyObject) {
-        let url = API_URL + "/api/sms"
-        let param = ["mobile":phone.text!]
-        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
-        Common.doRepuest(self, url: url, method: Method.GET, param: param){ (response,json) -> Void in
-            let code = json["data"].string
-            self.performSegueWithIdentifier("Register2", sender: code)
-        }
+        self.performSegueWithIdentifier("Register2", sender: nil)
+        //        let url = API_URL + "/api/sms"
+        //        let param = ["mobile":phone.text!]
+        //        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+        //        Common.doRepuest(self, url: url, method: Method.GET, param: param){ (response,json) -> Void in
+        //            //let code = json["data"].string
+        //            
+        //        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let registerPassword = segue.destinationViewController as? RegisterPasswordViewController
         if registerPassword != nil{
             let user = User()
-            user.code = String(sender!)
+            //user.code = String(sender!)
             user.cellphone = self.phone.text!
             registerPassword?.user = user
         }
