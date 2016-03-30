@@ -11,6 +11,7 @@ import UIKit
 class SafeTableViewController: UITableViewController {
     
     var list = [SafeType]()
+    var otherList = [(title:String,segue:String)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,8 @@ class SafeTableViewController: UITableViewController {
         for i in 1...4{
             list.append(SafeType(rawValue: i)!)
         }
+        otherList.append(("金币申领","gold"))
+        otherList.append(("邀请朋友","friend"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,15 +28,18 @@ class SafeTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == tableView.numberOfSections - 1{
-            return 1
+        if section == 0{
+            return list.count
+        }
+        if section == 1{
+            return otherList.count
         }
         else{
-            return list.count
+            return 1
         }
     }
     
@@ -47,6 +53,10 @@ class SafeTableViewController: UITableViewController {
             cell.textLabel?.text = "\(list[indexPath.row])"
             cell.textLabel?.font = UIFont.systemFontOfSize(14)
         }
+        else if indexPath.section == 1{
+            cell.textLabel?.text = otherList[indexPath.row].title
+            cell.textLabel?.font = UIFont.systemFontOfSize(14)
+        }
         else if indexPath.section == (tableView.numberOfSections - 1){
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
             label.text = "退出登录"
@@ -58,8 +68,14 @@ class SafeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //退出登录
-        if indexPath.section == tableView.numberOfSections - 1{
+        
+        if indexPath.section == 0{
+            self.performSegueWithIdentifier("SafeDetail", sender: indexPath.row)
+        }
+        else if indexPath.section == 1{
+            self.performSegueWithIdentifier(otherList[indexPath.row].segue, sender: indexPath.row)
+        }
+        else{
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             let alertController = UIAlertController(title: "", message: "退出后不会删除任何历史数据，下次登录依然可以使用本账号。", preferredStyle: UIAlertControllerStyle.ActionSheet)
             let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -77,9 +93,6 @@ class SafeTableViewController: UITableViewController {
                 popPresenter!.sourceRect = (cell?.bounds)!
             }
             self.presentViewController(alertController, animated: true, completion: nil)
-        }
-        else{
-            self.performSegueWithIdentifier("SafeDetail", sender: indexPath.row)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

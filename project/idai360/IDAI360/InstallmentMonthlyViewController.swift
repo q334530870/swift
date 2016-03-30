@@ -9,7 +9,7 @@ class InstallmentMonthlyViewController: UITableViewController{
     //当前页数
     var pageIndex = 1
     //每页显示条数
-    var pageSize = 3
+    var pageSize = 999
     
     override func viewDidLoad() {
         super.viewDidLoad()

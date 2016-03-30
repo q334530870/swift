@@ -180,7 +180,7 @@
 "a0J-10-aB0.text" = "→";
 
 /* Class = "UINavigationItem"; title = "安全认证"; ObjectID = "a2y-9A-DVN"; */
-"a2y-9A-DVN.title" = "安全认证";
+"a2y-9A-DVN.title" = "设置";
 
 /* Class = "UISegmentedControl"; aFV-hX-M3g.segmentTitles[0] = "营业税"; ObjectID = "aFV-hX-M3g"; */
 "aFV-hX-M3g.segmentTitles[0]" = "营业税";

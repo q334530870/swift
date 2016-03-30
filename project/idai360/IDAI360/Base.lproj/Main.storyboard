@@ -204,6 +204,58 @@
             </objects>
             <point key="canvasLocation" x="1521.5" y="-372.5"/>
         </scene>
+        <!--金币申领-->
+        <scene sceneID="ajU-t8-G4R">
+            <objects>
+                <tableViewController id="Im1-hF-eX5" customClass="GoldTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mby-Hu-2b6">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScrollCell" textLabel="d5l-Rc-b23" detailTextLabel="VZc-SK-VGX" style="IBUITableViewCellStyleValue1" id="XDI-MI-Wz2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XDI-MI-Wz2" id="wWd-DS-EET">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d5l-Rc-b23">
+                                            <rect key="frame" x="15" y="14" width="28.5" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZc-SK-VGX">
+                                            <rect key="frame" x="322.5" y="14" width="37.5" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Im1-hF-eX5" id="JVm-cd-I7C"/>
+                            <outlet property="delegate" destination="Im1-hF-eX5" id="jtn-Dl-fFZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="金币申领" id="dw4-mL-E7A">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0GG-JN-Ftd">
+                            <connections>
+                                <action selector="getCoin:" destination="Im1-hF-eX5" id="NEi-L3-fGi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDy-BY-qUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2108.5" y="-372.5"/>
+        </scene>
         <!--还款计划-->
         <scene sceneID="ZfK-Pr-eCY">
             <objects>
@@ -2001,7 +2053,7 @@
             </objects>
             <point key="canvasLocation" x="1004.5" y="479.5"/>
         </scene>
-        <!--安全认证-->
+        <!--设置-->
         <scene sceneID="udP-cF-5lQ">
             <objects>
                 <tableViewController storyboardIdentifier="Safe" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byE-58-v0m" customClass="SafeTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
@@ -2026,10 +2078,11 @@
                             <outlet property="delegate" destination="byE-58-v0m" id="0w8-EE-ogC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="安全认证" id="a2y-9A-DVN"/>
+                    <navigationItem key="navigationItem" title="设置" id="a2y-9A-DVN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="DUe-LC-Udn" kind="show" identifier="SafeDetail" id="JLD-Kc-ZKU"/>
+                        <segue destination="Im1-hF-eX5" kind="show" identifier="gold" id="nT3-5W-MZC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSO-J6-fmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3462,10 +3515,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZZm-FH-8kg"/>
-        <segue reference="k8K-x5-Ype"/>
+        <segue reference="WNe-4z-xr1"/>
         <segue reference="diJ-in-QhB"/>
+        <segue reference="k8K-x5-Ype"/>
         <segue reference="1EE-sp-uxB"/>
         <segue reference="zL8-Be-vaO"/>
-        <segue reference="ple-50-cro"/>
     </inferredMetricsTieBreakers>
 </document>

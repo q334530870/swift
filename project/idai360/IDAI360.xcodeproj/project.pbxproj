@@ -81,6 +81,7 @@
 		A4BD71EE1C154B6C00D425DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4BD71EC1C154B6C00D425DB /* Main.storyboard */; };
 		A4BD71F01C154B6C00D425DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BD71EF1C154B6C00D425DB /* Assets.xcassets */; };
 		A4BD71F31C154B6C00D425DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4BD71F11C154B6C00D425DB /* LaunchScreen.storyboard */; };
+		A4C980C21CABB94100C77CFC /* GoldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C980C11CABB94100C77CFC /* GoldTableViewController.swift */; };
 		A4CF6A881C3CE59900955579 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CF6A741C3CE59900955579 /* MWCaptionView.m */; };
 		A4CF6A891C3CE59900955579 /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CF6A771C3CE59900955579 /* MWGridCell.m */; };
 		A4CF6A8A1C3CE59900955579 /* MWGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CF6A791C3CE59900955579 /* MWGridViewController.m */; };
@@ -250,6 +251,7 @@
 		A4BD71EF1C154B6C00D425DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4BD71F21C154B6C00D425DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4BD71F41C154B6C00D425DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C980C11CABB94100C77CFC /* GoldTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldTableViewController.swift; sourceTree = "<group>"; };
 		A4CF6A731C3CE59900955579 /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		A4CF6A741C3CE59900955579 /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
 		A4CF6A751C3CE59900955579 /* MWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommon.h; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				A4B38D3E1C5F3D8000A8D790 /* SellViewController.swift */,
 				A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */,
 				A415301A1C9649E300D0E738 /* TotalViewTableViewController.swift */,
+				A4C980C11CABB94100C77CFC /* GoldTableViewController.swift */,
 			);
 			name = userCenter;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				A4F3C40E1C3F6211006862E6 /* POPCGUtils.mm in Sources */,
 				A4951E7E1C30D182003DD474 /* Download.swift in Sources */,
 				A4951E861C30D182003DD474 /* Result.swift in Sources */,
+				A4C980C21CABB94100C77CFC /* GoldTableViewController.swift in Sources */,
 				A44F1E481C1950CC008E3E3F /* MJRefreshHeader.m in Sources */,
 				A4E059B31C43505000E17B47 /* SafeTableViewController.swift in Sources */,
 				A4CF6AE61C3CEA4800955579 /* SDWebImageManager.m in Sources */,
