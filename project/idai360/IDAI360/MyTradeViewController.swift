@@ -29,13 +29,15 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         //            self.tabBarController?.tabBar.hidden = true
         //        }
         dataType = selectCell
-        if selectCell.rawValue > 3{
-            segmented.hidden = true
-            tvTop.constant = 0
-        }
-        else{
-            segmented.selectedSegmentIndex = selectCell.rawValue
-        }
+        segmented.hidden = true
+        tvTop.constant = 0
+        //        if selectCell.rawValue > 3{
+        //            segmented.hidden = true
+        //            tvTop.constant = 0
+        //        }
+        //        else{
+        //            segmented.selectedSegmentIndex = selectCell.rawValue
+        //        }
         //获取数据
         getData()
         //下拉刷新
@@ -51,12 +53,12 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         case Payment.交易付款:
             tempValue.append(("产品名称","到期时间",""))
             break
-        case Payment.履约中:
-            tempValue.append(("产品名称","年化收益率",""))
-            break
-        case Payment.履约结束:
-            tempValue.append(("产品名称","完成时间",""))
-            break
+            //        case Payment.履约中:
+            //            tempValue.append(("产品名称","年化收益率",""))
+            //            break
+            //        case Payment.履约结束:
+            //            tempValue.append(("产品名称","完成时间",""))
+        //            break
         case Payment.我的持仓量:
             tempValue.append(("产品","持有量",""))
             break
@@ -128,18 +130,18 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         getData(RefreshType.上拉加载.rawValue)
     }
     
-    @IBAction func changeType(sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == Payment.交易付款.rawValue{
-            dataType = Payment.交易付款
-        }
-        else if sender.selectedSegmentIndex == Payment.履约中.rawValue{
-            dataType = Payment.履约中
-        }
-        else if sender.selectedSegmentIndex == Payment.履约结束.rawValue{
-            dataType = Payment.履约结束
-        }
-        getData()
-    }
+    //    @IBAction func changeType(sender: UISegmentedControl) {
+    //        if sender.selectedSegmentIndex == Payment.交易付款.rawValue{
+    //            dataType = Payment.交易付款
+    //        }
+    //        else if sender.selectedSegmentIndex == Payment.履约中.rawValue{
+    //            dataType = Payment.履约中
+    //        }
+    //        else if sender.selectedSegmentIndex == Payment.履约结束.rawValue{
+    //            dataType = Payment.履约结束
+    //        }
+    //        getData()
+    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

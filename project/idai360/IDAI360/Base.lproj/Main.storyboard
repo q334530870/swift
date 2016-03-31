@@ -224,7 +224,7 @@
                                             <rect key="frame" x="15" y="14" width="28.5" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZc-SK-VGX">
@@ -255,6 +255,131 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDy-BY-qUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2108.5" y="-372.5"/>
+        </scene>
+        <!--邀请朋友-->
+        <scene sceneID="z1c-Ny-LSp">
+            <objects>
+                <viewController id="3T3-pq-0gN" customClass="FriendViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hFf-Po-aq8"/>
+                        <viewControllerLayoutGuide type="bottom" id="KsP-Lr-Mqm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HMI-rH-pB5">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QW5-xw-9uX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请朋友活动长期有效。 邀请朋友注册成功可获得1个迎新金币(价值10元)。 同样您的朋友也可以获得10个迎新金币(价值10元)。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-qc-HWX">
+                                        <rect key="frame" x="10" y="10" width="355" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.49442440609999999" blue="0.30618928550000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.98979467629999995" blue="0.82997981080000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jbz-qc-HWX" secondAttribute="bottom" constant="10" id="GCQ-6u-r6a"/>
+                                    <constraint firstItem="jbz-qc-HWX" firstAttribute="top" secondItem="QW5-xw-9uX" secondAttribute="top" constant="10" id="Gva-cV-gjZ"/>
+                                    <constraint firstAttribute="height" constant="80" id="SGc-Yg-TMQ"/>
+                                    <constraint firstItem="jbz-qc-HWX" firstAttribute="leading" secondItem="QW5-xw-9uX" secondAttribute="leading" constant="10" id="ehA-Qa-pnS"/>
+                                    <constraint firstAttribute="trailing" secondItem="jbz-qc-HWX" secondAttribute="trailing" constant="10" id="tk3-WV-Fse"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHl-eA-aPd">
+                                <rect key="frame" x="0.0" y="100" width="375" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名字" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AxO-uM-vAj" customClass="FloatLabelTextField" customModule="IDAI360" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="2" width="355" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="MDJ-kw-4mN"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="MDJ-kw-4mN"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="AxO-uM-vAj" secondAttribute="trailing" constant="10" id="9Lu-Sm-KqC"/>
+                                    <constraint firstItem="AxO-uM-vAj" firstAttribute="leading" secondItem="NHl-eA-aPd" secondAttribute="leading" constant="10" id="awi-QD-tMN"/>
+                                    <constraint firstAttribute="height" constant="40" id="c2C-ea-CqD"/>
+                                    <constraint firstAttribute="bottom" secondItem="AxO-uM-vAj" secondAttribute="bottom" constant="2" id="erT-Zq-jYO"/>
+                                    <constraint firstItem="AxO-uM-vAj" firstAttribute="top" secondItem="NHl-eA-aPd" secondAttribute="top" constant="2" id="oCb-N5-5HL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXA-8r-I30">
+                                <rect key="frame" x="0.0" y="150" width="375" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cfS-3U-2yY" customClass="FloatLabelTextField" customModule="IDAI360" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="2" width="355" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Arh-GJ-SFb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Arh-GJ-SFb"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="cfS-3U-2yY" secondAttribute="bottom" constant="2" id="92X-Sl-mdE"/>
+                                    <constraint firstItem="cfS-3U-2yY" firstAttribute="leading" secondItem="JXA-8r-I30" secondAttribute="leading" constant="10" id="Csn-MZ-YYO"/>
+                                    <constraint firstAttribute="trailing" secondItem="cfS-3U-2yY" secondAttribute="trailing" constant="10" id="KGd-ji-HyB"/>
+                                    <constraint firstAttribute="height" constant="40" id="x7b-yo-oEw"/>
+                                    <constraint firstItem="cfS-3U-2yY" firstAttribute="top" secondItem="JXA-8r-I30" secondAttribute="top" constant="2" id="xzL-RY-ERb"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6N-cj-jv5">
+                                <rect key="frame" x="10" y="210" width="355" height="40"/>
+                                <color key="backgroundColor" red="0.38205731339999999" green="0.72878617469999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WHm-u2-iRb"/>
+                                </constraints>
+                                <state key="normal" title="确认邀请">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="3T3-pq-0gN" eventType="touchUpInside" id="ViR-FD-xiW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95971433080000002" green="0.95971433080000002" blue="0.95971433080000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="NHl-eA-aPd" firstAttribute="top" secondItem="QW5-xw-9uX" secondAttribute="bottom" constant="20" id="0yg-aG-udQ"/>
+                            <constraint firstItem="QW5-xw-9uX" firstAttribute="top" secondItem="hFf-Po-aq8" secondAttribute="bottom" id="6rA-xy-9K6"/>
+                            <constraint firstAttribute="trailing" secondItem="F6N-cj-jv5" secondAttribute="trailing" constant="10" id="8Zv-vF-RnU"/>
+                            <constraint firstAttribute="trailing" secondItem="NHl-eA-aPd" secondAttribute="trailing" id="9Iv-Ir-Zij"/>
+                            <constraint firstItem="QW5-xw-9uX" firstAttribute="leading" secondItem="HMI-rH-pB5" secondAttribute="leading" id="EX2-JJ-OsR"/>
+                            <constraint firstItem="NHl-eA-aPd" firstAttribute="leading" secondItem="HMI-rH-pB5" secondAttribute="leading" id="GzM-S9-qjo"/>
+                            <constraint firstAttribute="trailing" secondItem="QW5-xw-9uX" secondAttribute="trailing" id="SPl-PJ-1cF"/>
+                            <constraint firstItem="F6N-cj-jv5" firstAttribute="top" secondItem="JXA-8r-I30" secondAttribute="bottom" constant="20" id="Sh0-2s-LYy"/>
+                            <constraint firstItem="JXA-8r-I30" firstAttribute="leading" secondItem="HMI-rH-pB5" secondAttribute="leading" id="d6X-Kf-WcJ"/>
+                            <constraint firstAttribute="trailing" secondItem="JXA-8r-I30" secondAttribute="trailing" id="fs5-iB-dIH"/>
+                            <constraint firstItem="F6N-cj-jv5" firstAttribute="leading" secondItem="HMI-rH-pB5" secondAttribute="leading" constant="10" id="gz3-bf-Jii"/>
+                            <constraint firstItem="JXA-8r-I30" firstAttribute="top" secondItem="NHl-eA-aPd" secondAttribute="bottom" constant="10" id="yZq-2f-gee"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="邀请朋友" id="50z-RR-28p"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="email" destination="cfS-3U-2yY" id="hf7-5A-cWu"/>
+                        <outlet property="name" destination="AxO-uM-vAj" id="cfa-hb-JHk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLs-Jv-9fC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2697.5" y="-372.5"/>
         </scene>
         <!--还款计划-->
         <scene sceneID="ZfK-Pr-eCY">
@@ -2083,6 +2208,7 @@
                     <connections>
                         <segue destination="DUe-LC-Udn" kind="show" identifier="SafeDetail" id="JLD-Kc-ZKU"/>
                         <segue destination="Im1-hF-eX5" kind="show" identifier="gold" id="nT3-5W-MZC"/>
+                        <segue destination="3T3-pq-0gN" kind="show" identifier="friend" id="gIV-lA-kU1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSO-J6-fmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3514,11 +3640,11 @@
         <image name="zfb" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZZm-FH-8kg"/>
-        <segue reference="WNe-4z-xr1"/>
         <segue reference="diJ-in-QhB"/>
+        <segue reference="WNe-4z-xr1"/>
+        <segue reference="zic-zM-wdd"/>
         <segue reference="k8K-x5-Ype"/>
-        <segue reference="1EE-sp-uxB"/>
         <segue reference="zL8-Be-vaO"/>
+        <segue reference="ZZm-FH-8kg"/>
     </inferredMetricsTieBreakers>
 </document>

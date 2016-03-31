@@ -37,6 +37,7 @@
 		A44F1E541C1950CC008E3E3F /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1E3F1C1950CC008E3E3F /* UIScrollView+MJExtension.m */; };
 		A44F1E551C1950CC008E3E3F /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1E411C1950CC008E3E3F /* UIScrollView+MJRefresh.m */; };
 		A44F1E561C1950CC008E3E3F /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1E431C1950CC008E3E3F /* UIView+MJExtension.m */; };
+		A45284631CACB4FA007B04E8 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45284621CACB4FA007B04E8 /* FriendViewController.swift */; };
 		A4566C8E1C16828D0047DE86 /* MyIdaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4566C8D1C16828D0047DE86 /* MyIdaiViewController.swift */; };
 		A4566C901C16D7430047DE86 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4566C8F1C16D7430047DE86 /* InfoViewController.swift */; };
 		A4566C921C16E9C20047DE86 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4566C911C16E9C20047DE86 /* Common.swift */; };
@@ -200,6 +201,7 @@
 		A44F1E411C1950CC008E3E3F /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		A44F1E421C1950CC008E3E3F /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		A44F1E431C1950CC008E3E3F /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		A45284621CACB4FA007B04E8 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		A4566C8D1C16828D0047DE86 /* MyIdaiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyIdaiViewController.swift; sourceTree = "<group>"; };
 		A4566C8F1C16D7430047DE86 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A4566C911C16E9C20047DE86 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 				A48011A31C7FE4EF005E6E70 /* EnterpriseTableViewController.swift */,
 				A415301A1C9649E300D0E738 /* TotalViewTableViewController.swift */,
 				A4C980C11CABB94100C77CFC /* GoldTableViewController.swift */,
+				A45284621CACB4FA007B04E8 /* FriendViewController.swift */,
 			);
 			name = userCenter;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				A4F3C4161C3F6211006862E6 /* POPVector.mm in Sources */,
 				A4B730271C1A700700F054AC /* HRToast+UIView.swift in Sources */,
 				A4951E7F1C30D182003DD474 /* Error.swift in Sources */,
+				A45284631CACB4FA007B04E8 /* FriendViewController.swift in Sources */,
 				A4566C8E1C16828D0047DE86 /* MyIdaiViewController.swift in Sources */,
 				A4E059B51C4357B200E17B47 /* SafeDetailTableViewController.swift in Sources */,
 			);
