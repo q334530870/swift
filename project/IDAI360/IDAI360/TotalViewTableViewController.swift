@@ -28,8 +28,8 @@ class TotalViewTableViewController: UITableViewController {
         titleList1 = ["保证金","金币价值","买入已付","线下支付中","买入应付","卖出应收","本息到期应收","本息本月到期"]
         titleList2 = ["应收利息","本日利息","本周实际利息","本月实际利息","本年实际利息","本周持有到期利息","本月持有到期利息","本年持有到期利息"]
         titleList3 = ["本息到期应收","实际本息本月到期","实际本息本年到期","持有到期本息本月到期","持有到期本息本年到期"]
-        titleList4 = ["债余额品种","债余额数量","债余额价值","交易中/买入品种","交易中/买入数量","交易中/买入价值","交易中/卖出品种","交易中/卖出数量","交易中/卖出价值","交易委托中/买入品种","交易委托中/买入数量","交易委托中/买入价值","交易委托中/卖出品种","交易委托中/卖出数量","交易委托中/卖出价值"]
-        titleList5 = ["本日购入品种","本日购入数量","本日购入价值","本周购入品种","本周购入数量","本周购入价值","本月购入品种","本月购入数量","本月购入价值","本年购入品种","本年购入数量","本年购入价值","本日出售品种","本日出售数量","本日出售价值","本周出售品种","本周出售数量","本周出售价值","本月出售品种","本月出售数量","本月出售价值","本年出售品种","本年出售数量","本年出售价值","本日退回品种","本日退回数量","本日退回价值","本周退回品种","本周退回数量","本周退回价值","本月退回品种","本月退回数量","本月退回价值","本年退回品种","本年退回数量","本年退回价值","本日交割品种","本日交割数量","本日交割价值","本周交割品种","本周交割数量","本周交割价值","本月交割品种","本月交割数量","本月交割价值","本年交割品种","本年交割数量","本年交割价值"]
+        titleList4 = ["债余额价值","交易中/买入价值","交易中/卖出价值","交易委托中/买入价值","交易委托中/卖出价值"]
+        titleList5 = ["本日购入价值","本周购入价值","本月购入价值","本年购入价值","本日出售价值","本周出售价值","本月出售价值","本年出售价值","本日退回价值","本周退回价值","本月退回价值","本年退回价值","本日交割价值","本周交割价值","本月交割价值","本年交割价值"]
         
         valueList1.append(result!["cashBalance"][0]["cash_bal"].stringValue)
         valueList1.append(result!["cashBalance"][0]["coins_yet_to_redeem"].stringValue)
@@ -56,14 +56,14 @@ class TotalViewTableViewController: UITableViewController {
         valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_year"].stringValue)
         
         for var rst in result!["bondsSummary"].array!{
-            valueList4.append(rst["products"].stringValue)
-            valueList4.append(rst["units"].stringValue)
+            //            valueList4.append(rst["products"].stringValue)
+            //            valueList4.append(rst["units"].stringValue)
             valueList4.append(rst["NBV"].stringValue)
         }
         
         for var rst in result!["transactionSummary"].array!{
-            valueList5.append(rst["products"].stringValue)
-            valueList5.append(rst["units"].stringValue)
+            //            valueList5.append(rst["products"].stringValue)
+            //            valueList5.append(rst["units"].stringValue)
             valueList5.append(rst["NBV"].stringValue)
         }
         
