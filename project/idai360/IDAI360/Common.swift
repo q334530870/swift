@@ -268,7 +268,7 @@ class Common{
     
     //调用接口
     static func doRepuest(controller:UIViewController, url:String,method:Method = .GET, param:[String: AnyObject]?=nil,failed:(()->Void)? = nil,complete:(Response<AnyObject, NSError>,JSON) -> Void){
-        request(method, url,parameters: param).responseJSON(options: NSJSONReadingOptions.MutableContainers) { (response) -> Void in
+        request(method, url,parameters: param).responseJSON(options: NSJSONReadingOptions.MutableLeaves) { (response) -> Void in
             controller.view.hideToastActivity()
             if response.result.error != nil{
                 Common.showAlert(controller, title: "", message: "连接错误，请稍后再试！")
@@ -327,7 +327,7 @@ class Common{
          26         * 区号：010,020,021,022,023,024,025,027,028,029
          27         * 号码：七位或八位
          28         */
-         // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+        // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
         
         let regextestmobile = NSPredicate(format: "SELF MATCHES %@", mobile)
         let regextestcm = NSPredicate(format: "SELF MATCHES %@", cm)

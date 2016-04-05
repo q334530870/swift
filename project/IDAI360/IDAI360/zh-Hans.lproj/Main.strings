@@ -324,7 +324,7 @@
 "tbA-oy-xU2.title" = "我的账户";
 
 /* Class = "UILabel"; text = "可购数量"; ObjectID = "uEg-eZ-oaY"; */
-"uEg-eZ-oaY.text" = "可购数量";
+"uEg-eZ-oaY.text" = "可购/持有数量";
 
 /* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "uK5-W1-mRR"; */
 "uK5-W1-mRR.placeholder" = "请输入手机号";

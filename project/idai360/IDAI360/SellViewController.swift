@@ -73,7 +73,7 @@ class SellViewController: UIViewController {
     //绑定数据
     func bindData(){
         bj.text = model!["Quotation"].string
-        sl.text = "\(model!["Quantity"].string)/\(model!["Ihold"].string)"
+        sl.text = "\(model!["Quantity"].stringValue)/\(model!["Ihold"].stringValue)"
         productId = model!["ProductId"].intValue
         //tk.text = model!["OrderTerm"].stringValue
         let ot = model!["OrderTerm"].stringValue

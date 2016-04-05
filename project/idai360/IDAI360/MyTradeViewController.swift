@@ -88,7 +88,6 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     //绑定数据
     func getData(type:Int = RefreshType.下拉刷新.rawValue,let keyword:String? = nil){
         setTitle()
-        self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         let url = API_URL + "/api/report"
         let token = Common.getToken()
         let param = ["token":token,"type":dataType.rawValue]

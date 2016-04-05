@@ -54,6 +54,11 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
         }
     }
     
+    //设置读取字段顺序
+    func getSort(type:Int){
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
