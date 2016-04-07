@@ -287,7 +287,7 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
             let leftView = UIView(frame: CGRect(x: 10, y: 8, width: cell.frame.width - 110, height: cell.frame.height))
             //灰色部分文字
             let leftLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 0,height: 0))
-            leftLabel.text = "项目进度"
+            leftLabel.text = "进度:"
             leftLabel.textColor = UIColor.grayColor()
             leftLabel.font = UIFont.systemFontOfSize(12)
             //自适应宽度
@@ -311,7 +311,7 @@ class SecondHandTableViewController: UITableViewController,UISearchBarDelegate,U
             leftView.addSubview(progressBar)
             //结束日期
             let dateLabel = UILabel(frame: CGRect(x: leftLabel.frame.width+rightLabel.frame.width+5, y: 5, width: cell.frame.width, height: leftView.frame.height/2-5))
-            dateLabel.text = "结束日期:\(cellData["EndTime"].stringValue)"
+            dateLabel.text = "结束日:\(cellData["EndTime"].stringValue)"
             dateLabel.textColor = UIColor.grayColor()
             dateLabel.font = UIFont.systemFontOfSize(12)
             leftView.addSubview(dateLabel)

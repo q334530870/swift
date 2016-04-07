@@ -2,6 +2,7 @@ import UIKit
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var code: UITextField!
@@ -29,7 +30,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         UIView.animateWithDuration(0.3) { () -> Void in
             self.LoginBottom.constant = self.size + 10
             self.titleLabelTop.constant = 10
+            if (self.phone.frame.origin.y - 10) < (self.logo.frame.height + 10){
+                self.titleLabelTop.constant = -self.logo.frame.height
+            }
             self.view.layoutIfNeeded()
+            
         }
         
     }
@@ -94,12 +99,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             let param = ["username":phone.text!,"password":code.text!]
             self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
             Common.doRepuest(self, url: url, method: .GET, param: param, complete: { (Response, json) -> Void in
+                
                 Common.saveDefault(json["token"].string!, key: "token")
                 var user = json["data"]
                 //sjh判断realname是否为空
                 user["realname"].string = ""
                 Common.saveDefault(user.object, key: "user")
                 self.performSegueWithIdentifier("loginUnwind", sender: nil)
+                
+                //                Common.loginWithTouchID(self, str: "请验证指纹后登录", callback: {
+                //                    
+                //                })
             })
         }
     }

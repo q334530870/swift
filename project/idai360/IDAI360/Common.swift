@@ -1,4 +1,5 @@
 import UIKit
+import LocalAuthentication
 
 class Common{
     //遮罩层
@@ -306,7 +307,7 @@ class Common{
         if mobileNum == ""{
             return false
         }
-        let mobile = "^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$"
+        let mobile = "^1(3[0-9]|4[0-9]|5[0-35-9]|7[0-9]|8[0-9])\\d{8}$"
         /**
          * 中国移动：China Mobile
          * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
@@ -384,6 +385,67 @@ class Common{
         let regex = "^(\\d{16}|\\d{19})$"
         let bankCardText = NSPredicate(format: "SELF MATCHES %@", regex)
         return bankCardText.evaluateWithObject(bankCard)
+    }
+    
+    //调用指纹识别函数
+    static func loginWithTouchID(target:UIViewController,str:String,callback:(()->Void)? = nil)
+    {
+        //        if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion:
+        //            8, minorVersion: 0, patchVersion: 0)){
+        //ios8以后才能使用touch id=
+        if NSProcessInfo().operatingSystemVersion.majorVersion >= 8{
+            var result = ""
+            // Get the local authentication context.
+            let context = LAContext()
+            // Declare a NSError variable.
+            var error: NSError?
+            // Set the reason string that will appear on the authentication alert.
+            let reasonString = str
+            // Check if the device can evaluate the policy.
+            if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error)
+            {
+                context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString, reply: { (stat, error) in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in //放到主线程执行，这里特别重要
+                        if stat
+                        {
+                            //成功后执行的方法
+                            callback
+                        }
+                        else
+                        {
+                            // If authentication failed then show a message to the console with a short description.
+                            // In case that the error is a user fallback, then show the password alert view.
+                            //result = error!.localizedDescription
+                            //showAlert(target, title: "", message: result)
+                        }
+                    })
+                })
+            }
+            else
+            {
+                // If the security policy cannot be evaluated then show a short message depending on the error.
+                switch error!.code
+                {
+                case LAError.TouchIDNotEnrolled.rawValue:
+                    result = "您还没有保存Touch ID指纹"
+                    break
+                case LAError.PasscodeNotSet.rawValue:
+                    result = "您还没有设置密码"
+                    break
+                default:
+                    // The LAError.TouchIDNotAvailable case.
+                    result = "Touch ID不可用"
+                    break
+                }
+                // Optionally the error description can be displayed on the console.
+                //result = (error?.localizedDescription)!
+                // Show the custom alert view to allow users to enter the password.
+                showAlert(target, title: "", message: result)
+            }
+        }
+        else{
+            showAlert(target, title: "", message: "系统版本低于8.0，无法使用TOUCH ID")
+        }
     }
     
 }

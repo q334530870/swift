@@ -19,6 +19,8 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     var selectCell = Payment.交易付款
     var dataType = Payment.交易付款
     var isJump = false
+    var unwindData:JSON?
+    
     @IBOutlet weak var tv: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var tvTop: NSLayoutConstraint!
@@ -80,6 +82,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         case Payment.将到期本息汇总:
             tempValue.append(("产品","本金到期",""))
             break
+        case Payment.产品变动:
+            tempValue.append(("日期","成交量",""))
+            break
         default:
             break
         }
@@ -90,7 +95,10 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         setTitle()
         let url = API_URL + "/api/report"
         let token = Common.getToken()
-        let param = ["token":token,"type":dataType.rawValue]
+        var param = ["token":token,"type":dataType.rawValue]
+        if dataType == Payment.产品变动{
+            param = ["token":token,"type":dataType.rawValue,"pid":unwindData!["pid"].stringValue,"seniority":unwindData!["seniority"].stringValue]
+        }
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param as? [String : AnyObject],failed: { () -> Void in
             self.tv.mj_header.endRefreshing()
@@ -197,6 +205,15 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
             trade.dataDetail = detail
             trade.delegate = self
         }
+    }
+    
+    @IBAction func unwindToMyTrade(segue:UIStoryboardSegue){
+        if let cl = segue.sourceViewController as? TradeDetailViewController{
+            unwindData = cl.dataDetail
+            dataType = Payment.产品变动
+            getData()
+        }
+        
     }
     
     

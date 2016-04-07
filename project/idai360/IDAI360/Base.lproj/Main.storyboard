@@ -506,10 +506,10 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kK-HR-WTC">
-                                        <rect key="frame" x="127" y="25" width="120" height="120"/>
+                                        <rect key="frame" x="137" y="25" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="6pv-4R-drY"/>
-                                            <constraint firstAttribute="width" constant="120" id="BZ8-6J-BEt"/>
+                                            <constraint firstAttribute="height" constant="100" id="6pv-4R-drY"/>
+                                            <constraint firstAttribute="width" constant="100" id="BZ8-6J-BEt"/>
                                             <constraint firstAttribute="width" constant="124" id="cf4-I9-9fq"/>
                                             <constraint firstAttribute="width" secondItem="4kK-HR-WTC" secondAttribute="height" multiplier="1:1" id="kUq-MQ-hTu"/>
                                             <constraint firstAttribute="height" constant="124" id="raU-UX-y4F"/>
@@ -1116,6 +1116,7 @@
                         <outlet property="LoginBottom" destination="pMi-mx-63g" id="SgM-g7-Bwj"/>
                         <outlet property="code" destination="y9I-uS-z4R" id="ZbX-Tn-fKw"/>
                         <outlet property="login" destination="wHa-zI-N9W" id="ua0-Gb-039"/>
+                        <outlet property="logo" destination="haw-6p-ZIF" id="LLn-kT-uB1"/>
                         <outlet property="phone" destination="HlJ-Vf-emG" id="bbU-Lp-YVc"/>
                         <outlet property="sendCode" destination="Ayc-zr-7RX" id="LQV-Yp-WA6"/>
                         <outlet property="titleLabelTop" destination="YU7-kO-Da0" id="wCh-J7-MaL"/>
@@ -2722,15 +2723,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="dVb-lV-315"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cancelButton" destination="nxh-X6-P6k" id="Z31-2G-T8D"/>
                         <outlet property="payButton" destination="5Fz-9h-4nz" id="vt4-WU-BDj"/>
                         <outlet property="tv" destination="M2X-O7-4b3" id="C1i-EG-E3H"/>
                         <outlet property="tvBottom" destination="HFW-AM-YjB" id="Wh2-C0-6ew"/>
+                        <segue destination="QW3-A3-r1d" kind="unwind" identifier="unwindToMyTrade" unwindAction="unwindToMyTrade:" id="9Ls-gx-c4J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ry-v4-Tr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QW3-A3-r1d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3328.5" y="1345.5"/>
         </scene>
@@ -3640,11 +3644,11 @@
         <image name="zfb" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="diJ-in-QhB"/>
         <segue reference="WNe-4z-xr1"/>
-        <segue reference="zL8-Be-vaO"/>
-        <segue reference="1EE-sp-uxB"/>
-        <segue reference="ZZm-FH-8kg"/>
-        <segue reference="k8K-x5-Ype"/>
+        <segue reference="YER-PZ-Zab"/>
+        <segue reference="u2r-Ax-89C"/>
+        <segue reference="Nqt-Fv-bKS"/>
+        <segue reference="7Ld-ON-WbQ"/>
+        <segue reference="c0I-dW-4tB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -258,7 +258,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         let param = ["token":token,"action":"PersonInfo"]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
-            self.yeValue.text = json["data"]["banlace"].stringValue
+            self.yeValue.text = Common.numberFormat(json["data"]["banlace"].doubleValue)
             self.result = json["data"]
             
         }

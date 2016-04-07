@@ -10,6 +10,7 @@ import UIKit
 
 class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    
     var detailInfo = [(key:String,value:String)]()
     var dataDetail:JSON?
     var detailType:Payment?
@@ -37,14 +38,21 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
                 tvBottom.constant = 0
             }
         }
+        if detailType == Payment.我的持仓量{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "明细", style: .Plain, target: self, action: #selector(TradeDetailViewController.dt))
+        }
         //设置表格尾部（去除多余cell线）
         tv.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+    
+    func dt(){
+        self.performSegueWithIdentifier("unwindToMyTrade", sender: nil)
     }
     
     //模拟数据
     func loadData(){
         for dt in (dataDetail?.dictionary)!{
-            if dt.0 != "subscription_detail_id"
+            if (dt.0 != "subscription_detail_id" && dt.0 != "pid")
             {
                 detailInfo.append((dt.0,dt.1.stringValue))
             }
@@ -152,4 +160,5 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+    
 }
