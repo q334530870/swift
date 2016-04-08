@@ -48,7 +48,7 @@
 "8fj-Zz-Tfy.text" = "产品报价";
 
 /* Class = "UILabel"; text = "IDAI360不会在任何地方泄露您的账户信息"; ObjectID = "8kH-cN-06Q"; */
-"8kH-cN-06Q.text" = "IDAI360不会在任何地方泄露您的账户信息";
+"8kH-cN-06Q.text" = "京西贷不会在任何地方泄露您的账户信息";
 
 /* Class = "UIButton"; normalTitle = "用户评论"; ObjectID = "9IS-Gz-yAv"; */
 "9IS-Gz-yAv.normalTitle" = "用户评论";
@@ -195,7 +195,7 @@
 "aUc-KE-ZbO.text" = "→";
 
 /* Class = "UITabBarItem"; title = "我的爱贷"; ObjectID = "bnu-bo-KXL"; */
-"bnu-bo-KXL.title" = "我的爱贷";
+"bnu-bo-KXL.title" = "我的";
 
 /* Class = "UITextField"; placeholder = "验证码"; ObjectID = "c6p-db-CER"; */
 "c6p-db-CER.placeholder" = "验证码";

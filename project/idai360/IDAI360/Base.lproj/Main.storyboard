@@ -1046,7 +1046,7 @@
                                             <action selector="login:" destination="o5I-d4-Ov5" eventType="touchUpInside" id="GuW-mU-IwO"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idai" translatesAutoresizingMaskIntoConstraints="NO" id="haw-6p-ZIF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fm1" translatesAutoresizingMaskIntoConstraints="NO" id="haw-6p-ZIF">
                                         <rect key="frame" x="56" y="90" width="263" height="132"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="haw-6p-ZIF" secondAttribute="height" multiplier="2:1" id="Qs4-v0-1DH"/>
@@ -1185,8 +1185,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIn-vz-sPi">
                                 <rect key="frame" x="0.0" y="68" width="375" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IDAI360不会在任何地方泄露您的账户信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kH-cN-06Q">
-                                        <rect key="frame" x="8" y="6" width="208" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="京西贷不会在任何地方泄露您的账户信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kH-cN-06Q">
+                                        <rect key="frame" x="8" y="6" width="198" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="1" green="0.49442440605267168" blue="0.30618928552006186" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3626,8 +3626,8 @@
         <image name="bill" width="24" height="24"/>
         <image name="email" width="24" height="24"/>
         <image name="first" width="24" height="24"/>
+        <image name="fm1" width="634" height="330"/>
         <image name="home" width="24" height="24"/>
-        <image name="idai" width="1106" height="608"/>
         <image name="idcard" width="24" height="24"/>
         <image name="money" width="24" height="24"/>
         <image name="no-ok" width="24" height="24"/>
@@ -3645,10 +3645,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WNe-4z-xr1"/>
-        <segue reference="YER-PZ-Zab"/>
-        <segue reference="u2r-Ax-89C"/>
         <segue reference="Nqt-Fv-bKS"/>
+        <segue reference="YER-PZ-Zab"/>
         <segue reference="7Ld-ON-WbQ"/>
         <segue reference="c0I-dW-4tB"/>
+        <segue reference="zic-zM-wdd"/>
     </inferredMetricsTieBreakers>
 </document>

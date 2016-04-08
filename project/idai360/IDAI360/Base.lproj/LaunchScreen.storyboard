@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E61b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -19,11 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idai" translatesAutoresizingMaskIntoConstraints="NO" id="55s-Hw-Fcy">
-                                <rect key="frame" x="19" y="241" width="337.5" height="185"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fm" translatesAutoresizingMaskIntoConstraints="NO" id="55s-Hw-Fcy">
+                                <rect key="frame" x="19" y="191.5" width="337.5" height="224"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="IdJ-G5-gYX"/>
-                                    <constraint firstAttribute="width" secondItem="55s-Hw-Fcy" secondAttribute="height" multiplier="1106:608" id="nyF-Fd-9hf"/>
+                                    <constraint firstAttribute="width" secondItem="55s-Hw-Fcy" secondAttribute="height" multiplier="941:625" id="nyF-Fd-9hf"/>
                                     <constraint firstAttribute="width" constant="294" id="s8x-oK-Zj9"/>
                                 </constraints>
                                 <variation key="default">
@@ -33,13 +33,38 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="京西贷(深圳)资产管理有限公司 粤ICP备16027119号" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="OJH-z7-pd5">
+                                <rect key="frame" x="0.0" y="402" width="375" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OJH-z7-pd5" secondAttribute="bottom" constant="20" id="1cF-nY-TuU"/>
+                            <constraint firstItem="55s-Hw-Fcy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="5mo-G6-mUT"/>
+                            <constraint firstAttribute="trailing" secondItem="OJH-z7-pd5" secondAttribute="trailing" id="5wp-5y-pbG"/>
                             <constraint firstItem="55s-Hw-Fcy" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.9" id="74h-Nm-Zlv"/>
+                            <constraint firstItem="OJH-z7-pd5" firstAttribute="bottom" secondItem="55s-Hw-Fcy" secondAttribute="bottom" constant="20" id="AYg-ZX-Xul"/>
                             <constraint firstItem="55s-Hw-Fcy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="B7Q-rc-8HO"/>
                             <constraint firstItem="55s-Hw-Fcy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EpV-6s-dh9"/>
+                            <constraint firstItem="OJH-z7-pd5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="eru-8q-n8d"/>
+                            <constraint firstItem="OJH-z7-pd5" firstAttribute="top" secondItem="55s-Hw-Fcy" secondAttribute="top" id="hVy-sX-Prj"/>
+                            <constraint firstItem="OJH-z7-pd5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kBs-bF-2zR"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="55s-Hw-Fcy" secondAttribute="bottom" constant="60" id="qtK-yg-IMR"/>
+                            <constraint firstItem="OJH-z7-pd5" firstAttribute="width" secondItem="55s-Hw-Fcy" secondAttribute="width" id="wDT-Sp-eOc"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hVy-sX-Prj"/>
+                                <exclude reference="kBs-bF-2zR"/>
+                                <exclude reference="wDT-Sp-eOc"/>
+                                <exclude reference="EpV-6s-dh9"/>
+                                <exclude reference="1cF-nY-TuU"/>
+                                <exclude reference="qtK-yg-IMR"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
@@ -49,6 +74,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="idai" width="1106" height="608"/>
+        <image name="fm" width="941" height="625"/>
     </resources>
 </document>

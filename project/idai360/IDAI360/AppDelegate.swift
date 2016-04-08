@@ -1,6 +1,5 @@
 //
 //  AppDelegate.swift
-//  IDAI360
 //
 //  Created by YaoJ on 15/12/7.
 //  Copyright © 2015年 YaoJ. All rights reserved.
@@ -99,9 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notification.timeZone = NSTimeZone.localTimeZone()
         notification.repeatInterval = NSCalendarUnit.Minute
         if #available(iOS 8.2, *) {
-            notification.alertTitle = "idai360"
+            notification.alertTitle = "京西贷"
         }
-        notification.alertBody = "本地通知推送测试"
+        notification.alertBody = "本地通知推送"
         notification.alertAction = "确定"
         notification.soundName = UILocalNotificationDefaultSoundName
         //notification.soundName = "qc.caf"

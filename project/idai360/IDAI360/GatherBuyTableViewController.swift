@@ -22,6 +22,7 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     var selectedId = ""
     var tempValue = Dictionary<Int,String>()
     var selectTK = [String]()
+    var priceLabel:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -224,6 +225,13 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
             }
             if indexPath.row >= 10 && indexPath.row <= 12{
                 textField.titleTextColour = MAIN_COLOR
+                if indexPath.row == 12{
+                    textField.frame = CGRectMake(15,3,cell.width-200,cell.height-6)
+                    priceLabel = UILabel(frame: CGRectMake(cell.width - 215,3,185,cell.height-6))
+                    priceLabel!.font = UIFont.systemFontOfSize(12)
+                    cell.contentView.addSubview(priceLabel!)
+                    getCurrentPrice(tempValue[indexPath.row]!)
+                }
             }
         }
         return cell
@@ -241,8 +249,39 @@ class GatherBuyTableViewController: UITableViewController,UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let tag = textField.tag
-        tempValue[tag] = textField.text! + string
+        if string.isEmpty{
+            tempValue[tag] = textField.text!.substringToIndex(textField.text!.endIndex.predecessor())
+        }
+        else{
+            tempValue[tag] = textField.text! + string
+        }
+        if tag == 12{
+            getCurrentPrice(tempValue[tag]!)
+        }
         return true
+    }
+    
+    func getCurrentPrice(irr:String){
+        if irr.isEmpty{
+            self.priceLabel?.text = ""
+        }
+        else if Double(irr) >= 100{
+            Common.showAlert(self, title: "", message: "最低收益率必须少于100")
+        }
+        else{
+            let url = API_URL + "/api/Transaction"
+            let token = Common.getToken()
+            let param = ["token":token,
+                         "type":"3",
+                         "pid":self.detail!["ProductFactorRentalId"].stringValue,
+                         "seniority":self.detail!["Seniority"].stringValue,
+                         "irr":irr,
+                         "isinitialissue":"0"]
+            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
+            Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
+                self.priceLabel?.text = "当前价格：\(json["data"].stringValue)"
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
