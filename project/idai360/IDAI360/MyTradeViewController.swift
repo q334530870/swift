@@ -83,7 +83,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
             tempValue.append(("产品","本金到期",""))
             break
         case Payment.产品变动:
-            tempValue.append(("日期","成交量",""))
+            tempValue.append(("交易条款","成交量",""))
             break
         default:
             break
@@ -195,7 +195,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let trade = segue.destinationViewController as? TradeDetailViewController{
             let detail = result[sender as! Int]
-            trade.navigationItem.title = String(detail[tempValue[0].text])
+            trade.navigationItem.title = detail[tempValue[0].text].stringValue
             if !segmented.hidden{
                 trade.detailType = Payment(rawValue: segmented.selectedSegmentIndex)!
             }

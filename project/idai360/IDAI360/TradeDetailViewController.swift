@@ -52,7 +52,7 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
     //模拟数据
     func loadData(){
         for dt in (dataDetail?.dictionary)!{
-            if (dt.0 != "subscription_detail_id" && dt.0 != "pid")
+            if (dt.0 != "subscription_detail_id" && dt.0 != "pid" && dt.0 != "seniority")
             {
                 detailInfo.append((dt.0,dt.1.stringValue))
             }

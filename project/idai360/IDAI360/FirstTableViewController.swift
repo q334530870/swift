@@ -333,7 +333,7 @@ class FirstTableViewController: UITableViewController,UISearchBarDelegate,UISear
             cell.addSubview(rightView)
         }
         else if indexPath.row == 2{
-            let memoLabel = UILabel(frame: CGRect(x: 5,y: 0,width: cell.frame.width-5,height: cell.frame.height))
+            let memoLabel = UILabel(frame: CGRect(x: 10,y: 0,width: cell.frame.width-20,height: cell.frame.height))
             memoLabel.text = cellData["Description"].string
             memoLabel.numberOfLines = 2
             memoLabel.textColor = UIColor.grayColor()
