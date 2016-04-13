@@ -51,10 +51,47 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
     
     //模拟数据
     func loadData(){
-        for dt in (dataDetail?.dictionary)!{
-            if (dt.0 != "subscription_detail_id" && dt.0 != "pid" && dt.0 != "seniority")
-            {
-                detailInfo.append((dt.0,dt.1.stringValue))
+        
+        var titleList:[String] = []
+        switch detailType!{
+        case Payment.交易付款:
+            titleList = ["认购单","条件结束日期","产品名称","年化收益率","认购份数","单价","认购金额","已付认购款","预期收益金额","还款方式","还款周期","到期时间"]
+            break
+        case Payment.我的持仓量:
+            titleList = ["产品","今日平价","在售量","持有量","购买价","购买价余额","条件持有量","条件购买价","条件购买价余额","总积数","总利息","未清本息余额","累计支付本息"]
+            break
+        case Payment.买入成交单,Payment.卖出成交单:
+            titleList = ["认购单","成交时间","交易对手","产品","数量","价格","交易报酬率","过息额","过息价","保证金支付","合计付款","交易条款","初发","条件交易","毕业时间","毕业结果"]
+            break
+        case Payment.现金日记账:
+            titleList = ["合计行","类别","凭证号","日期","摘要","参考号","期初余额","收入","支出","期末余额","金额"]
+            break
+        case Payment.到期本息支付:
+            titleList = ["日期","产品","付款周期","数量","过息金额","利息积数","持有生息","本金到期","本息合计","已付金额","应付余额","付款截止时间"]
+            break
+        case Payment.投资损益表:
+            titleList = ["科目名称","金额_TT","金额_T0","金额_T1"]
+            break
+        case Payment.将到期本息汇总:
+            titleList = ["发行人","产品","付款周期","数量","过息金额","利息积数","已持有生息","持有到期生息","本金到期","本息合计","截止时间","会计期间","条件持有量"]
+            break
+        case Payment.产品变动:
+            titleList = ["product","SaleBuy","购售类","日期","交易类","成交单","初发","交易条款","成交量","报酬率","支付金额","交割量","条件持有量","退回量"]
+            break
+        default:
+            break
+        }
+        if titleList.count > 0{
+            for title in titleList{
+                detailInfo.append((title,dataDetail![title].stringValue))
+            }
+        }
+        else{
+            for dt in (dataDetail?.dictionary)!{
+                if (dt.0 != "subscription_detail_id" && dt.0 != "pid" && dt.0 != "seniority")
+                {
+                    detailInfo.append((dt.0,dt.1.stringValue))
+                }
             }
         }
         if detailType == Payment.交易付款{

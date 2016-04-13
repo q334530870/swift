@@ -17,6 +17,9 @@
 		A423E0091C4F73A000564101 /* SXWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = A423E0011C4F73A000564101 /* SXWaveView.m */; };
 		A423E00A1C4F73A000564101 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A423E0031C4F73A000564101 /* UIViewAdditions.m */; };
 		A42E799E1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */; };
+		A440E8821CBE252B00C98988 /* OverdrawTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440E8811CBE252B00C98988 /* OverdrawTableViewController.swift */; };
+		A440E8841CBE34F400C98988 /* OverdrawDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440E8831CBE34F400C98988 /* OverdrawDetailTableViewController.swift */; };
+		A440E8861CBE37EE00C98988 /* OverdrawAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440E8851CBE37EE00C98988 /* OverdrawAddViewController.swift */; };
 		A44F1D271C194200008E3E3F /* ZWIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1D131C194200008E3E3F /* ZWIntroductionViewController.m */; };
 		A44F1E441C1950CC008E3E3F /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1E1A1C1950CC008E3E3F /* MJRefreshAutoFooter.m */; };
 		A44F1E451C1950CC008E3E3F /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F1E1C1C1950CC008E3E3F /* MJRefreshBackFooter.m */; };
@@ -160,6 +163,9 @@
 		A423E0021C4F73A000564101 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		A423E0031C4F73A000564101 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		A42E799D1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallmentMonthlyViewController.swift; sourceTree = "<group>"; };
+		A440E8811CBE252B00C98988 /* OverdrawTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverdrawTableViewController.swift; sourceTree = "<group>"; };
+		A440E8831CBE34F400C98988 /* OverdrawDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverdrawDetailTableViewController.swift; sourceTree = "<group>"; };
+		A440E8851CBE37EE00C98988 /* OverdrawAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverdrawAddViewController.swift; sourceTree = "<group>"; };
 		A44F1CE41C194200008E3E3F /* IDAI360-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDAI360-Bridging-Header.h"; sourceTree = "<group>"; };
 		A44F1D121C194200008E3E3F /* ZWIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWIntroductionViewController.h; sourceTree = "<group>"; };
 		A44F1D131C194200008E3E3F /* ZWIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWIntroductionViewController.m; sourceTree = "<group>"; };
@@ -601,6 +607,9 @@
 				A415301A1C9649E300D0E738 /* TotalViewTableViewController.swift */,
 				A4C980C11CABB94100C77CFC /* GoldTableViewController.swift */,
 				A45284621CACB4FA007B04E8 /* FriendViewController.swift */,
+				A440E8811CBE252B00C98988 /* OverdrawTableViewController.swift */,
+				A440E8831CBE34F400C98988 /* OverdrawDetailTableViewController.swift */,
+				A440E8851CBE37EE00C98988 /* OverdrawAddViewController.swift */,
 			);
 			name = userCenter;
 			sourceTree = "<group>";
@@ -934,6 +943,7 @@
 				A4CF6AE21C3CEA4800955579 /* SDWebImageCompat.m in Sources */,
 				A44F1E4D1C1950CC008E3E3F /* MJRefreshBackNormalFooter.m in Sources */,
 				A4951E8A1C30D182003DD474 /* Validation.swift in Sources */,
+				A440E8821CBE252B00C98988 /* OverdrawTableViewController.swift in Sources */,
 				A4F3C40B1C3F6211006862E6 /* POPAnimationTracer.mm in Sources */,
 				A44F1E4F1C1950CC008E3E3F /* MJRefreshGifHeader.m in Sources */,
 				A44F1E541C1950CC008E3E3F /* UIScrollView+MJExtension.m in Sources */,
@@ -995,6 +1005,7 @@
 				A4CF6AE41C3CEA4800955579 /* SDWebImageDownloader.m in Sources */,
 				A4D00FDE1C3A4FD90034CDC8 /* Config.swift in Sources */,
 				A4B38D3D1C5F39B100A8D790 /* WantSellTableTableViewController.swift in Sources */,
+				A440E8841CBE34F400C98988 /* OverdrawDetailTableViewController.swift in Sources */,
 				A4716AAE1C51B69000FD4E7F /* DrawLineTest.swift in Sources */,
 				A44F1E471C1950CC008E3E3F /* MJRefreshFooter.m in Sources */,
 				A47640671C72BD170044CD4B /* GatherSellTableViewController.swift in Sources */,
@@ -1021,6 +1032,7 @@
 				A44F1E4E1C1950CC008E3E3F /* MJRefreshBackStateFooter.m in Sources */,
 				A4F3C4071C3F6211006862E6 /* POPAnimation.mm in Sources */,
 				A44F1E561C1950CC008E3E3F /* UIView+MJExtension.m in Sources */,
+				A440E8861CBE37EE00C98988 /* OverdrawAddViewController.swift in Sources */,
 				A42E799E1C2B8EFA00BADF08 /* InstallmentMonthlyViewController.swift in Sources */,
 				A4CF6AE11C3CEA4800955579 /* SDImageCache.m in Sources */,
 				A4F3C4191C3F6349006862E6 /* PopButton.swift in Sources */,

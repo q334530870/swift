@@ -260,7 +260,6 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         Common.doRepuest(self, url: url, method: .GET, param: param) { (response, json) -> Void in
             self.yeValue.text = Common.numberFormat(json["data"]["banlace"].doubleValue)
             self.result = json["data"]
-            
         }
     }
     

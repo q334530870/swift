@@ -392,7 +392,7 @@ class Common{
     {
         //        if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion:
         //            8, minorVersion: 0, patchVersion: 0)){
-        //ios8以后才能使用touch id=
+        //ios8以后才能使用touch id
         if NSProcessInfo().operatingSystemVersion.majorVersion >= 8{
             var result = ""
             // Get the local authentication context.

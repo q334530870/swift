@@ -21,6 +21,7 @@ class SafeTableViewController: UITableViewController {
         }
         otherList.append(("金币申领","gold"))
         otherList.append(("邀请朋友","friend"))
+        otherList.append(("平台透支","overdraw"))
     }
     
     override func didReceiveMemoryWarning() {

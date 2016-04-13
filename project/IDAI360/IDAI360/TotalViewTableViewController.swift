@@ -16,11 +16,11 @@ class TotalViewTableViewController: UITableViewController {
     var titleList3:[String]?
     var titleList4:[String]?
     var titleList5:[String]?
-    var valueList1 = [String]()
-    var valueList2 = [String]()
-    var valueList3 = [String]()
-    var valueList4 = [String]()
-    var valueList5 = [String]()
+    var valueList1 = [Double]()
+    var valueList2 = [Double]()
+    var valueList3 = [Double]()
+    var valueList4 = [Double]()
+    var valueList5 = [Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,40 +31,40 @@ class TotalViewTableViewController: UITableViewController {
         titleList4 = ["债余额价值","交易中/买入价值","交易中/卖出价值","交易委托中/买入价值","交易委托中/卖出价值"]
         titleList5 = ["本日购入价值","本周购入价值","本月购入价值","本年购入价值","本日出售价值","本周出售价值","本月出售价值","本年出售价值","本日退回价值","本周退回价值","本月退回价值","本年退回价值","本日交割价值","本周交割价值","本月交割价值","本年交割价值"]
         
-        valueList1.append(result!["cashBalance"][0]["cash_bal"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["coins_yet_to_redeem"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["condi_pmt_paid"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["condi_pmt_offline_paying"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["condi_pmt_payable"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["condi_receivable"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["instalments_receivable"].stringValue)
-        valueList1.append(result!["cashBalance"][0]["instalments_due_mtd"].stringValue)
+        valueList1.append(result!["cashBalance"][0]["cash_bal"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["coins_yet_to_redeem"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["condi_pmt_paid"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["condi_pmt_offline_paying"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["condi_pmt_payable"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["condi_receivable"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["instalments_receivable"].doubleValue)
+        valueList1.append(result!["cashBalance"][0]["instalments_due_mtd"].doubleValue)
         
-        valueList2.append(result!["interestSummary"][0]["interest_receivable"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_today"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_act_wtd"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_act_mtd"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_act_ytd"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_maturity_week"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_maturity_month"].stringValue)
-        valueList2.append(result!["interestSummary"][0]["interest_maturity_year"].stringValue)
+        valueList2.append(result!["interestSummary"][0]["interest_receivable"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_today"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_act_wtd"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_act_mtd"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_act_ytd"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_maturity_week"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_maturity_month"].doubleValue)
+        valueList2.append(result!["interestSummary"][0]["interest_maturity_year"].doubleValue)
         
-        valueList3.append(result!["principalInterestSummary"][0]["instalments_receivable"].stringValue)
-        valueList3.append(result!["principalInterestSummary"][0]["instalments_due_mtd"].stringValue)
-        valueList3.append(result!["principalInterestSummary"][0]["instalments_due_ytd"].stringValue)
-        valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_month"].stringValue)
-        valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_year"].stringValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_receivable"].doubleValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_due_mtd"].doubleValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_due_ytd"].doubleValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_month"].doubleValue)
+        valueList3.append(result!["principalInterestSummary"][0]["instalments_maturity_year"].doubleValue)
         
         for var rst in result!["bondsSummary"].array!{
             //            valueList4.append(rst["products"].stringValue)
             //            valueList4.append(rst["units"].stringValue)
-            valueList4.append(rst["NBV"].stringValue)
+            valueList4.append(rst["NBV"].doubleValue)
         }
         
         for var rst in result!["transactionSummary"].array!{
             //            valueList5.append(rst["products"].stringValue)
             //            valueList5.append(rst["units"].stringValue)
-            valueList5.append(rst["NBV"].stringValue)
+            valueList5.append(rst["NBV"].doubleValue)
         }
         
     }
@@ -103,23 +103,23 @@ class TotalViewTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
         if indexPath.section == 0{
             cell.textLabel?.text = titleList1![indexPath.row]
-            cell.detailTextLabel?.text = valueList1[indexPath.row]
+            cell.detailTextLabel?.text = String(valueList1[indexPath.row])
         }
         else if indexPath.section == 1{
             cell.textLabel?.text = titleList2![indexPath.row]
-            cell.detailTextLabel?.text = valueList2[indexPath.row]
+            cell.detailTextLabel?.text = String(valueList2[indexPath.row])
         }
         else if indexPath.section == 2{
             cell.textLabel?.text = titleList3![indexPath.row]
-            cell.detailTextLabel?.text = valueList3[indexPath.row]
+            cell.detailTextLabel?.text = String(valueList3[indexPath.row])
         }
         else if indexPath.section == 3{
             cell.textLabel?.text = titleList4![indexPath.row]
-            cell.detailTextLabel?.text = valueList4[indexPath.row]
+            cell.detailTextLabel?.text = String(valueList4[indexPath.row])
         }
         else{
             cell.textLabel?.text = titleList5![indexPath.row]
-            cell.detailTextLabel?.text = valueList5[indexPath.row]
+            cell.detailTextLabel?.text = String(valueList5[indexPath.row])
         }
         return cell
     }

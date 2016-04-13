@@ -211,6 +211,7 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         if let cl = segue.sourceViewController as? TradeDetailViewController{
             unwindData = cl.dataDetail
             dataType = Payment.产品变动
+            selectCell = dataType
             getData()
         }
         
