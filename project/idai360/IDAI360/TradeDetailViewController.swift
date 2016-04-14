@@ -78,6 +78,9 @@ class TradeDetailViewController: UIViewController,UITableViewDataSource,UITableV
         case Payment.产品变动:
             titleList = ["product","SaleBuy","购售类","日期","交易类","成交单","初发","交易条款","成交量","报酬率","支付金额","交割量","条件持有量","退回量"]
             break
+        case Payment.转账记录:
+            titleList = ["日期","类别","摘要","收入","支付","状态","支付号","支付成功"]
+            break
         default:
             break
         }

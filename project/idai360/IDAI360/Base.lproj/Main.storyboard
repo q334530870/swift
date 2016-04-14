@@ -466,10 +466,10 @@
             </objects>
             <point key="canvasLocation" x="3328.5" y="-2985.5"/>
         </scene>
-        <!--Installment Monthly Detail Table View Controller-->
+        <!--还款计划明细-->
         <scene sceneID="N4b-LT-3Hz">
             <objects>
-                <tableViewController id="Jgk-Jj-FVM" customClass="InstallmentMonthlyDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Jgk-Jj-FVM" userLabel="还款计划明细" customClass="InstallmentMonthlyDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HF7-wM-mat">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2189,10 +2189,10 @@
             </objects>
             <point key="canvasLocation" x="2697.5" y="2223.5"/>
         </scene>
-        <!--My Idai View Controller-->
+        <!--我的-->
         <scene sceneID="8RB-xc-gW6">
             <objects>
-                <viewController storyboardIdentifier="MyIdai" id="dIq-N5-RjL" customClass="MyIdaiViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyIdai" id="dIq-N5-RjL" userLabel="我的" customClass="MyIdaiViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="lrI-Mh-KCH">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2272,10 +2272,10 @@
             </objects>
             <point key="canvasLocation" x="2108.5" y="479.5"/>
         </scene>
-        <!--Safe Detail Table View Controller-->
+        <!--设置明细-->
         <scene sceneID="O60-J1-VRT">
             <objects>
-                <tableViewController id="DUe-LC-Udn" customClass="SafeDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="DUe-LC-Udn" userLabel="设置明细" customClass="SafeDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="B89-kI-HX2">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2359,10 +2359,10 @@
             </objects>
             <point key="canvasLocation" x="3328.5" y="479.5"/>
         </scene>
-        <!--Total View Table View Controller-->
+        <!--账户总览-->
         <scene sceneID="aA2-Lj-FGF">
             <objects>
-                <tableViewController id="fid-Qp-Qap" customClass="TotalViewTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="fid-Qp-Qap" userLabel="账户总览" customClass="TotalViewTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mq9-eM-gBW">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2462,10 +2462,10 @@
             </objects>
             <point key="canvasLocation" x="3948.5" y="1345.5"/>
         </scene>
-        <!--Gather Sell Table View Controller-->
+        <!--委托卖出-->
         <scene sceneID="j03-Dc-gJR">
             <objects>
-                <tableViewController id="vba-h6-BB6" customClass="GatherSellTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vba-h6-BB6" userLabel="委托卖出" customClass="GatherSellTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bLq-EG-Mer">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2503,10 +2503,10 @@
             </objects>
             <point key="canvasLocation" x="3948.5" y="2223.5"/>
         </scene>
-        <!--Gather Buy Table View Controller-->
+        <!--委托买入-->
         <scene sceneID="FJ5-VO-UTc">
             <objects>
-                <tableViewController id="uln-XG-juE" customClass="GatherBuyTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uln-XG-juE" userLabel="委托买入" customClass="GatherBuyTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IdJ-E8-4sD">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2544,10 +2544,10 @@
             </objects>
             <point key="canvasLocation" x="4455.5" y="2223.5"/>
         </scene>
-        <!--Gather Detail Table View Controller-->
+        <!--集合交易明细-->
         <scene sceneID="JYN-s0-B84">
             <objects>
-                <tableViewController id="rZH-Ri-3Z6" customClass="GatherDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rZH-Ri-3Z6" userLabel="集合交易明细" customClass="GatherDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EvT-I4-yOl">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2853,10 +2853,10 @@
             </objects>
             <point key="canvasLocation" x="3328.5" y="-2065.5"/>
         </scene>
-        <!--Trade Log Detail Table View Controller-->
+        <!--投资记录明细-->
         <scene sceneID="UWi-hi-fL9">
             <objects>
-                <tableViewController id="chQ-66-ibS" customClass="TradeLogDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="chQ-66-ibS" userLabel="投资记录明细" customClass="TradeLogDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qlT-O5-xIr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2959,10 +2959,10 @@
             </objects>
             <point key="canvasLocation" x="5432.5" y="-379.5"/>
         </scene>
-        <!--Overdraw Detail Table View Controller-->
+        <!--平台透支明细-->
         <scene sceneID="V8W-a9-f6Z">
             <objects>
-                <tableViewController id="YT0-kQ-Ym6" customClass="OverdrawDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YT0-kQ-Ym6" userLabel="平台透支明细" customClass="OverdrawDetailTableViewController" customModule="IDAI360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1wz-bb-LEV">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

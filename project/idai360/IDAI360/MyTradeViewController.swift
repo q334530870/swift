@@ -85,6 +85,9 @@ class MyTradeViewController: UIViewController,UITableViewDataSource,UITableViewD
         case Payment.产品变动:
             tempValue.append(("交易条款","成交量",""))
             break
+        case Payment.转账记录:
+            tempValue.append(("类别","日期",""))
+            break
         default:
             break
         }

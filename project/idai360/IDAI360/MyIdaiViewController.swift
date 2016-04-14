@@ -105,6 +105,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         buyData = [("市价买入","sjmr"),("市价卖出","sjmc"),("委托买入","wtmr"),("委托卖出","wtmc")]
         otherData.append(("充值","","recharge"))
+        otherData.append(("转账记录","","myTrade"))
         imageList = ["dqr","hkz","hkjs","cz","ccl","buyIn","buyOut","detailTable","bx","sy","zl"]
         //初始化表格底部
         let footerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width / 4 * 4 + 3))
@@ -140,8 +141,12 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
                 label.text = "充值"
             }
             else if i == 3{
-                imageView.image = UIImage()
-                label.text = ""
+                //点击other手势
+                v.tag = 1
+                imageView.image = UIImage(named:imageList[i])
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MyIdaiViewController.tapOther(_:)))
+                v.addGestureRecognizer(tapGesture)
+                label.text = "转账记录"
             }
             else{
                 //点击payment手势
@@ -175,7 +180,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
             let realIndex = i+3
             if cellData.count > realIndex{
                 let imageView = UIImageView(frame: CGRectMake(v!.frame.width/2-32/2,20,32,32))
-                imageView.image = UIImage(named:imageList[realIndex])
+                imageView.image = UIImage(named:imageList[realIndex + 1])
                 let label = UILabel(frame: CGRectMake(0,32+22,v!.frame.width,30))
                 label.font = UIFont.systemFontOfSize(10)
                 label.textAlignment = .Center
@@ -216,7 +221,7 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tapOther(sender: UITapGestureRecognizer){
         let tag = sender.view?.tag
         if otherData[tag!].segue != ""{
-            self.performSegueWithIdentifier(otherData[tag!].segue, sender: tag)
+            self.performSegueWithIdentifier(otherData[tag!].segue, sender: tag == 1 ? 12 : tag)
         }
     }
     
@@ -331,16 +336,25 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let index = Int(sender! as! NSNumber)
         if let trade = segue.destinationViewController as? MyTradeViewController{
-            trade.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
-            trade.selectCell = cellData[Int(sender! as! NSNumber)].type!
+            //转账记录
+            if index == 12{
+                trade.navigationItem.title = "转账记录"
+                trade.selectCell = Payment.转账记录
+            }
+            else{
+                trade.navigationItem.title = cellData[index].title
+                trade.selectCell = cellData[Int(sender! as! NSNumber)].type!
+            }
+            
         }
         else if let gather = segue.destinationViewController as? GatherTableViewController{
-            gather.navigationItem.title = gatherData[Int(sender! as! NSNumber)].title
+            gather.navigationItem.title = gatherData[index].title
             gather.selectCell = gatherData[Int(sender! as! NSNumber)].type
         }
         else if let totalView = segue.destinationViewController as? TotalViewTableViewController{
-            totalView.navigationItem.title = cellData[Int(sender! as! NSNumber)].title
+            totalView.navigationItem.title = cellData[index].title
             totalView.result = self.result
         }
         
