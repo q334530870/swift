@@ -390,6 +390,7 @@ class Common{
     //调用指纹识别函数
     static func loginWithTouchID(target:UIViewController,str:String,callback:(()->Void)? = nil)
     {
+        var stat = true
         //        if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion:
         //            8, minorVersion: 0, patchVersion: 0)){
         //ios8以后才能使用touch id

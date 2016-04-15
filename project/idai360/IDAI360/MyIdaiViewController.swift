@@ -336,8 +336,8 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let index = Int(sender! as! NSNumber)
         if let trade = segue.destinationViewController as? MyTradeViewController{
+            let index = Int(sender! as! NSNumber)
             //转账记录
             if index == 12{
                 trade.navigationItem.title = "转账记录"
@@ -350,10 +350,12 @@ class MyIdaiViewController: UIViewController,UITableViewDelegate,UITableViewData
             
         }
         else if let gather = segue.destinationViewController as? GatherTableViewController{
+            let index = Int(sender! as! NSNumber)
             gather.navigationItem.title = gatherData[index].title
-            gather.selectCell = gatherData[Int(sender! as! NSNumber)].type
+            gather.selectCell = gatherData[index].type
         }
         else if let totalView = segue.destinationViewController as? TotalViewTableViewController{
+            let index = Int(sender! as! NSNumber)
             totalView.navigationItem.title = cellData[index].title
             totalView.result = self.result
         }
