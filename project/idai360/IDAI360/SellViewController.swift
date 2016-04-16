@@ -113,7 +113,7 @@ class SellViewController: UIViewController {
         if textField.text == ""{
             textField.text = "0"
         }
-        self.view.frame.origin.y = 0
+        self.view.frame.origin.y = 64
         return true
     }
     

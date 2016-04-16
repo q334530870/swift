@@ -99,7 +99,7 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
         if textField.text == ""{
             textField.text = "0"
         }
-        self.view.frame.origin.y = 0
+        self.view.frame.origin.y = 64
         return true
     }
     
@@ -132,9 +132,22 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func buy(sender: AnyObject) {
+        if NSProcessInfo().operatingSystemVersion.majorVersion >= 8 && !Common.IsSimulator(){
+            Common.loginWithTouchID(self, reasonString: "通过Home健验证已有手机指纹", callback: {
+                self.buyIn()
+            })
+            
+            
+        }
+        else{
+            self.buyIn()
+        }
+    }
+    
+    func buyIn(){
         let url = API_URL + "/api/products"
         let token = Common.getToken()
-        let param = ["token":token,"id":model!["DetailId"].stringValue,"quantity":count.text!,"type":type]
+        let param = ["token":token,"id":self.model!["DetailId"].stringValue,"quantity":self.count.text!,"type":self.type]
         self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
         Common.doRepuest(self, url: url, method: .POST, param: param as? [String : AnyObject], failed: nil) { (response, json) -> Void in
             self.performSegueWithIdentifier("BuyToMyTrade", sender: nil)

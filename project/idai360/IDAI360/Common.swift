@@ -388,9 +388,9 @@ class Common{
     }
     
     //调用指纹识别函数
-    static func loginWithTouchID(target:UIViewController,str:String,callback:(()->Void)? = nil)
+    static func loginWithTouchID(target:UIViewController,reasonString:String,callback:(()->Void)? = nil)
     {
-        var stat = true
+        //通过Home健验证已有手机指纹
         //        if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion:
         //            8, minorVersion: 0, patchVersion: 0)){
         //ios8以后才能使用touch id
@@ -400,8 +400,6 @@ class Common{
             let context = LAContext()
             // Declare a NSError variable.
             var error: NSError?
-            // Set the reason string that will appear on the authentication alert.
-            let reasonString = str
             // Check if the device can evaluate the policy.
             if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error)
             {
@@ -410,7 +408,7 @@ class Common{
                         if stat
                         {
                             //成功后执行的方法
-                            callback
+                            callback!()
                         }
                         else
                         {
@@ -428,14 +426,14 @@ class Common{
                 switch error!.code
                 {
                 case LAError.TouchIDNotEnrolled.rawValue:
-                    result = "您还没有保存Touch ID指纹"
+                    result = "您还没有保存指纹"
                     break
                 case LAError.PasscodeNotSet.rawValue:
                     result = "您还没有设置密码"
                     break
                 default:
                     // The LAError.TouchIDNotAvailable case.
-                    result = "Touch ID不可用"
+                    result = "指纹功能不可用"
                     break
                 }
                 // Optionally the error description can be displayed on the console.
@@ -445,8 +443,27 @@ class Common{
             }
         }
         else{
-            showAlert(target, title: "", message: "系统版本低于8.0，无法使用TOUCH ID")
+            showAlert(target, title: "", message: "系统版本低于8.0，无法使用指纹")
         }
     }
     
+    static func IsSimulator() -> Bool{
+        if Platform.isSimulator {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+}
+
+struct Platform {
+    static let isSimulator: Bool = {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+            isSim = true
+        #endif
+        return isSim
+    }()
 }
