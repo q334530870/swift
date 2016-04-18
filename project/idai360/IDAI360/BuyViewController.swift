@@ -132,6 +132,7 @@ class BuyViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func buy(sender: AnyObject) {
+        //添加指纹识别
         if NSProcessInfo().operatingSystemVersion.majorVersion >= 8 && !Common.IsSimulator(){
             Common.loginWithTouchID(self, reasonString: "通过Home健验证已有手机指纹", callback: {
                 self.buyIn()
