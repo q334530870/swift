@@ -42,44 +42,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = introductionView
         }
         
-        if (UIDevice.currentDevice().systemVersion as NSString).floatValue >= 8 {
-            //            APService.registerForRemoteNotificationTypes(
-            //                UIUserNotificationType.Badge.rawValue |
-            //                UIUserNotificationType.Sound.rawValue |
-            //                UIUserNotificationType.Alert.rawValue,
-            //                categories: setting.categories)
-            
-            //1.创建一组动作
-            let userAction = UIMutableUserNotificationAction()
-            userAction.identifier = "action"
-            userAction.title = "打开"
-            userAction.activationMode = UIUserNotificationActivationMode.Foreground
-            
-            let userAction2 = UIMutableUserNotificationAction()
-            userAction2.identifier = "action2"
-            userAction2.title = "关闭"
-            userAction2.activationMode = UIUserNotificationActivationMode.Background
-            userAction2.authenticationRequired = true
-            userAction2.destructive = true
-            
-            //2.创建动作的类别集合
-            let userCategory = UIMutableUserNotificationCategory()
-            userCategory.identifier = "idai360Notification"
-            userCategory.setActions([userAction,userAction2], forContext: UIUserNotificationActionContext.Minimal)
-            let categories:NSSet = NSSet(object: userCategory)
-            
-            //3.创建UIUserNotificationSettings，并设置消息的显示类类型
-            let userSetting = UIUserNotificationSettings(forTypes:
-                [UIUserNotificationType.Badge,
-                    UIUserNotificationType.Sound,
-                    UIUserNotificationType.Alert]
-                , categories: categories as? Set<UIUserNotificationCategory>)
-            
-            //4.注册推送
-            application.registerForRemoteNotifications()
-            application.registerUserNotificationSettings(userSetting)
-            
-        }
+        //        if (UIDevice.currentDevice().systemVersion as NSString).floatValue >= 8 {
+        //            //            APService.registerForRemoteNotificationTypes(
+        //            //                UIUserNotificationType.Badge.rawValue |
+        //            //                UIUserNotificationType.Sound.rawValue |
+        //            //                UIUserNotificationType.Alert.rawValue,
+        //            //                categories: setting.categories)
+        //            
+        //            //1.创建一组动作
+        //            let userAction = UIMutableUserNotificationAction()
+        //            userAction.identifier = "action"
+        //            userAction.title = "打开"
+        //            userAction.activationMode = UIUserNotificationActivationMode.Foreground
+        //            
+        //            let userAction2 = UIMutableUserNotificationAction()
+        //            userAction2.identifier = "action2"
+        //            userAction2.title = "关闭"
+        //            userAction2.activationMode = UIUserNotificationActivationMode.Background
+        //            userAction2.authenticationRequired = true
+        //            userAction2.destructive = true
+        //            
+        //            //2.创建动作的类别集合
+        //            let userCategory = UIMutableUserNotificationCategory()
+        //            userCategory.identifier = "idai360Notification"
+        //            userCategory.setActions([userAction,userAction2], forContext: UIUserNotificationActionContext.Minimal)
+        //            let categories:NSSet = NSSet(object: userCategory)
+        //            
+        //            //3.创建UIUserNotificationSettings，并设置消息的显示类类型
+        //            let userSetting = UIUserNotificationSettings(forTypes:
+        //                [UIUserNotificationType.Badge,
+        //                    UIUserNotificationType.Sound,
+        //                    UIUserNotificationType.Alert]
+        //                , categories: categories as? Set<UIUserNotificationCategory>)
+        //            
+        //            //4.注册推送
+        //            application.registerForRemoteNotifications()
+        //            application.registerUserNotificationSettings(userSetting)
+        //            
+        //        }
         
         return true
     }
@@ -91,38 +91,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(application: UIApplication) {
         
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        let notification = UILocalNotification()
-        notification.fireDate = NSDate().dateByAddingTimeInterval(10)
-        //setting timeZone as localTimeZone
-        notification.timeZone = NSTimeZone.localTimeZone()
-        notification.repeatInterval = NSCalendarUnit.Minute
-        if #available(iOS 8.2, *) {
-            notification.alertTitle = "京西贷"
-        }
-        notification.alertBody = "本地通知推送"
-        notification.alertAction = "确定"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        //notification.soundName = "qc.caf"
-        //setting app‘s icon badge
-        notification.applicationIconBadgeNumber = 1
+        //        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        //        let notification = UILocalNotification()
+        //        notification.fireDate = NSDate().dateByAddingTimeInterval(10)
+        //        //setting timeZone as localTimeZone
+        //        notification.timeZone = NSTimeZone.localTimeZone()
+        //        notification.repeatInterval = NSCalendarUnit.Minute
+        //        if #available(iOS 8.2, *) {
+        //            notification.alertTitle = "京西贷"
+        //        }
+        //        notification.alertBody = "本地通知推送"
+        //        notification.alertAction = "确定"
+        //        notification.soundName = UILocalNotificationDefaultSoundName
+        //        //notification.soundName = "qc.caf"
+        //        //setting app‘s icon badge
+        //        notification.applicationIconBadgeNumber = 1
+        //        
+        //        var userInfo:[NSObject : AnyObject] = [NSObject : AnyObject]()
+        //        userInfo["kLocalNotificationID"] = "idai360-message"
+        //        userInfo["key"] = "message"
+        //        notification.userInfo = userInfo
         
-        var userInfo:[NSObject : AnyObject] = [NSObject : AnyObject]()
-        userInfo["kLocalNotificationID"] = "idai360-message"
-        userInfo["key"] = "message"
-        notification.userInfo = userInfo
+        
         //application.presentLocalNotificationNow(notification)
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        let alertController = UIAlertController(title: nil, message: "成功灭火", preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Cancel, handler: nil)
-        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default,handler:nil)
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        self.window?.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
+        //        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        //        let alertController = UIAlertController(title: nil, message: "成功灭火", preferredStyle: UIAlertControllerStyle.Alert)
+        //        let cancelAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Cancel, handler: nil)
+        //        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default,handler:nil)
+        //        alertController.addAction(cancelAction)
+        //        alertController.addAction(okAction)
+        //        self.window?.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -131,8 +134,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         
-        application.cancelAllLocalNotifications()
-        application.applicationIconBadgeNumber = 0
+        //        application.cancelAllLocalNotifications()
+        //        application.applicationIconBadgeNumber = 0
+        
     }
     
     func applicationWillTerminate(application: UIApplication) {

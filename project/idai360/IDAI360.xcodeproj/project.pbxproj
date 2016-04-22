@@ -884,7 +884,7 @@
 				TargetAttributes = {
 					A4BD71E41C154B6C00D425DB = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = X59S4263JV;
+						DevelopmentTeam = 5D34V2537Y;
 					};
 				};
 			};
@@ -1126,7 +1126,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2130e62c-f656-4b45-83bf-3b1a5f21f770";
+				PROVISIONING_PROFILE = "302de1c7-6437-453c-8b22-99ca9cc8beec";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1150,8 +1150,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Yao (X59S4263JV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jie Yao (X59S4263JV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jingxidai (Shenzhen) Asset Management Co., Ltd. (5D34V2537Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jingxidai (Shenzhen) Asset Management Co., Ltd. (5D34V2537Y)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1166,7 +1166,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2130e62c-f656-4b45-83bf-3b1a5f21f770";
+				PROVISIONING_PROFILE = "302de1c7-6437-453c-8b22-99ca9cc8beec";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1183,9 +1183,9 @@
 				INFOPLIST_FILE = IDAI360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yaojie.idai;
+				PRODUCT_BUNDLE_IDENTIFIER = net.jingxidai.idai;
 				PRODUCT_NAME = IDAI360;
-				PROVISIONING_PROFILE = "2130e62c-f656-4b45-83bf-3b1a5f21f770";
+				PROVISIONING_PROFILE = "302de1c7-6437-453c-8b22-99ca9cc8beec";
 				SWIFT_OBJC_BRIDGING_HEADER = "IDai360/IDAI360-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1197,14 +1197,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jie Yao (X59S4263JV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jie Yao (X59S4263JV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jingxidai (Shenzhen) Asset Management Co., Ltd. (5D34V2537Y)";
 				INFOPLIST_FILE = IDAI360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yaojie.idai;
+				PRODUCT_BUNDLE_IDENTIFIER = net.jingxidai.idai;
 				PRODUCT_NAME = IDAI360;
-				PROVISIONING_PROFILE = "2130e62c-f656-4b45-83bf-3b1a5f21f770";
+				PROVISIONING_PROFILE = "302de1c7-6437-453c-8b22-99ca9cc8beec";
 				SWIFT_OBJC_BRIDGING_HEADER = "IDai360/IDAI360-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
