@@ -86,7 +86,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //登录
     @IBAction func login(sender: AnyObject) {
-        
+    
         if(phone.text == ""){
             Common.showAlert(self, title: "", message: "请输入用户名！")
         }
