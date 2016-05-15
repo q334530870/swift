@@ -10,6 +10,12 @@ import UIKit
 
 class WeekCell: UITableViewCell {
 
+    @IBOutlet weak var labelWeek: UILabel!
+    @IBOutlet weak var labelToday: UILabel!
+    @IBOutlet weak var imgWeatherIcon: UIImageView!
+    @IBOutlet weak var labelHighTemp: UILabel!
+    @IBOutlet weak var labelLowTemp: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

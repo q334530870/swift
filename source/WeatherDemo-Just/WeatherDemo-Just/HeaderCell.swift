@@ -10,6 +10,10 @@ import UIKit
 
 class HeaderCell: UITableViewCell {
 
+    @IBOutlet weak var labelCity: UILabel!
+    @IBOutlet weak var labelWeather: UILabel!
+    @IBOutlet weak var labelTemp: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4A13BAB1CE8324F00879A3D /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A13BAA1CE8324F00879A3D /* WeatherTableViewController.swift */; };
 		A4C5F9BB1CE6279B00C4E2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5F9BA1CE6279B00C4E2EC /* AppDelegate.swift */; };
 		A4C5F9C01CE6279B00C4E2EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C5F9BE1CE6279B00C4E2EC /* Main.storyboard */; };
 		A4C5F9C21CE6279B00C4E2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C5F9C11CE6279B00C4E2EC /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4A13BAA1CE8324F00879A3D /* WeatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		A4C5F9B71CE6279B00C4E2EC /* WeatherDemo-Just.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherDemo-Just.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C5F9BA1CE6279B00C4E2EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C5F9BF1CE6279B00C4E2EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				A4C5F9FC1CE6323800C4E2EC /* WeekCell.swift */,
 				A4C5FA001CE6338100C4E2EC /* BriefCell.swift */,
 				A4C5FA041CE6344F00C4E2EC /* AttachCell.swift */,
+				A4A13BAA1CE8324F00879A3D /* WeatherTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				A4C5F9F51CE62ABE00C4E2EC /* Just.swift in Sources */,
 				A4C5F9FE1CE6323800C4E2EC /* WeekCell.swift in Sources */,
 				A4C5F9EB1CE627B900C4E2EC /* WeatherResult.swift in Sources */,
+				A4A13BAB1CE8324F00879A3D /* WeatherTableViewController.swift in Sources */,
 				A4C5F9F81CE6302D00C4E2EC /* HeaderCell.swift in Sources */,
 				A4C5FA061CE6344F00C4E2EC /* AttachCell.swift in Sources */,
 				A4C5F9BB1CE6279B00C4E2EC /* AppDelegate.swift in Sources */,
@@ -570,6 +574,7 @@
 				A4C5F9E11CE6279B00C4E2EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4C5F9E21CE6279B00C4E2EC /* Build configuration list for PBXNativeTarget "WeatherDemo-JustTests" */ = {
 			isa = XCConfigurationList;
@@ -578,6 +583,7 @@
 				A4C5F9E41CE6279B00C4E2EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4C5F9E51CE6279B00C4E2EC /* Build configuration list for PBXNativeTarget "WeatherDemo-JustUITests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +592,7 @@
 				A4C5F9E71CE6279B00C4E2EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

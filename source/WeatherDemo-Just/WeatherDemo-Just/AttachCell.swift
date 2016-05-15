@@ -10,6 +10,9 @@ import UIKit
 
 class AttachCell: UITableViewCell {
 
+    @IBOutlet weak var labelWind: UILabel!
+    @IBOutlet weak var labelHumid: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
