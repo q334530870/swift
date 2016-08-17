@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SqliteSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKj-6Q-uiS">
+                                <rect key="frame" x="172" y="230" width="30" height="30"/>
+                                <state key="normal" title="增"/>
+                                <connections>
+                                    <action selector="insertAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J4p-QM-Mn4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYy-dY-UVC">
+                                <rect key="frame" x="172" y="294" width="30" height="30"/>
+                                <state key="normal" title="删"/>
+                                <connections>
+                                    <action selector="deleteAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g77-Gi-7BL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17E-zR-ecz">
+                                <rect key="frame" x="172" y="351" width="30" height="30"/>
+                                <state key="normal" title="改"/>
+                                <connections>
+                                    <action selector="editAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTl-v0-jBO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laD-hB-4av">
+                                <rect key="frame" x="172" y="412" width="30" height="30"/>
+                                <state key="normal" title="查"/>
+                                <connections>
+                                    <action selector="selectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUb-0x-bzD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OYy-dY-UVC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fzz-AY-vA6"/>
+                            <constraint firstItem="OYy-dY-UVC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-24.5" id="GcA-wu-bPv"/>
+                            <constraint firstItem="17E-zR-ecz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NF3-lj-nfb"/>
+                            <constraint firstItem="laD-hB-4av" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="93.5" id="NQf-HI-8Ef"/>
+                            <constraint firstItem="17E-zR-ecz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="32.5" id="Rwj-13-wa6"/>
+                            <constraint firstItem="xKj-6Q-uiS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bGZ-Z7-VjU"/>
+                            <constraint firstItem="laD-hB-4av" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oFj-uV-UOb"/>
+                            <constraint firstItem="xKj-6Q-uiS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-88.5" id="ypY-5C-Oh2"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

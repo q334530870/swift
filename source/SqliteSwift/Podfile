@@ -1,0 +1,5 @@
+use_frameworks!
+
+target ’SqliteSwift’ do
+  pod 'SQLite.swift', '~> 0.10.1'
+end
