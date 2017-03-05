@@ -28,20 +28,20 @@ class UserBookViewController: UIViewController,UITableViewDelegate,UITableViewDa
         tv.dataSource = self
         tv.estimatedRowHeight = 100
         //隐藏返回按钮的文字
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for: .default)
         //初始化照片浏览
         browser = MWPhotoBrowser(delegate: self)
         browser!.alwaysShowControls = false
-        browser!.modalTransitionStyle = .CrossDissolve
+        browser!.modalTransitionStyle = .crossDissolve
         //模拟数据
         data = ["1：语文书抄一遍","2：倒过来在抄一遍","3：用英语翻译一遍"]
         //初始化表格尾部
         foot = UIScrollView()
-        foot?.hidden = true
+        foot?.isHidden = true
         tv.tableFooterView = foot!
     }
     
-    func getInfo(index:Int){
+    func getInfo(_ index:Int){
         for view in (foot?.subviews)!{
             view.removeFromSuperview()
         }
@@ -67,35 +67,35 @@ class UserBookViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 rightMargin = self.view.frame.width - (i*(imgWidth+leftMargin)+leftMargin)
                 i = 0
             }
-            let imgView = UIButton(frame: CGRectMake(i*(imgWidth + leftMargin) + leftMargin,top,imgWidth,imgWidth))
-            imgView.setBackgroundImage(bookImageList![index], forState: .Normal)
-            imgView.addTarget(self, action: "ViewPhoto:", forControlEvents: UIControlEvents.TouchUpInside)
+            let imgView = UIButton(frame: CGRect(x: i*(imgWidth + leftMargin) + leftMargin,y: top,width: imgWidth,height: imgWidth))
+            imgView.setBackgroundImage(bookImageList![index], for: UIControlState())
+            imgView.addTarget(self, action: #selector(UserBookViewController.ViewPhoto(_:)), for: UIControlEvents.touchUpInside)
             foot?.addSubview(imgView)
-            i++
+            i += 1
         }
-        foot?.frame = CGRectMake(rightMargin/2,tv.contentSize.height,tv.frame.width,tv.frame.height - tv.contentSize.height)
+        foot?.frame = CGRect(x: rightMargin/2,y: tv.contentSize.height,width: tv.frame.width,height: tv.frame.height - tv.contentSize.height)
         //五角星评分
-        star = HCSStarRatingView(frame: CGRectMake((foot?.frame.width)!/2 - 75 - rightMargin/2,(foot?.frame.height)! - 30,150,30))
+        star = HCSStarRatingView(frame: CGRect(x: (foot?.frame.width)!/2 - 75 - rightMargin/2,y: (foot?.frame.height)! - 30,width: 150,height: 30))
         star!.maximumValue = 5
         star!.minimumValue = 0
         star!.value = 0
-        star!.tintColor = UIColor.orangeColor()
-        star!.addTarget(self, action: "setLevel:", forControlEvents: UIControlEvents.ValueChanged)
+        star!.tintColor = UIColor.orange
+        star!.addTarget(self, action: #selector(UserBookViewController.setLevel(_:)), for: UIControlEvents.valueChanged)
         foot?.addSubview(star!)
         //评分label
-        scoreLabel = UILabel(frame: CGRectMake((foot?.frame.width)!/2 - 75 - rightMargin/2,(foot?.frame.height)! - 60,150,30))
-        scoreLabel?.textAlignment = .Center
-        scoreLabel?.font = UIFont.systemFontOfSize(25)
+        scoreLabel = UILabel(frame: CGRect(x: (foot?.frame.width)!/2 - 75 - rightMargin/2,y: (foot?.frame.height)! - 60,width: 150,height: 30))
+        scoreLabel?.textAlignment = .center
+        scoreLabel?.font = UIFont.systemFont(ofSize: 25)
         scoreLabel?.textColor = star!.tintColor
         foot?.addSubview(scoreLabel!)
         foot?.alpha = 0
-        foot?.hidden = false
-        UIView.animateWithDuration(0.5) { () -> Void in
+        foot?.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.foot?.alpha = 1
-        }
+        }) 
     }
     
-    func setLevel(st:HCSStarRatingView){
+    func setLevel(_ st:HCSStarRatingView){
         var result = "F"
         switch st.value{
         case 1:
@@ -119,37 +119,37 @@ class UserBookViewController: UIViewController,UITableViewDelegate,UITableViewDa
         scoreLabel?.text = result
     }
     
-    func ViewPhoto(btn:UIButton){
-        self.presentViewController(browser!, animated: true, completion: nil)
+    func ViewPhoto(_ btn:UIButton){
+        self.present(browser!, animated: true, completion: nil)
     }
     
-    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+    func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
         return UInt((bookImageList?.count)!)
     }
     
-    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
         return MWPhoto(image: bookImageList![Int(index)])
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (data?.count)!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tv.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tv.dequeueReusableCell(withIdentifier: "ScrollCell", for: indexPath)
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = data![indexPath.row]
         if indexPath.row > 0{
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         getInfo(indexPath.row)
     }
     

@@ -754,6 +754,7 @@
 					A45B7D4E1C5202F000C6EDB8 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = X59S4263JV;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -1018,6 +1019,7 @@
 				PROVISIONING_PROFILE = "4417e751-087d-401d-9bd9-1d7e05053972";
 				SWIFT_OBJC_BRIDGING_HEADER = "Judee/Judee-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1036,6 +1038,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4417e751-087d-401d-9bd9-1d7e05053972";
 				SWIFT_OBJC_BRIDGING_HEADER = "Judee/Judee-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

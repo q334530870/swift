@@ -17,7 +17,7 @@ class AddBookDetailViewController: UIViewController,UITextFieldDelegate,UITextVi
         super.viewDidLoad()
         //解决导航栏引起的顶部内容往下bug
         self.automaticallyAdjustsScrollViewInsets = false
-        textView.layer.borderColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).CGColor
+        textView.layer.borderColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1).cgColor
         textView.layer.borderWidth = 0.8
         textView.textContainerInset = UIEdgeInsetsMake(0,3,3,3)
         //datePicker.countDownDuration = 60
@@ -28,22 +28,22 @@ class AddBookDetailViewController: UIViewController,UITextFieldDelegate,UITextVi
     }
     
     
-    @IBAction func submit(sender: AnyObject) {
+    @IBAction func submit(_ sender: AnyObject) {
         if textView.text != ""{
-            self.performSegueWithIdentifier("BookDetailUnwind", sender: nil)
+            self.performSegue(withIdentifier: "BookDetailUnwind", sender: nil)
         }
         else{
             Common.showAlert(self, title: "", message: "请填写作业内容")
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        datePicker.hidden = true
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        datePicker.isHidden = true
         self.view.endEditing(true)
         
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == needTime{
             self.textView.resignFirstResponder()
             showDatePicker()
@@ -54,21 +54,21 @@ class AddBookDetailViewController: UIViewController,UITextFieldDelegate,UITextVi
         }
     }
     
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView == self.textView{
-            datePicker.hidden = true
+            datePicker.isHidden = true
         }
         return true
     }
     
     func showDatePicker(){
-        datePicker.hidden = false
+        datePicker.isHidden = false
         if needTime.text == ""{
             needTime.text = "\(Int(datePicker.countDownDuration/60))"
         }
     }
     
-    @IBAction func changeDate(sender: AnyObject) {
+    @IBAction func changeDate(_ sender: AnyObject) {
         needTime.text = "\(Int(datePicker.countDownDuration/60))"
     }
     

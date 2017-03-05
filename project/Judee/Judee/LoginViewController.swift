@@ -18,24 +18,24 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         loginButton.layer.masksToBounds = true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //隐藏导航下面的实线
-        navBarHairlineImageView.hidden = true
+        navBarHairlineImageView.isHidden = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         //显示导航下面的实线
-        navBarHairlineImageView.hidden = false
+        navBarHairlineImageView.isHidden = false
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     
-    @IBAction func checkLogin(sender: AnyObject) {
+    @IBAction func checkLogin(_ sender: AnyObject) {
         if phone.text != "" && password.text != ""{
             loginButton.alpha = 1
         }
@@ -45,15 +45,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     
     //登录
-    @IBAction func login(sender: AnyObject) {
+    @IBAction func login(_ sender: AnyObject) {
         if !Common.isMobile(phone.text!){
             Common.showAlert(self, title: "", message: "请输入正确的手机号码")
         }
         else{
             let url = API_URL + "/users/auth/"
             let param = ["mobile":phone.text!,"password":password.text!]
-            self.view.makeToastActivity(position: HRToastPositionCenter, message: "数据加载中")
-            Common.doRepuest(self, url: url, method: .POST, param: param,encoding:.JSON, complete: { (Response, json) -> Void in
+            self.view.makeToastActivity(position: HRToastPositionCenter as AnyObject, message: "数据加载中")
+            Common.doRepuest(self, url: url, method: .POST, param: param,encoding:.json, complete: { (Response, json) -> Void in
                 Common.saveDefault(json["token"].string!, key: "token")
                 Common.saveDefault(json["user"].object, key: "user")
                 self.goHome()
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     
     func goHome(){
-        self.performSegueWithIdentifier("Home", sender: nil)
+        self.performSegue(withIdentifier: "Home", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

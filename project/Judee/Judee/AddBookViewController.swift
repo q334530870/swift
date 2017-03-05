@@ -27,39 +27,39 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tv.dataSource = self
         name.delegate = self
         cls.delegate = self
-        let footView = UIView(frame: CGRectMake(0,self.view.frame.height - 30,self.view.frame.width,40))
-        let button = UIButton(frame: CGRectMake(self.view.frame.width/2 - 60,10,120,30))
-        button.setTitle("新增作业明细", forState: .Normal)
+        let footView = UIView(frame: CGRect(x: 0,y: self.view.frame.height - 30,width: self.view.frame.width,height: 40))
+        let button = UIButton(frame: CGRect(x: self.view.frame.width/2 - 60,y: 10,width: 120,height: 30))
+        button.setTitle("新增作业明细", for: UIControlState())
         button.backgroundColor = MAIN_COLOR
-        button.titleLabel?.font = UIFont.systemFontOfSize(14)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: "addBook:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(AddBookViewController.addBook(_:)), for: .touchUpInside)
         footView.addSubview(button)
         tv.tableFooterView = footView
         tv.estimatedRowHeight = 100
         //初始化班级选择试图
-        classBackgroundView = UIView(frame: CGRectMake(0,63,self.view.frame.width,self.view.frame.height))
-        classBackgroundView?.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.3)
-        classBackgroundView?.hidden = true
+        classBackgroundView = UIView(frame: CGRect(x: 0,y: 63,width: self.view.frame.width,height: self.view.frame.height))
+        classBackgroundView?.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+        classBackgroundView?.isHidden = true
         //添加点击事件
-        classBackgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "closeClassBackgroundView"))
+        classBackgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(AddBookViewController.closeClassBackgroundView)))
         self.view.addSubview(classBackgroundView!)
     }
     
-    func addBook(btn:UIButton){
-        self.performSegueWithIdentifier("AddBook", sender: nil)
+    func addBook(_ btn:UIButton){
+        self.performSegue(withIdentifier: "AddBook", sender: nil)
         //        tv.beginUpdates()
         //        tv.insertRowsAtIndexPaths([NSIndexPath(forRow: (result?.count)!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
         //        tv.endUpdates()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == cls{
             self.selectClass()
             return false
@@ -91,57 +91,57 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 rightMargin = self.view.frame.width - (i*(clsWidth+leftMargin)+leftMargin)
                 i = 0
             }
-            let clsLabel = UIButton(frame: CGRectMake(i*(clsWidth + leftMargin) + leftMargin,top,clsWidth,clsHeight))
-            clsLabel.layer.borderColor = UIColor(red:222/255, green:222/255, blue:222/255, alpha: 1).CGColor
+            let clsLabel = UIButton(frame: CGRect(x: i*(clsWidth + leftMargin) + leftMargin,y: top,width: clsWidth,height: clsHeight))
+            clsLabel.layer.borderColor = UIColor(red:222/255, green:222/255, blue:222/255, alpha: 1).cgColor
             if selectClassList.contains(cls) == true{
                 clsLabel.backgroundColor = UIColor(red:211/255, green:211/255, blue:211/255, alpha: 1)
             }
             else{
-                clsLabel.backgroundColor = UIColor.whiteColor()
+                clsLabel.backgroundColor = UIColor.white
             }
             clsLabel.layer.borderWidth = 0.8
-            clsLabel.titleLabel?.font = UIFont.systemFontOfSize(12)
-            clsLabel.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            clsLabel.setTitle(cls, forState: .Normal)
-            clsLabel.addTarget(self, action: "checkClass:", forControlEvents: .TouchUpInside)
+            clsLabel.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            clsLabel.setTitleColor(UIColor.black, for: UIControlState())
+            clsLabel.setTitle(cls, for: UIControlState())
+            clsLabel.addTarget(self, action: #selector(AddBookViewController.checkClass(_:)), for: .touchUpInside)
             allClsView.addSubview(clsLabel)
-            i++
+            i += 1
         }
-        allClsView.frame = CGRectMake(rightMargin/2,0,self.view.frame.width,top + topMargin + clsHeight)
-        classView.frame = CGRectMake(0,0,self.view.frame.width,top + topMargin + clsHeight)
+        allClsView.frame = CGRect(x: rightMargin/2,y: 0,width: self.view.frame.width,height: top + topMargin + clsHeight)
+        classView.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: top + topMargin + clsHeight)
         classBackgroundView?.addSubview(classView)
-        classBackgroundView?.hidden = false
+        classBackgroundView?.isHidden = false
         
     }
     
-    func checkClass(btn:UIButton){
+    func checkClass(_ btn:UIButton){
         let text = (btn.titleLabel?.text)!
         if selectClassList.contains(text) == true{
-            selectClassList.removeAtIndex((selectClassList.indexOf(text))!)
-            btn.backgroundColor = UIColor.whiteColor()
+            selectClassList.remove(at: (selectClassList.index(of: text))!)
+            btn.backgroundColor = UIColor.white
         }
         else{
             selectClassList.append(text)
             btn.backgroundColor = UIColor(red:200/255, green:200/255, blue:200/255, alpha: 1)
         }
-        cls.text = selectClassList.joinWithSeparator("，")
+        cls.text = selectClassList.joined(separator: "，")
     }
     
     func closeClassBackgroundView(){
-        classBackgroundView?.hidden = true
+        classBackgroundView?.isHidden = true
     }
     
-    @IBAction func bookDetailUnwind(segue:UIStoryboardSegue){
-        if let detail = segue.sourceViewController as? AddBookDetailViewController{
+    @IBAction func bookDetailUnwind(_ segue:UIStoryboardSegue){
+        if let detail = segue.source as? AddBookDetailViewController{
             detailResult.append((detail.textView.text,detail.needTime.text!))
             //表格中新增一行cell
             self.tv.beginUpdates()
-            self.tv.insertRowsAtIndexPaths([NSIndexPath(forRow: self.detailResult.count - 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
+            self.tv.insertRows(at: [IndexPath(row: self.detailResult.count - 1, section: 0)], with: UITableViewRowAnimation.bottom)
             self.tv.endUpdates()
         }
     }
     
-    @IBAction func submit(sender: AnyObject) {
+    @IBAction func submit(_ sender: AnyObject) {
         _ = ["offset":"","limit":""]
         
         
@@ -151,22 +151,22 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         //解决cell分割线左边短的问题
-        if cell.respondsToSelector(Selector("setSeparatorInset:")){
-            cell.separatorInset = UIEdgeInsetsZero
+        if cell.responds(to: #selector(setter: UITableViewCell.separatorInset)){
+            cell.separatorInset = UIEdgeInsets.zero
         }
-        if cell.respondsToSelector(Selector("setLayoutMargins:")){
-            cell.layoutMargins = UIEdgeInsetsZero
+        if cell.responds(to: #selector(setter: UIView.layoutMargins)){
+            cell.layoutMargins = UIEdgeInsets.zero
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (detailResult.count)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScrollCell", for: indexPath)
         let rowData = detailResult[indexPath.row]
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = rowData.content
@@ -176,8 +176,8 @@ class AddBookViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tv.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tv.deselectRow(at: indexPath, animated: true)
     }
     
 }

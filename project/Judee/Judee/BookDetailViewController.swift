@@ -35,44 +35,44 @@ class BookDetailViewController: UIViewController,UITableViewDataSource,UITableVi
         let token = Common.getToken()
         let headers = ["Authorization": "bearer \(token)"]
         Common.doRepuest(self, url: url, method: .GET,headers: headers,failed: { () -> Void in
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
             }){ (response, json) -> Void in
                 if json["data"].count > 0{
                     self.result = json["data"].array!
                     self.tv.reloadData()
                 }
                 else{
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 
         }
     }
     
     
-    func clickAvatar(button:UIButton){
-        self.performSegueWithIdentifier("userBook", sender: button.tag)
+    func clickAvatar(_ button:UIButton){
+        self.performSegue(withIdentifier: "userBook", sender: button.tag)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (result?.count)!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tv.dequeueReusableCellWithIdentifier("ScrollCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tv.dequeueReusableCell(withIdentifier: "ScrollCell", for: indexPath)
         for view in cell.contentView.subviews{
             view.removeFromSuperview()
         }
-        cell.textLabel?.font = UIFont.systemFontOfSize(14)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         cell.textLabel?.text = result![indexPath.row]["content"].stringValue
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let destination = segue.destinationViewController as? UserBookViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? UserBookViewController{
             destination.navigationItem.title = "judy\(sender!)"
         }
     }

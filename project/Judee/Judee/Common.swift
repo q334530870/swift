@@ -22,71 +22,71 @@ class Common{
     static func getToken() ->String{
         var token = ""
         if let tk = Common.loadDefault("token"){
-            token = String(tk)
+            token = String(describing: tk)
         }
         return token
     }
     
     //获取timeInterval
-    static func DateInterval(date:String)->NSTimeInterval{
-        let formatter = NSDateFormatter()
+    static func DateInterval(_ date:String)->TimeInterval{
+        let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
-        formatter.timeZone = NSTimeZone.systemTimeZone()
-        let currentDateString = formatter.stringFromDate(NSDate())
-        let currentDate = formatter.dateFromString(currentDateString)
-        let setDate = formatter.dateFromString(date)
-        let interval = setDate!.timeIntervalSinceDate(currentDate!)
+        formatter.timeZone = TimeZone.current
+        let currentDateString = formatter.string(from: Date())
+        let currentDate = formatter.date(from: currentDateString)
+        let setDate = formatter.date(from: date)
+        let interval = setDate!.timeIntervalSince(currentDate!)
         return interval
     }
     
-    static func dateFromString(date:String,fmt:String = "yyyy-MM-dd HH:mm:ss")->NSDate{
+    static func dateFromString(_ date:String,fmt:String = "yyyy-MM-dd HH:mm:ss")->Date{
         //日期格式化
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = fmt
-        return formatter.dateFromString(date)!
+        return formatter.date(from: date)!
     }
     
     //显示提示框
-    static func showAlert(view:UIViewController,title:String?,message:String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let ok = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+    static func showAlert(_ view:UIViewController,title:String?,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(ok)
-        view.presentViewController(alert, animated: true, completion: nil)
+        view.present(alert, animated: true, completion: nil)
     }
     
     //显示带确定函数的提示框
-    static func showAlert(view:UIViewController,title:String?,message:String,cancel:Bool = false,okTitle:String="确定",cancelTitle:String="取消",ok:(action:UIAlertAction) -> Void){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let ok = UIAlertAction(title: okTitle, style: UIAlertActionStyle.Default, handler:ok)
+    static func showAlert(_ view:UIViewController,title:String?,message:String,cancel:Bool = false,okTitle:String="确定",cancelTitle:String="取消",ok:@escaping (_ action:UIAlertAction) -> Void){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: okTitle, style: UIAlertActionStyle.default, handler:ok)
         alert.addAction(ok)
         if cancel{
-            let cl = UIAlertAction(title: cancelTitle, style: UIAlertActionStyle.Cancel, handler:nil)
+            let cl = UIAlertAction(title: cancelTitle, style: UIAlertActionStyle.cancel, handler:nil)
             alert.addAction(cl)
         }
-        view.presentViewController(alert, animated: true, completion: nil)
+        view.present(alert, animated: true, completion: nil)
     }
     
     //保存用户数据
-    static func saveDefault(obj:AnyObject,key:String){
-        let dft:NSUserDefaults  = NSUserDefaults.standardUserDefaults()
-        dft.setObject(obj, forKey: key)
+    static func saveDefault(_ obj:AnyObject,key:String){
+        let dft:UserDefaults  = UserDefaults.standard
+        dft.set(obj, forKey: key)
         dft.synchronize()
     }
     
     //读取用户数据
-    static func loadDefault(key:String) ->AnyObject?{
-        let dft:NSUserDefaults  = NSUserDefaults.standardUserDefaults()
-        return dft.objectForKey(key)
+    static func loadDefault(_ key:String) ->AnyObject?{
+        let dft:UserDefaults  = UserDefaults.standard
+        return dft.object(forKey: key) as AnyObject?
     }
     
     //删除用户数据
-    static func removeDefault(key:String){
-        let dft:NSUserDefaults  = NSUserDefaults.standardUserDefaults()
-        dft.removeObjectForKey(key)
+    static func removeDefault(_ key:String){
+        let dft:UserDefaults  = UserDefaults.standard
+        dft.removeObject(forKey: key)
     }
     
     //初始化遮罩层
-    static func initLoading(currentView:UIViewController){
+    static func initLoading(_ currentView:UIViewController){
         //去除nav的高度
         var otherHeight:CGFloat = 0
         if(currentView.navigationController != nil){
@@ -94,26 +94,26 @@ class Common{
         }
         let y:CGFloat = 0 - otherHeight
         //创建遮罩层
-        grayView.frame = CGRectMake(0, y, currentView.view.bounds.width, currentView.view.bounds.height)
-        grayView.backgroundColor = UIColor.grayColor()
+        grayView.frame = CGRect(x: 0, y: y, width: currentView.view.bounds.width, height: currentView.view.bounds.height)
+        grayView.backgroundColor = UIColor.gray
         grayView.alpha = 0.4
-        grayView.hidden = true
+        grayView.isHidden = true
         //创建加载菊花
-        act.frame = CGRectMake(currentView.view.bounds.width/2-20, currentView.view.bounds.height/2-5, 30, 30)
+        act.frame = CGRect(x: currentView.view.bounds.width/2-20, y: currentView.view.bounds.height/2-5, width: 30, height: 30)
         grayView.addSubview(act)
         act.stopAnimating()
         //添加描述label
-        let label = UILabel(frame: CGRectMake(currentView.view.bounds.width/2-30, currentView.view.bounds.height/2+20, 60, 20))
+        let label = UILabel(frame: CGRect(x: currentView.view.bounds.width/2-30, y: currentView.view.bounds.height/2+20, width: 60, height: 20))
         label.text = "努力加载中..."
-        label.textAlignment = NSTextAlignment.Center
-        label.font = UIFont.boldSystemFontOfSize(10)
-        label.textColor = UIColor.whiteColor()
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.boldSystemFont(ofSize: 10)
+        label.textColor = UIColor.white
         grayView.addSubview(label)
         //遮罩层添加到试图中
         currentView.view.addSubview(grayView)
     }
     
-    static func makeMask(currentView:UIView){
+    static func makeMask(_ currentView:UIView){
         //去除nav的高度
         //        var otherHeight:CGFloat = 0
         //        if(currentView!.navigationController != nil){
@@ -121,8 +121,8 @@ class Common{
         //        }
         //        let y:CGFloat = 0 - otherHeight
         //创建遮罩层
-        grayView.frame = CGRectMake(0, 0,currentView.bounds.width, currentView.bounds.height)
-        grayView.backgroundColor = UIColor.grayColor()
+        grayView.frame = CGRect(x: 0, y: 0,width: currentView.bounds.width, height: currentView.bounds.height)
+        grayView.backgroundColor = UIColor.gray
         grayView.alpha = 0.2
         //遮罩层添加到试图中
         currentView.addSubview(grayView)
@@ -134,22 +134,22 @@ class Common{
     
     
     //显示loading菊花
-    static func showLoading(currentView:UIViewController){
+    static func showLoading(_ currentView:UIViewController){
         act.startAnimating()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        grayView.hidden = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        grayView.isHidden = false
     }
     
     //隐藏loading菊花
-    static func hideLoading(currentView:UIViewController){
+    static func hideLoading(_ currentView:UIViewController){
         act.stopAnimating()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        grayView.hidden = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        grayView.isHidden = true
     }
     
     //查找导航栏下面的实线
-    static func findHairlineImageViewUnder(view:UIView) -> UIImageView?{
-        if (view.isKindOfClass(UIImageView) && view.bounds.size.height<=1.0) {
+    static func findHairlineImageViewUnder(_ view:UIView) -> UIImageView?{
+        if (view.isKind(of: UIImageView.self) && view.bounds.size.height<=1.0) {
             return view as? UIImageView
         }
         for subview in view.subviews{
@@ -161,40 +161,40 @@ class Common{
     }
     
     //初始化搜索条
-    static func initSearchController(target:UISearchResultsUpdating) -> UISearchController?{
+    static func initSearchController(_ target:UISearchResultsUpdating) -> UISearchController?{
         var searchController:UISearchController?
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchResultsUpdater = target
         searchController?.dimsBackgroundDuringPresentation = false
         searchController?.hidesNavigationBarDuringPresentation = false
-        searchController?.searchBar.frame = CGRectMake((searchController?.searchBar.frame.origin.x)!, (searchController?.searchBar.frame.origin.y)!, (searchController?.searchBar.frame.size.width)!, 44.0)
-        searchController?.searchBar.searchBarStyle = .Minimal
+        searchController?.searchBar.frame = CGRect(x: (searchController?.searchBar.frame.origin.x)!, y: (searchController?.searchBar.frame.origin.y)!, width: (searchController?.searchBar.frame.size.width)!, height: 44.0)
+        searchController?.searchBar.searchBarStyle = .minimal
         searchController?.searchBar.tintColor = MAIN_COLOR
-        searchController?.searchBar.returnKeyType = .Done
+        searchController?.searchBar.returnKeyType = .done
         searchController?.searchBar.placeholder = "关键词，多个用空格隔开，输入‘-’排除关键字"
         return searchController
     }
     
     //初始化pickView
-    static func initPickView(target:UIViewController,frame:CGRect) ->UIPickerView{
+    static func initPickView(_ target:UIViewController,frame:CGRect) ->UIPickerView{
         //遮罩层
         let taskView = UIView(frame: target.view.frame)
-        taskView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-        taskView.hidden = true
+        taskView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        taskView.isHidden = true
         //总视图
-        let pv = UIView(frame: CGRectMake(frame.origin.x,frame.origin.y,frame.width,frame.height - 60))
+        let pv = UIView(frame: CGRect(x: frame.origin.x,y: frame.origin.y,width: frame.width,height: frame.height - 60))
         //选择视图
-        let pickView = UIPickerView(frame: CGRectMake(0,30,pv.frame.width,pv.frame.height - 30))
-        pickView.backgroundColor = UIColor.whiteColor()
+        let pickView = UIPickerView(frame: CGRect(x: 0,y: 30,width: pv.frame.width,height: pv.frame.height - 30))
+        pickView.backgroundColor = UIColor.white
         pickView.showsSelectionIndicator = true
         pv.addSubview(pickView)
         //工具条
-        let toolbar = UIToolbar(frame: CGRectMake(0,0,pickView.frame.width,30))
+        let toolbar = UIToolbar(frame: CGRect(x: 0,y: 0,width: pickView.frame.width,height: 30))
         //确定按钮
-        let pickButton = UIButton(frame: CGRectMake(toolbar.frame.width - 45,0,40,30))
-        pickButton.setTitle("确定", forState: .Normal)
-        pickButton.setTitleColor(MAIN_COLOR, forState: .Normal)
-        pickButton.addTarget(target, action: Selector("selectSeg"), forControlEvents:.TouchUpInside)
+        let pickButton = UIButton(frame: CGRect(x: toolbar.frame.width - 45,y: 0,width: 40,height: 30))
+        pickButton.setTitle("确定", for: UIControlState())
+        pickButton.setTitleColor(MAIN_COLOR, for: UIControlState())
+        pickButton.addTarget(target, action: Selector("selectSeg"), for:.touchUpInside)
         toolbar.addSubview(pickButton)
         pv.addSubview(toolbar)
         taskView.addSubview(pv)
@@ -203,45 +203,45 @@ class Common{
     }
     
     //数字格式化
-    static func numberFormat(number:AnyObject, style:String = "#,##0.00") ->String{
-        let formater = NSNumberFormatter()
+    static func numberFormat(_ number:AnyObject, style:String = "#,##0.00") ->String{
+        let formater = NumberFormatter()
         formater.positiveFormat = style
-        let result = formater.stringFromNumber(number as! NSNumber)
+        let result = formater.string(from: number as! NSNumber)
         return result!
     }
     
-    static func dateFormateUTCDate(utcDate:String,fmt:String="yyyy-MM-dd HH:mm:ss") -> String{
-        let dateFmt = NSDateFormatter()
-        let timeZone = NSTimeZone.localTimeZone()
+    static func dateFormateUTCDate(_ utcDate:String,fmt:String="yyyy-MM-dd HH:mm:ss") -> String{
+        let dateFmt = DateFormatter()
+        let timeZone = TimeZone.autoupdatingCurrent
         dateFmt.timeZone = timeZone
         dateFmt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFmt.dateFromString(utcDate)
+        let date = dateFmt.date(from: utcDate)
         dateFmt.dateFormat = fmt
-        let dateString = dateFmt.stringFromDate(date!)
+        let dateString = dateFmt.string(from: date!)
         return dateString
     }
     
-    static func getCurrentDate(fmt:String = "yyyy-MM-dd HH:mm:ss") -> String{
+    static func getCurrentDate(_ fmt:String = "yyyy-MM-dd HH:mm:ss") -> String{
         //初始化时间段
-        let date = NSDate()
+        let date = Date()
         //获取当前时区
-        let zone = NSTimeZone.systemTimeZone()
+        let zone = TimeZone.current
         //以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
-        let interval = zone.secondsFromGMTForDate(date)
+        let interval = zone.secondsFromGMT(for: date)
         //补充时差后为当前时间
-        let localDate = date.dateByAddingTimeInterval(NSTimeInterval(interval))
+        let localDate = date.addingTimeInterval(TimeInterval(interval))
         //日期格式化
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = fmt
-        return formatter.stringFromDate(localDate)
+        return formatter.string(from: localDate)
     }
     
     //获取当前controller
-    static func currentController(view:UIView) ->UIViewController?{
+    static func currentController(_ view:UIView) ->UIViewController?{
         var result:UIViewController? = nil
-        var window = UIApplication.sharedApplication().keyWindow
+        var window = UIApplication.shared.keyWindow
         if window?.windowLevel != UIWindowLevelNormal{
-            let windows = UIApplication.sharedApplication().windows
+            let windows = UIApplication.shared.windows
             for tmpWindow in windows{
                 if tmpWindow.windowLevel == UIWindowLevelNormal
                 {
@@ -251,7 +251,7 @@ class Common{
             }
         }
         let frontView = window?.subviews[0]
-        let nextResponder = frontView?.nextResponder()
+        let nextResponder = frontView?.next
         if let res = nextResponder as? UIViewController{
             result = res
         }
@@ -262,8 +262,8 @@ class Common{
     }
     
     //调用接口
-    static func doRepuest(controller:UIViewController, url:String,method:Method = .GET, param:[String: AnyObject]?=nil,headers:[String: String]?=nil,encoding:ParameterEncoding = .URL, failed:(()->Void)? = nil,complete:(Response<AnyObject, NSError>,JSON) -> Void){
-        request(method, url,parameters: param,encoding: encoding,headers:headers).responseJSON(options: NSJSONReadingOptions.MutableContainers) { (response) -> Void in
+    static func doRepuest(_ controller:UIViewController, url:String,method:Method = .GET, param:[String: AnyObject]?=nil,headers:[String: String]?=nil,encoding:ParameterEncoding = .url, failed:(()->Void)? = nil,complete:@escaping (Response<AnyObject, NSError>,JSON) -> Void){
+        request(method, url,parameters: param,encoding: encoding,headers:headers).responseJSON(options: JSONSerialization.ReadingOptions.mutableContainers) { (response) -> Void in
             controller.view.hideToastActivity()
             if response.result.error != nil{
                 print(response.response?.statusCode)
@@ -290,7 +290,7 @@ class Common{
                 else{
                     if json["error"].string == "authentication failed"{
                         showAlert(controller, title: "", message: "登录超时，请重新登录", ok: { (action) -> Void in
-                            controller.presentViewController((controller.storyboard?.instantiateViewControllerWithIdentifier("Login"))!, animated: true, completion: nil)
+                            controller.present((controller.storyboard?.instantiateViewController(withIdentifier: "Login"))!, animated: true, completion: nil)
                         })
                     }
                     var message = "连接失败"
@@ -314,7 +314,7 @@ class Common{
     }
     
     //验证手机号
-    static func isMobile(mobileNum:String?) -> Bool{
+    static func isMobile(_ mobileNum:String?) -> Bool{
         if mobileNum == ""{
             return false
         }
@@ -346,10 +346,10 @@ class Common{
         let regextestcu = NSPredicate(format: "SELF MATCHES %@", cu)
         let regextestct = NSPredicate(format: "SELF MATCHES %@", ct)
         
-        if (regextestmobile.evaluateWithObject(mobileNum)
-            || regextestcm.evaluateWithObject(mobileNum)
-            || regextestcu.evaluateWithObject(mobileNum)
-            || regextestct.evaluateWithObject(mobileNum))
+        if (regextestmobile.evaluate(with: mobileNum)
+            || regextestcm.evaluate(with: mobileNum)
+            || regextestcu.evaluate(with: mobileNum)
+            || regextestct.evaluate(with: mobileNum))
         {
             return true
         }
@@ -359,43 +359,43 @@ class Common{
     }
     
     //验证固话
-    static func isTel(tel:String?) -> Bool{
+    static func isTel(_ tel:String?) -> Bool{
         if tel == ""{
             return false
         }
         let regex = "^(\\d{3,4}-)\\d{7,8}$"
         let telText = NSPredicate(format: "SELF MATCHES %@", regex)
-        return telText.evaluateWithObject(tel)
+        return telText.evaluate(with: tel)
     }
     
     //验证邮箱
-    static func isEmail(email:String?) -> Bool{
+    static func isEmail(_ email:String?) -> Bool{
         if email == ""{
             return false
         }
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let emailText = NSPredicate(format: "SELF MATCHES %@", regex)
-        return emailText.evaluateWithObject(email)
+        return emailText.evaluate(with: email)
     }
     
     //验证身份证号
-    static func isIdCard(idCard:String?) -> Bool{
+    static func isIdCard(_ idCard:String?) -> Bool{
         if idCard == ""{
             return false
         }
         let regex = "^(\\d{14}|\\d{17})(\\d|[xX])$"
         let idCardText = NSPredicate(format: "SELF MATCHES %@", regex)
-        return idCardText.evaluateWithObject(idCard)
+        return idCardText.evaluate(with: idCard)
     }
     
     //验证银行卡
-    static func isBankCard(bankCard:String?) -> Bool{
+    static func isBankCard(_ bankCard:String?) -> Bool{
         if bankCard == ""{
             return false
         }
         let regex = "^(\\d{16}|\\d{19})$"
         let bankCardText = NSPredicate(format: "SELF MATCHES %@", regex)
-        return bankCardText.evaluateWithObject(bankCard)
+        return bankCardText.evaluate(with: bankCard)
     }
     
 }

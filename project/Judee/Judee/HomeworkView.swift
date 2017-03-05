@@ -18,17 +18,17 @@ class HomeworkView: UIView {
         super.init(coder: aDecoder)
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetLineWidth(context, 0.05)
-        CGContextSetRGBFillColor(context, 230/255, 230/255, 230/255, 1)
+        context?.setLineWidth(0.05)
+        context?.setFillColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         //中边框线
-        CGContextMoveToPoint(context, 0, rect.size.height/2)
-        CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2)
+        context?.move(to: CGPoint(x: 0, y: rect.size.height/2))
+        context?.addLine(to: CGPoint(x: rect.size.width, y: rect.size.height/2))
         //下边框线
-        CGContextMoveToPoint(context, 0, rect.size.height-1)
-        CGContextAddLineToPoint(context, rect.size.width, rect.size.height-1)
-        CGContextStrokePath(context)
+        context?.move(to: CGPoint(x: 0, y: rect.size.height-1))
+        context?.addLine(to: CGPoint(x: rect.size.width, y: rect.size.height-1))
+        context?.strokePath()
     }
     
     
